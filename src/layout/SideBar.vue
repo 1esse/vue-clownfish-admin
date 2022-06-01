@@ -2,7 +2,7 @@
 import SvgIcon from '../components/SvgIcon.vue'
 import { defineComponent, ref, h, Component, watch, Slots, inject, computed } from 'vue'
 import { RouteMeta, RouteRecordRaw, useRoute, useRouter } from 'vue-router'
-import pathe from 'pathe' // path包es代码实现
+import { resolve } from 'pathe' // path包es代码实现
 import Scrollbar from '../components/Scrollbar.vue'
 import { RouterLink } from 'vue-router'
 import { SubMenu, MenuItem, Menu } from 'ant-design-vue/es'
@@ -52,7 +52,7 @@ const MenuItemNav = defineComponent({
         icon: () => getNavIcon(route.meta),
         title: () => route.meta?.title
       }
-      const basePath = pathe.resolve(props.basePath, route.path)
+      const basePath = resolve(props.basePath, route.path)
       return (
         <SubMenu v-slots={slots} key={basePath}>
           {route.children?.map(item => <MenuItemNav route={item} basePath={basePath}></MenuItemNav>)}
@@ -64,7 +64,7 @@ const MenuItemNav = defineComponent({
       const slots = {
         icon: () => getNavIcon(route.meta)
       }
-      const url = pathe.resolve(props.basePath, route.path)
+      const url = resolve(props.basePath, route.path)
       return (
         <MenuItem key={url} v-slots={slots}>
           <MenuItemLink route={route} url={url}>
