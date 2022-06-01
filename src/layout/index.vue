@@ -18,7 +18,7 @@ const getKeepAlivePages = computed(() => {
   return Array.from(keepAlivePages.value)
 })
 
-// 为子组件提供布局及相关状态信息
+// 为子组件提供布局的相关状态信息
 provide('sidebarRelated', sidebarRelated)
 provide('keepAlivePages', keepAlivePages.value)
 provide('loading', loading)
@@ -38,9 +38,9 @@ provide('loading', loading)
       <ALayoutContent>
         <RouterView v-slot="{ Component, route }">
           <Transition name="fade-scale" mode="out-in">
-            <keep-alive :include="getKeepAlivePages">
+            <KeepAlive :include="getKeepAlivePages">
               <component :is="Component" :key="route.path" />
-            </keep-alive>
+            </KeepAlive>
           </Transition>
         </RouterView>
       </ALayoutContent>

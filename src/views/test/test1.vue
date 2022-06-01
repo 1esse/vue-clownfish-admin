@@ -4,7 +4,7 @@ import { defineComponent } from "vue"
 export default defineComponent({
   name: 'Test1',
   mounted() {
-    console.log('mounted!!!')
+    console.log('缓存页挂载!!!')
   },
   setup() {
 
@@ -14,6 +14,6 @@ export default defineComponent({
 
 <template>
   <div>
-    <div class="block">test1</div>
+    <div class="block shadow">test1</div>
   </div>
 </template>

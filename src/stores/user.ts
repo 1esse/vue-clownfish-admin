@@ -1,6 +1,22 @@
 import { setCookie, sleep } from "@/utils"
 import { defineStore } from "pinia"
 
+const users: ({ username: string, password: string } & Stores.user)[] = [
+  {
+    username: 'david',
+    password: '123456',
+    name: '大卫',
+    age: 18,
+    sex: 'male'
+  }, {
+    username: 'lili',
+    password: '123456',
+    name: '莉莉',
+    age: 16,
+    sex: 'female'
+  },
+]
+
 export const userStore = defineStore('user', {
   state: (): Stores.user => ({
     name: '',
@@ -11,13 +27,14 @@ export const userStore = defineStore('user', {
   actions: {
     async login(username: string, password: string) {
       await sleep(2000)
-      if (username !== 'admin' || password !== '123456') {
+      const user = users.find(item => item.username === username)
+      if (!user || password !== user.password) {
         return Promise.reject('账号或密码错误')
       }
-      this.name = '大卫'
-      this.age = 17
-      this.sex = 'male'
-      this.token = 'Admin Token'
+      this.name = user.name
+      this.age = user.age
+      this.sex = user.sex
+      this.token = `${user.username} Token`
       setCookie('token', this.token)
       return Promise.resolve('login success')
     },
@@ -28,11 +45,12 @@ export const userStore = defineStore('user', {
     },
     async getUserInfo(token: string): Promise<string> {
       await sleep(500)
-      if (token === 'Admin Token') {
-        this.name = '大卫'
-        this.age = 17
-        this.sex = 'male'
-        this.token = 'Admin Token'
+      const user = users.find(item => `${item.username} Token` === token)
+      if (user) {
+        this.name = user.name
+        this.age = user.age
+        this.sex = user.sex
+        this.token = `${user.username} Token`
         setCookie('token', this.token)
         return Promise.resolve('get user info success')
       }

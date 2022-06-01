@@ -1,4 +1,19 @@
 <h1>ClownFishAdmin(Vue3技术栈后台前端解决方案)</h1>
+<p align="center">
+  <a href="https://github.com/vuejs/core">
+    <img src="https://img.shields.io/badge/vue-3.2.33-brightgreen.svg" alt="vue">
+  </a>
+  <a href="https://github.com/vueComponent/ant-design-vue">
+    <img src="https://img.shields.io/badge/antdv-3.2.5-brightgreen.svg" alt="element-ui">
+  </a>
+  <a href="https://github.com/1esse/ClownFishAdmin/blob/master/LICENSE">
+    <img src="https://img.shields.io/github/license/mashape/apistatus.svg" alt="license">
+  </a>
+  <a href="https://github.com/1esse/ClownFishAdmin/releases">
+    <img src="https://img.shields.io/github/v/release/1esse/ClownFishAdmin.svg" alt="GitHub release">
+  </a>
+</p>
+
 
 ## 简介
 

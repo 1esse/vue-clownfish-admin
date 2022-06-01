@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import { userStore } from '@/stores/user'
-import { inject } from 'vue'
+import { onMounted } from 'vue'
 
 const user = userStore()
-
-const sidebarRelated = inject<Layout.SidebarRelated>('sidebarRelated')
+onMounted(() => {
+  console.log('普通页挂载!!!')
+})
 
 </script>
 
 <template>
   <div>
-    <div class="block shadow" style="width: 500px; height: 300px">{{ sidebarRelated?.collapsed ? '收起' : '展开'
-    }}{{ user.name + user.age }}</div>
+    <div class="block shadow" style="width: 500px; height: 300px">{{ user.name + user.age }}</div>
   </div>
 </template>

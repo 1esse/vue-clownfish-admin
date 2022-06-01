@@ -124,26 +124,26 @@ function showTabMenu(e: MouseEvent, tab: RouteLocationNormalizedLoaded) {
     </div>
   </Scrollbar>
   <MenuPanel ref="menuPanelDom">
-    <a-button type="text" @click="refreshPage(menuPanelDom?.getContext())">
+    <AButton type="text" @click="refreshPage(menuPanelDom?.getContext())">
       <template #icon>
         <RedoOutlined />
       </template> 刷新
-    </a-button>
-    <a-button type="text" @click="closeTab(menuPanelDom?.getContext())">
+    </AButton>
+    <AButton type="text" @click="closeTab(menuPanelDom?.getContext())">
       <template #icon>
         <CloseOutlined />
       </template> 关闭
-    </a-button>
-    <a-button type="text" @click="closeOtherTabs(menuPanelDom?.getContext())">
+    </AButton>
+    <AButton type="text" @click="closeOtherTabs(menuPanelDom?.getContext())">
       <template #icon>
         <CloseOutlined />
       </template> 关闭其他
-    </a-button>
-    <a-button type="text" @click="closeAllTabs()">
+    </AButton>
+    <AButton type="text" @click="closeAllTabs()">
       <template #icon>
         <CloseOutlined />
       </template> 关闭所有
-    </a-button>
+    </AButton>
   </MenuPanel>
 </template>
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onBeforeMount, reactive } from 'vue'
+import { reactive } from 'vue'
 import { UserOutlined, LockOutlined } from '@ant-design/icons-vue'
 import { appTitle } from '@/appConfig'
 import { userStore } from '@/stores/user'
@@ -12,7 +12,7 @@ interface LoginForm {
   remember: boolean
 }
 const form = reactive<LoginForm>({
-  username: 'admin',
+  username: 'david',
   password: '123456',
   remember: true
 })
@@ -38,14 +38,14 @@ function login() {
     <h2 class="title">{{ appTitle }} Login</h2>
     <AForm name="loginForm" :model="form" layout="vertical" class="login-form shadow" @finish="login">
       <AFormItem name="username" :rules="[{ required: true, message: '用户名不能为空!' }]">
-        <AInput v-model:value="form.username" placeholder="用户名" size="large">
+        <AInput v-model:value="form.username" placeholder="用户名david或lili" size="large">
           <template #prefix>
             <UserOutlined />
           </template>
         </AInput>
       </AFormItem>
       <AFormItem name="password" :rules="[{ required: true, message: '密码不能为空!' }]">
-        <AInputPassword v-model:value="form.password" placeholder="密码" size="large">
+        <AInputPassword v-model:value="form.password" placeholder="密码123456" size="large">
           <template #prefix>
             <LockOutlined />
           </template>

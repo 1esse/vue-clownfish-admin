@@ -27,11 +27,11 @@ function logout() {
     </section>
     <section>
       <span style="margin-right: 1rem">{{ user.name }}</span>
-      <a-button type="primary" shape="circle" :loading="loading?.logout" @click="logout" title="退出登录">
+      <AButton type="primary" shape="circle" :loading="loading?.logout" @click="logout" title="退出登录">
         <template #icon>
           <LogoutOutlined />
         </template>
-      </a-button>
+      </AButton>
     </section>
   </header>
 </template>

@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router"
+import { createRouter, createWebHistory, Router, RouteRecordRaw } from "vue-router"
 import Layout from '@/layout/index.vue'
 import { UserOutlined, LaptopOutlined, NotificationOutlined, LinkOutlined } from '@ant-design/icons-vue'
 import { Component } from "vue"
@@ -23,21 +23,46 @@ declare module 'vue-router' {
   }
 }
 
-const routes: RouteRecordRaw[] = [
+const dashboardRoute: RouteRecordRaw = {
+  path: '/',
+  component: Layout,
+  redirect: '/dashboard',
+  meta: { breadcrumb: false },
+  children: [
+    {
+      path: 'dashboard',
+      name: 'Dashboard',
+      component: () => import('@/views/dashboard.vue'),
+      meta: { title: 'Dashboard', icon: 'dashboard' }
+    }
+  ]
+}
+
+const constantRoutes: RouteRecordRaw[] = [
   {
-    path: '/',
+    path: '/redirect',
     component: Layout,
-    redirect: '/dashboard',
-    meta: { breadcrumb: false },
+    meta: { hidden: true, title: '页面跳转' },
     children: [
       {
-        path: 'dashboard',
-        name: 'Dashboard',
-        component: () => import('@/views/dashboard.vue'),
-        meta: { title: 'Dashboard', icon: 'dashboard' }
+        path: '/redirect/:path(.*)',
+        component: () => import('@/views/redirect.vue')
       }
     ]
   },
+  {
+    path: '/404',
+    component: () => import('@/views/404.vue'),
+    meta: { hidden: true, title: '404' },
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    redirect: '/404',
+    meta: { hidden: true },
+  }
+]
+
+const routes: RouteRecordRaw[] = [
   {
     path: '/login',
     name: 'Login',
@@ -104,33 +129,37 @@ const routes: RouteRecordRaw[] = [
     component: undefined,
     redirect: 'https://www.baidu.com',
     meta: { title: '测试外链', icon: LinkOutlined, external: true }
-  },
-  {
-    path: '/redirect',
-    component: Layout,
-    meta: { hidden: true, title: '页面跳转' },
-    children: [
-      {
-        path: '/redirect/:path(.*)',
-        component: () => import('@/views/redirect.vue')
-      }
-    ]
-  },
-  {
-    path: '/404',
-    component: () => import('@/views/404.vue'),
-    meta: { hidden: true, title: '404' },
-  },
-  {
-    path: '/:pathMatch(.*)*',
-    redirect: '/404',
-    meta: { hidden: true },
   }
 ]
 
 const router = createRouter({
   history: createWebHistory(),
-  routes: routes
+  routes: [dashboardRoute, ...routes, ...constantRoutes]
 })
+
+/**
+ * 动态路由的实现参考
+ * 1、使用addRoute添加所有新增路由（如果不同步显示在侧边菜单，可忽略2、3步骤）
+ * 2、如果要显示在侧边菜单栏，需要把所有新增路由同步添加至router.options.routes
+ * 3、replace替换当前页面至/redirect页面以刷新所有新增路由
+ * 详情见 https://router.vuejs.org/zh/api/#addroute-1
+ * 
+ * 举个栗子：
+ * const newRoute: RouteRecordRaw = {
+    path: '/example',
+    name: 'Example',
+    component: Layout,
+    redirect: '/example/index',
+    children: [{
+      path: 'index',
+      name: 'ExampleIndex',
+      component: () => import('@/views/example.vue'),
+      meta: { title: '新增路由', icon: 'example' },
+    }]
+  }
+  router.addRoute(newRoute)
+  router.options.routes.push(newRoute)
+  router.replace('/redirect/dashboard')
+ */
 
 export default router

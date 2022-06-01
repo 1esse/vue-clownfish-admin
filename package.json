@@ -1,7 +1,12 @@
 {
-  "name": "rednut-cpc",
+  "name": "clown-fish-admin",
+  "author": {
+    "name": "ZhaoJieXin",
+    "email": "572116385@qq.com",
+    "url": "https://github.com/1esse/ClownFishAdmin"
+  },
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "dev": "vite --port=7777",
     "build": "vue-tsc --noEmit && vite build",
@@ -11,6 +16,7 @@
     "ant-design-vue": "^3.2.5",
     "nprogress": "0.2.0",
     "overlayscrollbars": "^1.13.1",
+    "pathe": "^0.3.0",
     "pinia": "2.0.14",
     "vue": "3.2.33",
     "vue-router": "4.0.15"

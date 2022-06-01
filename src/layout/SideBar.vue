@@ -1,6 +1,6 @@
 <script setup lang="tsx">
 import SvgIcon from '../components/SvgIcon.vue'
-import { defineComponent, ref, h, Component, watch, Slots, inject } from 'vue'
+import { defineComponent, ref, h, Component, watch, Slots, inject, computed } from 'vue'
 import { RouteMeta, RouteRecordRaw, useRoute, useRouter } from 'vue-router'
 import pathe from 'pathe' // path包es代码实现
 import Scrollbar from '../components/Scrollbar.vue'
@@ -9,7 +9,6 @@ import { SubMenu, MenuItem, Menu } from 'ant-design-vue/es'
 
 const router = useRouter()
 const route = useRoute()
-const routes = router.options.routes
 const selectedKeys = ref<string[]>([route.path]) // 菜单默认选中项
 const openKeys = ref<string[]>(
   router.getRoutes()
@@ -17,6 +16,9 @@ const openKeys = ref<string[]>(
     .map(matchedRoute => matchedRoute.path)
 ) // 子菜单默认展开项
 const keepAlivePages = inject<Layout.keepAlivePages>('keepAlivePages')
+const routesList = computed(() => {
+  return router.options.routes
+})
 
 watch(route, (currentRoute) => {
   selectedKeys.value = [currentRoute.path]
@@ -85,7 +87,7 @@ const MenuItemNav = defineComponent({
 const TheSideBar = () => (
   <Scrollbar>
     <Menu v-model:selectedKeys={selectedKeys.value} v-model:openKeys={openKeys.value} mode="inline" selectable={false}>
-      {routes.map((route, index) => <MenuItemNav key={index} route={route} basePath={route.path}></MenuItemNav>)}
+      {routesList.value.map((route, index) => <MenuItemNav key={index} route={route} basePath={route.path}></MenuItemNav>)}
     </Menu>
   </Scrollbar>
 )
