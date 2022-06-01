@@ -5,7 +5,6 @@
     "email": "572116385@qq.com",
     "url": "https://github.com/1esse/ClownFishAdmin"
   },
-  "private": true,
   "version": "1.0.0",
   "scripts": {
     "dev": "vite --port=7777",

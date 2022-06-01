@@ -11,6 +11,6 @@ onMounted(() => {
 
 <template>
   <div>
-    <div class="block shadow" style="width: 500px; height: 300px">{{ user.name + user.age }}</div>
+    <div class="block shadow" style="width: 500px; height: 300px">{{ user.name + user.age + '岁' }}</div>
   </div>
 </template>
