@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory, Router, RouteRecordRaw } from "vue-router"
+import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router"
 import Layout from '@/layout/index.vue'
 import { UserOutlined, LaptopOutlined, NotificationOutlined, LinkOutlined } from '@ant-design/icons-vue'
 import { Component } from "vue"
@@ -133,7 +133,7 @@ const routes: RouteRecordRaw[] = [
 ]
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [dashboardRoute, ...routes, ...constantRoutes]
 })
 
