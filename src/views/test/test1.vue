@@ -5,9 +5,6 @@ export default defineComponent({
   name: 'Test1',
   mounted() {
     console.log('缓存页挂载!!!')
-  },
-  setup() {
-
   }
 })
 </script>
