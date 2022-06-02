@@ -35,29 +35,32 @@ function login() {
 
 <template>
   <main class="main">
-    <h2 class="title">{{ appTitle }} Login</h2>
-    <AForm name="loginForm" :model="form" layout="vertical" class="login-form shadow" @finish="login">
-      <AFormItem name="username" :rules="[{ required: true, message: '用户名不能为空!' }]">
-        <AInput v-model:value="form.username" placeholder="用户名david或lili" size="large">
-          <template #prefix>
-            <UserOutlined />
-          </template>
-        </AInput>
-      </AFormItem>
-      <AFormItem name="password" :rules="[{ required: true, message: '密码不能为空!' }]">
-        <AInputPassword v-model:value="form.password" placeholder="密码123456" size="large">
-          <template #prefix>
-            <LockOutlined />
-          </template>
-        </AInputPassword>
-      </AFormItem>
-      <AFormItem name="remember" no-style>
-        <div style="margin-bottom: .7rem">
-          <ACheckbox v-model:checked="form.remember">记住我</ACheckbox>
-        </div>
-      </AFormItem>
-      <AButton type="primary" style="width: 100%;" size="large" html-type="submit" :loading="loading.login">登录</AButton>
-    </AForm>
+    <section class="login-wrapper">
+      <h2 class="title">{{ appTitle }} Login</h2>
+      <AForm name="loginForm" :model="form" layout="vertical" class="login-form shadow" @finish="login">
+        <AFormItem name="username" :rules="[{ required: true, message: '用户名不能为空!' }]">
+          <AInput v-model:value="form.username" placeholder="用户名david或lili" size="large">
+            <template #prefix>
+              <UserOutlined />
+            </template>
+          </AInput>
+        </AFormItem>
+        <AFormItem name="password" :rules="[{ required: true, message: '密码不能为空!' }]">
+          <AInputPassword v-model:value="form.password" placeholder="密码123456" size="large">
+            <template #prefix>
+              <LockOutlined />
+            </template>
+          </AInputPassword>
+        </AFormItem>
+        <AFormItem name="remember" no-style>
+          <div style="margin-bottom: .7rem">
+            <ACheckbox v-model:checked="form.remember">记住我</ACheckbox>
+          </div>
+        </AFormItem>
+        <AButton type="primary" style="width: 100%;" size="large" html-type="submit" :loading="loading.login">登录
+        </AButton>
+      </AForm>
+    </section>
   </main>
 </template>
 <style scoped lang="postcss">
@@ -72,18 +75,23 @@ function login() {
   align-items: center;
   flex-direction: column;
 
-  & .title {
-    color: var(--white);
-  }
+  & .login-wrapper {
+    margin-top: -10rem;
 
-  & .login-form {
-    background-color: var(--white);
-    padding: 2rem 1.5rem;
-    width: 25rem;
-    border-radius: .5rem;
+    & .title {
+      color: var(--white);
+      text-align: center;
+    }
 
-    & .wrapper-remember {
-      margin-bottom: 1rem;
+    & .login-form {
+      background-color: var(--white);
+      padding: 2rem 1.5rem;
+      width: 25rem;
+      border-radius: .5rem;
+
+      & .wrapper-remember {
+        margin-bottom: 1rem;
+      }
     }
   }
 }

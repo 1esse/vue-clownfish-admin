@@ -49,6 +49,16 @@ header {
       display: inline-flex;
       flex-wrap: nowrap;
       align-items: center;
+      flex-shrink: 0;
+      overflow: hidden;
+      flex: 1
+    }
+
+    &:last-of-type {
+      display: inline-flex;
+      flex-wrap: nowrap;
+      flex-shrink: 0;
+      align-items: center;
     }
   }
 }
