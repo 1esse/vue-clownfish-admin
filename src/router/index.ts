@@ -1,24 +1,34 @@
-import { createRouter, createWebHistory, Router, RouteRecordRaw } from "vue-router"
+import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router"
 import Layout from '@/layout/index.vue'
 import { UserOutlined, LaptopOutlined, NotificationOutlined, LinkOutlined } from '@ant-design/icons-vue'
 import { Component } from "vue"
 
-/**
- * RouteMeta
- *  - title：菜单名
- *  - icon：菜单图标，值为src/svgs文件夹下相同的名称或者antd图标组件，当值为组件时需要显式导入
- *  - external：是否外部链接，外部链接时需在redirect指定链接地址
- *  - breadcrumb：是否显示面包屑，默认true
- *  - hidden：是否在菜单隐藏
- *  - keepAlive：是否缓存该路由，只有当页面定义的name和路由定义的name一致时，才能生效
- */
+
 declare module 'vue-router' {
   interface RouteMeta {
+    /**
+     * title：菜单名
+     */
     title?: string
+    /**
+     * icon：菜单图标，值为src/svgs文件夹下相同的名称或者antd图标组件，当值为组件时需要显式导入
+     */
     icon?: Component | string
+    /**
+     * external：是否外部链接，外部链接时需在redirect指定链接地址
+     */
     external?: boolean
+    /**
+     * breadcrumb：是否显示面包屑，默认true
+     */
     breadcrumb?: boolean
+    /**
+     * hidden：是否在菜单隐藏
+     */
     hidden?: boolean
+    /**
+     * keepAlive：是否缓存该路由，只有当页面定义的name和路由定义的name一致时，才能生效
+     */
     keepAlive?: boolean
   }
 }
@@ -133,7 +143,7 @@ const routes: RouteRecordRaw[] = [
 ]
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [dashboardRoute, ...routes, ...constantRoutes]
 })
 
