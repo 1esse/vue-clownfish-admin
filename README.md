@@ -26,9 +26,7 @@
 [ES2015+](http://es6.ruanyifeng.com/)，[typescript](https://www.typescriptlang.org/zh/)，[vue3](https://staging-cn.vuejs.org)，[pinia](https://pinia.vuejs.org/)，[vue-router](https://router.vuejs.org/zh/)，[vite](https://cn.vitejs.dev/)，[antd](https://antdv.com/)，[postcss-nesting](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting#readme)，了解并学习这些技术知识会让你更容易入手此项目。此项目基于`vite`构建，并使用`vue3`作为开发技术，所以[只针对现代浏览器做开发](https://cn.vitejs.dev/guide/build.html#browser-compatibility)，不支持低版本的浏览器（如ie），如有需要请自行添加`polyfill`进行适配。
 + [在线预览](https://1esse.github.io/vue-clownfish-admin)
 
-```
 此项目为纯净项目，没有集成任何无关此项目的功能代码，仅有的少许你可能用不到的代码仅作此项目的功能示例供学习使用。值得注意的是，伴随此项目的“布局组件”（src/layout/*.vue）基本不耦合，聚能分工合作，散能一刀两断，大家都能好聚好散。不必担心删除布局组件后出现的连锁反应，这也为直接上手开发项目提供了极大的方便。
-```
 ## 主要功能
 + 根据路由配置自动生成侧边栏菜单（支持多层嵌套和外链）
 + 根据当前路由信息动态生成面包屑
