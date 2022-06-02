@@ -426,37 +426,37 @@
   resolved "https://registry.npmjs.org/@vitejs/plugin-vue/-/plugin-vue-2.3.3.tgz#fbf80cc039b82ac21a1acb0f0478de8f61fbf600"
   integrity sha512-SmQLDyhz+6lGJhPELsBdzXGc+AcaT8stgkbiTFGpXPe8Tl1tJaBw1A6pxDqDuRsVkD8uscrkx3hA7QDOoKYtyw==
 
-"@volar/code-gen@0.34.17":
-  version "0.34.17"
-  resolved "https://registry.npmjs.org/@volar/code-gen/-/code-gen-0.34.17.tgz#fd46e369454e6bd9599b511500b4c43acb9730bd"
-  integrity sha512-rHR7BA71BJ/4S7xUOPMPiB7uk6iU9oTWpEMZxFi5VGC9iJmDncE82WzU5iYpcbOBCVHsOjMh0+5CGMgdO6SaPA==
+"@volar/code-gen@0.35.2":
+  version "0.35.2"
+  resolved "https://registry.npmjs.org/@volar/code-gen/-/code-gen-0.35.2.tgz#eb7a573139d0cbaee3d7f38b3362ed6e8838ecaa"
+  integrity sha512-MoZHuNnPfUWnCNkQUI5+U+gvLTxrU+XlCTusdNOTFYUUAa+M68MH0RxFIS9Ybj4uAUWTcZx0Ow1q5t/PZozo+Q==
   dependencies:
-    "@volar/source-map" "0.34.17"
+    "@volar/source-map" "0.35.2"
 
-"@volar/source-map@0.34.17":
-  version "0.34.17"
-  resolved "https://registry.npmjs.org/@volar/source-map/-/source-map-0.34.17.tgz#79efc4d088e11f59fc857953185a1f852df70968"
-  integrity sha512-3yn1IMXJGGWB/G817/VFlFMi8oh5pmE7VzUqvgMZMrppaZpKj6/juvJIEiXNxRsgWc0RxIO8OSp4htdPUg1Raw==
+"@volar/source-map@0.35.2":
+  version "0.35.2"
+  resolved "https://registry.npmjs.org/@volar/source-map/-/source-map-0.35.2.tgz#7097ca5941b8c01a7fa7f8e66d1195d31c240638"
+  integrity sha512-PFHh9wN/qMkOWYyvmB8ckvIzolrpNOvK5EBdxxdTpiPJhfYjW82rMDBnYf6RxCe7yQxrUrmve6BWVO7flxWNVQ==
 
-"@volar/vue-code-gen@0.34.17":
-  version "0.34.17"
-  resolved "https://registry.npmjs.org/@volar/vue-code-gen/-/vue-code-gen-0.34.17.tgz#55ca9c21b38c91bf362761b268a77b9f0ecae8bf"
-  integrity sha512-17pzcK29fyFWUc+C82J3JYSnA+jy3QNrIldb9kPaP9Itbik05ZjEIyEue9FjhgIAuHeYSn4LDM5s6nGjxyfhsQ==
+"@volar/vue-code-gen@0.35.2":
+  version "0.35.2"
+  resolved "https://registry.npmjs.org/@volar/vue-code-gen/-/vue-code-gen-0.35.2.tgz#770d00706eec85e1e261461d0b6fd13ebe888792"
+  integrity sha512-8H6P8EtN06eSVGjtcJhGqZzFIg6/nWoHVOlnhc5vKqC7tXwpqPbyMQae0tO7pLBd5qSb/dYU5GQcBAHsi2jgyA==
   dependencies:
-    "@volar/code-gen" "0.34.17"
-    "@volar/source-map" "0.34.17"
+    "@volar/code-gen" "0.35.2"
+    "@volar/source-map" "0.35.2"
     "@vue/compiler-core" "^3.2.36"
     "@vue/compiler-dom" "^3.2.36"
     "@vue/shared" "^3.2.36"
 
-"@volar/vue-typescript@0.34.17":
-  version "0.34.17"
-  resolved "https://registry.npmjs.org/@volar/vue-typescript/-/vue-typescript-0.34.17.tgz#497eb471ebac25ff61af04031b78ec71a34d470b"
-  integrity sha512-U0YSVIBPRWVPmgJHNa4nrfq88+oS+tmyZNxmnfajIw9A/GOGZQiKXHC0k09SVvbYXlsjgJ6NIjhm9NuAhGRQjg==
+"@volar/vue-typescript@0.35.2":
+  version "0.35.2"
+  resolved "https://registry.npmjs.org/@volar/vue-typescript/-/vue-typescript-0.35.2.tgz#e299702c92f2897af7029f8ae685721c0ef13257"
+  integrity sha512-PZI6Urb+Vr5Dvgf9xysM8X7TP09inWDy1wjDtprBoBhxS7r0Dg3V0qZuJa7sSGz7M0QMa5R/CBaZPhlxFCfJBw==
   dependencies:
-    "@volar/code-gen" "0.34.17"
-    "@volar/source-map" "0.34.17"
-    "@volar/vue-code-gen" "0.34.17"
+    "@volar/code-gen" "0.35.2"
+    "@volar/source-map" "0.35.2"
+    "@volar/vue-code-gen" "0.35.2"
     "@vue/compiler-sfc" "^3.2.36"
     "@vue/reactivity" "^3.2.36"
 
@@ -2338,7 +2338,7 @@ traverse@^0.6.6:
   resolved "https://registry.npmjs.org/traverse/-/traverse-0.6.6.tgz#cbdf560fd7b9af632502fed40f918c157ea97137"
   integrity sha1-y99WD9e5r2MlAv7UD5GMFX6pcTc=
 
-typescript@^4.6.4:
+typescript@^4.7.2:
   version "4.7.2"
   resolved "https://registry.npmjs.org/typescript/-/typescript-4.7.2.tgz#1f9aa2ceb9af87cca227813b4310fff0b51593c4"
   integrity sha512-Mamb1iX2FDUpcTRzltPxgWMKy3fhg0TN378ylbktPGPK/99KbDtMQ4W1hwgsbPAsG3a0xKa1vmw4VKZQbkvz5A==
@@ -2449,12 +2449,12 @@ vue-router@^4.0.15:
   dependencies:
     "@vue/devtools-api" "^6.0.0"
 
-vue-tsc@^0.34.15:
-  version "0.34.17"
-  resolved "https://registry.npmjs.org/vue-tsc/-/vue-tsc-0.34.17.tgz#332fc5c31d64bb9b74b0f26050f3ab067a9a7d6f"
-  integrity sha512-jzUXky44ZLHC4daaJag7FQr3idlPYN719/K1eObGljz5KaS2UnVGTU/XSYCd7d6ampYYg4OsyalbHyJIxV0aEQ==
+vue-tsc@^0.35.2:
+  version "0.35.2"
+  resolved "https://registry.npmjs.org/vue-tsc/-/vue-tsc-0.35.2.tgz#85b94027bebc0c6834e0c20b337900468d83b28d"
+  integrity sha512-aqY16VlODHzqtKGUkqdumNpH+s5ABCkufRyvMKQlL/mua+N2DfSVnHufzSNNUMr7vmOO0YsNg27jsspBMq4iGA==
   dependencies:
-    "@volar/vue-typescript" "0.34.17"
+    "@volar/vue-typescript" "0.35.2"
 
 vue-types@^3.0.0:
   version "3.0.2"
