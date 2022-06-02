@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router"
 import Layout from '@/layout/index.vue'
-import { UserOutlined, LaptopOutlined, NotificationOutlined, LinkOutlined } from '@ant-design/icons-vue'
+import { SmileOutlined, GithubOutlined } from '@ant-design/icons-vue'
 import { Component } from "vue"
 
 
@@ -83,19 +83,19 @@ const routes: RouteRecordRaw[] = [
     path: '/test',
     component: Layout,
     redirect: '/test/test2',
-    meta: { title: '测试菜单', icon: LaptopOutlined },
+    meta: { title: '测试菜单', icon: SmileOutlined },
     children: [
       {
         path: 'test1',
         name: 'Test1',
         component: () => import('@/views/test/test1.vue'),
-        meta: { title: '缓存页', icon: UserOutlined, keepAlive: true }
+        meta: { title: '缓存页', icon: SmileOutlined, keepAlive: true }
       },
       {
         path: 'test2',
         name: 'Test2',
         component: () => import('@/views/test/test2.vue'),
-        meta: { title: '普通页', icon: NotificationOutlined }
+        meta: { title: '普通页', icon: SmileOutlined }
       },
       {
         path: 'test3',
@@ -108,19 +108,19 @@ const routes: RouteRecordRaw[] = [
             path: 'nested1',
             name: 'Nested1',
             component: () => import('@/views/test/test-nested/nested1.vue'),
-            meta: { title: '嵌套页子容器1', icon: 'tree' },
+            meta: { title: '嵌套页子容器1', icon: SmileOutlined },
             children: [
               {
                 path: 'sub-nested1',
                 name: 'SubNested1',
                 component: () => import('@/views/test/test-nested/sub-nested/sub-nested1.vue'),
-                meta: { title: '嵌套页孙容器1', icon: 'eye' },
+                meta: { title: '嵌套页孙容器1', icon: SmileOutlined },
               },
               {
                 path: 'sub-nested2',
                 name: 'SubNested2',
                 component: () => import('@/views/test/test-nested/sub-nested/sub-nested2.vue'),
-                meta: { title: '嵌套页孙容器2', icon: 'validCode' },
+                meta: { title: '嵌套页孙容器2', icon: SmileOutlined },
               }
             ]
           },
@@ -128,17 +128,17 @@ const routes: RouteRecordRaw[] = [
             path: 'nested2',
             name: 'Nested2',
             component: () => import('@/views/test/test-nested/nested2.vue'),
-            meta: { title: '嵌套页子容器2', icon: 'example' },
+            meta: { title: '嵌套页子容器2', icon: SmileOutlined },
           }
         ]
       }
     ]
   },
   {
-    path: '/https://www.baidu.com',
+    path: '/https://github.com/1esse/vue-clownfish-admin',
     component: undefined,
-    redirect: 'https://www.baidu.com',
-    meta: { title: '测试外链', icon: LinkOutlined, external: true }
+    redirect: 'https://github.com/1esse/vue-clownfish-admin',
+    meta: { title: '测试外链', icon: GithubOutlined, external: true }
   }
 ]
 

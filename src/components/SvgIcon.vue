@@ -16,7 +16,7 @@ export default defineComponent({
       ...props,
       'class': props.className,
     }, [
-      h('use', { 'href': `#svg-${props.iconName}` })
+      h('use', { 'xlink:href': `#svg-${props.iconName}` })
     ])
     return () => <Icon component={svg} />
   }
