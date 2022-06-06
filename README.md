@@ -3,9 +3,8 @@
   <a href="https://github.com/vuejs/core">
     <img src="https://img.shields.io/badge/vue-3.2.33-brightgreen.svg" alt="vue">
   </a>
-  <a href="https://github.com/vuejs/core">
-    <img src="https://img.shields.io/badge/vite
-    -2.9.9-brightgreen.svg" alt="vue">
+  <a href="https://github.com/vitejs/vite">
+    <img src="https://img.shields.io/badge/vite-2.9.9-brightgreen.svg" alt="vue">
   </a>
   <a href="https://github.com/vuejs/pinia">
     <img src="https://img.shields.io/badge/pinia-2.0.14-brightgreen.svg" alt="vue">
