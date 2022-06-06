@@ -1,6 +1,6 @@
 <script setup lang="tsx">
 import SvgIcon from '../components/SvgIcon.vue'
-import { defineComponent, ref, h, Component, watch, Slots, inject, computed } from 'vue'
+import { ref, h, Component, watch, Slots, inject, computed } from 'vue'
 import { RouteMeta, RouteRecordRaw, useRoute, useRouter } from 'vue-router'
 import { resolve } from 'pathe' // path包es代码实现
 import Scrollbar from '../components/Scrollbar.vue'
@@ -36,53 +36,48 @@ const getNavIcon = (item: RouteMeta | undefined) => {
   return h(item?.icon as Component)
 }
 
-const MenuItemLink = (props: any, { slots }: { slots: Slots }) => {
+const MenuItemLink = (props: { route: RouteRecordRaw, url: string }, { slots }: { slots: Slots }) => {
   if (props.route.meta?.external) {
-    return <a href={props.route.redirect} target='_blank' ref='noopener noreferrer'>{slots.default?.()}</a>
+    return <a href={props.route.redirect as string} target='_blank' ref='noopener noreferrer'>{slots.default?.()}</a>
   }
   return <RouterLink to={props.url}>{slots.default?.()}</RouterLink>
 }
 
-const MenuItemNav = defineComponent({
-  props: ['route', 'basePath'],
-  setup(props) {
-    // 子菜单模板
-    const subMenuTemplate = (route: RouteRecordRaw) => {
-      const slots = {
-        icon: () => getNavIcon(route.meta),
-        title: () => route.meta?.title
-      }
-      const basePath = resolve(props.basePath, route.path)
-      return (
-        <SubMenu v-slots={slots} key={basePath}>
-          {route.children?.map(item => <MenuItemNav route={item} basePath={basePath}></MenuItemNav>)}
-        </SubMenu>
-      )
+const MenuItemNav = (props: { route: RouteRecordRaw, basePath: string }) => {
+  // 子菜单模板
+  const subMenuTemplate = (route: RouteRecordRaw) => {
+    const slots = {
+      icon: () => getNavIcon(route.meta),
+      title: () => route.meta?.title
     }
-    // 菜单项模板
-    const menuItemTemplate = (route: RouteRecordRaw) => {
-      const slots = {
-        icon: () => getNavIcon(route.meta)
-      }
-      const url = resolve(props.basePath, route.path)
-      return (
-        <MenuItem key={url} v-slots={slots}>
-          <MenuItemLink route={route} url={url}>
-            <span>{route.meta?.title}</span>
-          </MenuItemLink>
-        </MenuItem>
-      )
-    }
-    return () =>
-      // 隐藏设置hidden的路由菜单
-      props.route.meta?.hidden ? <div style="display: none"></div> :
-        props.route.children ?
-          props.route.children.filter((route: RouteRecordRaw) => !route.meta?.hidden).length > 1 ?
-            subMenuTemplate(props.route) :
-            menuItemTemplate(getOnlyChildPath(props.route)) :
-          menuItemTemplate(props.route)
+    const basePath = resolve(props.basePath, route.path)
+    return (
+      <SubMenu v-slots={slots} key={basePath}>
+        {route.children?.map(item => <MenuItemNav route={item} basePath={basePath}></MenuItemNav>)}
+      </SubMenu>
+    )
   }
-})
+  // 菜单项模板
+  const menuItemTemplate = (route: RouteRecordRaw) => {
+    const slots = {
+      icon: () => getNavIcon(route.meta)
+    }
+    const url = resolve(props.basePath, route.path)
+    return (
+      <MenuItem key={url} v-slots={slots}>
+        <MenuItemLink route={route} url={url}>
+          <span>{route.meta?.title}</span>
+        </MenuItemLink>
+      </MenuItem>
+    )
+  }
+  return props.route.meta?.hidden ? <div style="display: none"></div> :
+    props.route.children ?
+      props.route.children.filter((route: RouteRecordRaw) => !route.meta?.hidden).length > 1 ?
+        subMenuTemplate(props.route) :
+        menuItemTemplate(getOnlyChildPath(props.route)) :
+      menuItemTemplate(props.route)
+}
 
 const TheSideBar = () => (
   <Scrollbar>
