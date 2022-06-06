@@ -3,6 +3,10 @@
   <a href="https://github.com/vuejs/core">
     <img src="https://img.shields.io/badge/vue-3.2.33-brightgreen.svg" alt="vue">
   </a>
+  <a href="https://github.com/vuejs/core">
+    <img src="https://img.shields.io/badge/vite
+    -2.9.9-brightgreen.svg" alt="vue">
+  </a>
   <a href="https://github.com/vuejs/pinia">
     <img src="https://img.shields.io/badge/pinia-2.0.14-brightgreen.svg" alt="vue">
   </a>
@@ -27,7 +31,7 @@
 + [在线预览](https://1esse.github.io/vue-clownfish-admin)
 + [在线预览](http://rcui6i1mn.hn-bkt.clouddn.com/index.html)（国内用户访问）
 
-此项目为纯净项目，没有集成任何无关此项目的功能代码，仅有的少许你可能用不到的代码仅作此项目的功能示例供学习使用。值得注意的是，伴随此项目的“布局组件”（src/layout/*.vue）基本不耦合，聚能分工合作，散能一刀两断，大家都能好聚好散。不必担心删除布局组件后出现的连锁反应，这也为直接上手开发项目提供了极大的方便。
+此项目为纯净项目，没有集成任何无关此项目的功能代码，仅有的少许你可能用不到的代码仅作此项目的功能示例供学习使用。值得注意的是，伴随此项目的“布局组件”（src/layout/*.vue）基本不耦合，不必担心删除布局组件后出现的连锁反应，这也为直接上手开发项目提供了极大的方便。
 ## 主要功能
 + 根据路由配置自动生成侧边栏菜单（支持多层嵌套和外链）
 + 根据当前路由信息动态生成面包屑
