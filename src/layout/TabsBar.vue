@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import { ComponentPublicInstance, inject, nextTick, onBeforeMount, ref, watch } from 'vue'
-import { RouteLocationNormalizedLoaded, useRoute, useRouter } from 'vue-router'
+import { inject, nextTick, onBeforeMount, ref, watch } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import { CloseOutlined, RedoOutlined } from '@ant-design/icons-vue'
+import type { ComponentPublicInstance } from 'vue'
+import type { RouteLocationNormalizedLoaded } from 'vue-router'
 
 const router = useRouter()
 const route = useRoute()

@@ -1,8 +1,7 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router"
 import Layout from '@/layout/index.vue'
 import { SmileOutlined, GithubOutlined } from '@ant-design/icons-vue'
-import { Component } from "vue"
-
+import type { Component } from "vue"
 
 declare module 'vue-router' {
   interface RouteMeta {

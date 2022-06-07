@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onBeforeMount, ref, watch } from 'vue'
-import { RouteLocationMatched, RouteLocationNormalizedLoaded, useRoute } from 'vue-router'
+import { useRoute } from 'vue-router'
+import type { RouteLocationMatched, RouteLocationNormalizedLoaded } from 'vue-router'
 
 const route = useRoute()
 const routeMatched = ref<RouteLocationMatched[]>([])
