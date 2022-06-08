@@ -1,4 +1,4 @@
-<h1>vue-clownfish-admin<h3 align="center">Typescript + Vue3技术栈后台前端解决方案</h3></h1>
+<h1>vue-clownfish-admin<h3 align="center">Vite + Vue3 + Antd + Typescript 管理后台前端简易框架</h3></h1>
 <p align="center">
   <a href="https://github.com/vuejs/core">
     <img src="https://img.shields.io/badge/vue-3.2.37-brightgreen.svg" alt="vue">
@@ -25,12 +25,19 @@
 
 
 ## 简介
-[vue-clownfish-admin](https://github.com/1esse/vue-clownfish-admin) 是一个由前端最新技术栈开发的后台管理前端解决方案。基于vue3，集成vue3最新生态系统的核心库实现。主要的技术栈有
-[ES2015+](http://es6.ruanyifeng.com/)，[typescript](https://www.typescriptlang.org/zh/)，[vue3](https://staging-cn.vuejs.org)，[pinia](https://pinia.vuejs.org/)，[vue-router](https://router.vuejs.org/zh/)，[vite](https://cn.vitejs.dev/)，[antd](https://antdv.com/)，[postcss-nesting](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting#readme)，了解并学习这些技术知识会让你更容易入手此项目。此项目基于`vite`构建，并使用`vue3`作为开发技术，所以[只针对现代浏览器做开发](https://cn.vitejs.dev/guide/build.html#browser-compatibility)，不支持低版本的浏览器（如ie），如有需要请自行添加`polyfill`进行适配。
+[vue-clownfish-admin](https://github.com/1esse/vue-clownfish-admin) 是一个由Vue最新技术栈开发的后台管理前端简易框架。基于vue3，集成vue3最新生态系统的核心库实现。主要的技术栈有
+[ES2015+](http://es6.ruanyifeng.com/)，[typescript](https://www.typescriptlang.org/zh/)，[vue3](https://staging-cn.vuejs.org)，[pinia](https://pinia.vuejs.org/)，[vue-router](https://router.vuejs.org/zh/)，[vite](https://cn.vitejs.dev/)，[antd](https://antdv.com/)，了解这些技术会让你更容易入手此项目。此项目基于`vite`构建，并使用`vue3`作为开发技术，所以[只针对现代浏览器做开发](https://cn.vitejs.dev/guide/build.html#browser-compatibility)，不支持低版本的浏览器（如ie），如有需要请自行添加`polyfill`进行适配。
 + [在线预览](https://1esse.github.io/vue-clownfish-admin)
 + [在线预览](http://rcui6i1mn.hn-bkt.clouddn.com/index.html)（国内用户访问）
 
-此项目为纯净项目，没有集成任何无关此项目的功能代码，仅有的少许你可能用不到的代码仅作此项目的功能示例供学习使用。值得注意的是，伴随此项目的“布局组件”（src/layout/*.vue）基本不耦合，不必担心删除布局组件后出现的连锁反应，这也为直接上手开发项目提供了极大的方便。
+此项目为纯净项目，没有集成任何无关此项目的功能代码，仅有的少许你可能用不到的代码仅作此项目的功能示例供参考。站在巨人的肩膀上，如果你熟悉[vue-element-admin](https://github.com/PanJiaChen/vue-element-admin)，那么你可以更快地上手此项目，vue-clownfish-admin的架构实现正是受到它的启发。
+
+## 项目亮点
++ 技术：使用vue最新技术栈开发
++ 纯净：无集成mockjs，案例展示等，可根据自己需求进行配置
++ 布局：布局组件解耦，可轻易切换，替代组件
++ 轻量：框架实现代码行数少，容易学习并快速上手
+
 ## 主要功能
 + 根据路由配置自动生成侧边栏菜单（支持多层嵌套和外链）
 + 根据当前路由信息动态生成面包屑
