@@ -1,5 +1,5 @@
 
-![logo](./logo.png)
+![logo](https://github.com/1esse/vue-clownfish-admin/blob/master/logo.png)
 <h3 align="center">A frontend SIMPLE Admin Interfaces, based on Vite + Vue3 + Antd + Typescript.</h3>
 <p align="center">
   <a href="https://github.com/vuejs/core">
