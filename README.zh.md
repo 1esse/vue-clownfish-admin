@@ -34,7 +34,7 @@
 + [在线预览](https://1esse.github.io/vue-clownfish-admin)
 + [在线预览](http://rcui6i1mn.hn-bkt.clouddn.com)（国内用户访问）
 
-此项目为纯净项目，没有集成任何无关此项目的功能代码，仅有的少许你可能用不到的代码仅作此项目的功能示例供参考。站在巨人的肩膀上，如果你熟悉[vue-element-admin](https://github.com/PanJiaChen/vue-element-admin)，那么你可以更快地上手此项目，vue-clownfish-admin的架构实现正是受到它的启发。
+如果你熟悉[vue-element-admin](https://github.com/PanJiaChen/vue-element-admin)，那么你可以更快地上手此项目。作者本人之前也是vue-element-admin的深度使用者，对vue-element-admin表示感谢的同时也注意到了哪些可以再优化，所以一直想把心里的优化方案实现。在技术不断更新迭代的今天，站在巨人的肩膀上，终于使用vue3实现了一版。由于时间原因，该项目没有集成各种案例实现，只提供管理系统前端的基本架构。对标的是[vue-admin-template](https://github.com/PanJiaChen/vue-admin-template)。
 
 ## 🦑 优势
 + 技术：使用vue最新技术栈开发
