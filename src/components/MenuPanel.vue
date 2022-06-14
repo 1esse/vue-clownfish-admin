@@ -64,13 +64,15 @@ function hidePanel() {
 }
 
 :global(.menu-panel>*) {
-  width: 100%;
-  height: 2rem;
-  font-size: .8rem;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  flex-wrap: nowrap;
-  flex-shrink: 0;
+  width: 100% !important;
+  height: 2rem !important;
+  font-size: .8rem !important;
+  padding: .5rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  flex-wrap: nowrap !important;
+  flex-shrink: 0 !important;
+  margin-left: 0 !important;
 }
 </style>

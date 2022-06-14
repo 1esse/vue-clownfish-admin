@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from 'vue'
 import 'overlayscrollbars/css/OverlayScrollbars.css'
-import OverlayScrollbars, { Options } from 'overlayscrollbars'
+import OverlayScrollbars from 'overlayscrollbars'
+import type { Options } from 'overlayscrollbars'
 
 const props = withDefaults(defineProps<{
   width?: string | number
