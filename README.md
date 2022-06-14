@@ -28,6 +28,8 @@
 
 English | [简体中文](https://github.com/1esse/vue-clownfish-admin/blob/master/README.zh.md)
 
+#### This is antd version of vue-clownfish-admin, if you prefer element-plus as UI toolkit, checokut [here](https://github.com/1esse/vue-clownfish-admin-elem).
+
 ## 🐬 Intro
 [vue-clownfish-admin](https://github.com/1esse/vue-clownfish-admin) is a frontend SIMPLE Admin Interfaces. It is based on vue3 and uses [antd](https://github.com/vueComponent/ant-design-vue) as UI toolkit. The main tech stacks are
 [ES2015+](http://es6.ruanyifeng.com/)，[typescript](https://www.typescriptlang.org/zh/)，[vue3](https://staging-cn.vuejs.org)，[pinia](https://pinia.vuejs.org/)，[vue-router](https://router.vuejs.org/zh/)，[vite](https://cn.vitejs.dev/)，[antd](https://antdv.com/). Understanding and Learning them will help you quickly use this project. Due to this project based on vite and vue3, it only support modern browsers, legacy browsers such as ie can be supported by add polyfill manually(detail see [https://vitejs.dev/guide/build.html#browser-compatibility](https://vitejs.dev/guide/build.html#browser-compatibility)).
