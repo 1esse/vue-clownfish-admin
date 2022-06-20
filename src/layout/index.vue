@@ -6,6 +6,7 @@ import SideBar from './SideBar.vue'
 import TabsBar from './TabsBar.vue'
 import isMobile from '@/composables/isMobile'
 import Shadow from '@/components/Shadow.vue'
+import Logo from '@/assets/logo.png'
 
 const _isMobile = isMobile()
 const sidebarRelated = reactive<Layout.SidebarRelated>({
@@ -38,8 +39,14 @@ provide('loading', loading)
 <template>
   <ALayout>
     <ALayoutSider v-if="!_isMobile" v-model:collapsed="sidebarRelated.collapsed" collapsible :trigger="null"
-      :width="sidebarRelated.width" :collapsedWidth="sidebarRelated.collapsedWidth" breakpoint="md">
-      <SideBar></SideBar>
+      :width="sidebarRelated.width" :collapsedWidth="sidebarRelated.collapsedWidth" breakpoint="md" class="shadow-lg">
+      <div style="display: flex; flex-direction: column; width: 100%; height: 100%;">
+        <RouterLink to="/">
+          <AImage width="100%" :height="sidebarRelated.collapsed ? '3rem' : '6rem'"
+            style="padding: .3rem 0; object-fit: contain;" :src="Logo" :preview="false" />
+        </RouterLink>
+        <SideBar :style="{ paddingRight: sidebarRelated.collapsed ? '0' : '1rem' }"></SideBar>
+      </div>
     </ALayoutSider>
     <ALayout>
       <ALayoutHeader>
@@ -61,7 +68,11 @@ provide('loading', loading)
     <Transition name="fade" mode="in-out" appear>
       <Shadow v-if="_isMobile && !sidebarRelated.collapsed" @shadowClick="sidebarRelated.collapsed = true">
         <Transition name="slide-left" mode="out-in" appear>
-          <div class="block sidebar">
+          <div class="block sidebar-mobile">
+            <RouterLink to="/">
+              <AImage width="100%" height="6rem" style="padding: .3rem 0; object-fit: contain;" :preview="false"
+                :src="Logo" />
+            </RouterLink>
             <SideBar></SideBar>
           </div>
         </Transition>
@@ -71,16 +82,18 @@ provide('loading', loading)
 </template>
 
 <style lang="postcss" scoped>
-.sidebar {
+.sidebar-mobile {
   width: v-bind('sidebarRelated.width');
   height: 96vh;
   position: absolute;
   top: 2vh;
   left: 2vw;
   padding: 0;
+  display: flex;
+  flex-direction: column;
 }
 
-:deep(.sidebar>.scrollbar) {
+:deep(.sidebar-mobile>.scrollbar) {
   padding-right: 1rem;
 }
 </style>
