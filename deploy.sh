@@ -12,8 +12,8 @@ cd dist
 # 如果你要部署到自定义域名
 # echo 'www.example.com' > CNAME
 
-# git init
-# git checkout -b gpages-deploy
+git init
+git checkout -b gpages-deploy
 git add -A
 git commit -m 'deploy'
 
