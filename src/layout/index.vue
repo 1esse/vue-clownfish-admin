@@ -70,10 +70,10 @@ provide('loading', loading)
         <Transition name="slide-left" mode="out-in" appear>
           <div class="block sidebar-mobile">
             <RouterLink to="/">
-              <AImage width="100%" height="6rem" style="padding: .3rem 0; object-fit: contain;" :preview="false"
-                :src="Logo" />
+              <AImage :width="sidebarRelated.width" height="6rem" style="padding: .3rem 0; object-fit: contain;"
+                :preview="false" :src="Logo" />
             </RouterLink>
-            <SideBar></SideBar>
+            <SideBar style="padding-right: 1rem;"></SideBar>
           </div>
         </Transition>
       </Shadow>
@@ -91,9 +91,5 @@ provide('loading', loading)
   padding: 0;
   display: flex;
   flex-direction: column;
-}
-
-:deep(.sidebar-mobile>.scrollbar) {
-  padding-right: 1rem;
 }
 </style>
