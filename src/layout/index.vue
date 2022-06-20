@@ -73,10 +73,10 @@ provide('loading', loading)
 <style lang="postcss" scoped>
 .sidebar {
   width: v-bind('sidebarRelated.width');
-  height: 94vh;
+  height: 96vh;
   position: absolute;
-  top: 3vh;
-  left: 3vw;
+  top: 2vh;
+  left: 2vw;
   padding: 0;
 }
 
