@@ -1,7 +1,7 @@
 <p align="center">
   <img src="https://github.com/1esse/vue-clownfish-admin/blob/master/logo.png" alt="logo">
 </p>
-<h3 align="center">A frontend SIMPLE Admin Interfaces, based on Vite + Vue3 + Antd + Typescript.</h3>
+<h3 align="center">Vite + Vue3 + Antd + Typescript 管理后台前端简易框架</h3>
 <p align="center">
   <a href="https://github.com/vuejs/core">
     <img src="https://img.shields.io/badge/vue-3.2.37-brightgreen.svg" alt="vue">
@@ -26,38 +26,38 @@
   </a>
 </p>
 
-English | [简体中文](https://github.com/1esse/vue-clownfish-admin/blob/master/README.zh.md)
+简体中文 | [English](https://github.com/1esse/vue-clownfish-admin/blob/master/README.en.md)
 
-#### This is antd version of vue-clownfish-admin, if you prefer element-plus as UI toolkit, checokut [here](https://github.com/1esse/vue-clownfish-admin-elem).
+#### 这里是antd版本，如果你更倾向于使用element-plus，请[点击这里](https://github.com/1esse/vue-clownfish-admin-elem)。
 
-## 🐬 Intro
-[vue-clownfish-admin](https://github.com/1esse/vue-clownfish-admin) is a frontend SIMPLE Admin Interfaces. It is based on vue3 and uses [antd](https://github.com/vueComponent/ant-design-vue) as UI toolkit. The main tech stacks are
-[ES2015+](http://es6.ruanyifeng.com/)，[typescript](https://www.typescriptlang.org/zh/)，[vue3](https://staging-cn.vuejs.org)，[pinia](https://pinia.vuejs.org/)，[vue-router](https://router.vuejs.org/zh/)，[vite](https://cn.vitejs.dev/)，[antd](https://antdv.com/). Understanding and Learning them will help you quickly use this project. Due to this project based on vite and vue3, it only support modern browsers, legacy browsers such as ie can be supported by add polyfill manually(detail see [https://vitejs.dev/guide/build.html#browser-compatibility](https://vitejs.dev/guide/build.html#browser-compatibility)).
+## 🐬 简介
+[vue-clownfish-admin](https://github.com/1esse/vue-clownfish-admin) 是一个由Vue最新技术栈开发的后台管理前端简易框架。基于vue3，集成vue3最新生态系统的核心库实现。主要的技术栈有
+[ES2015+](http://es6.ruanyifeng.com/)，[typescript](https://www.typescriptlang.org/zh/)，[vue3](https://staging-cn.vuejs.org)，[pinia](https://pinia.vuejs.org/)，[vue-router](https://router.vuejs.org/zh/)，[vite](https://cn.vitejs.dev/)，[antd](https://antdv.com/)，了解这些技术会让你更容易入手此项目。此项目基于`vite`构建，并使用`vue3`作为开发技术，所以[只针对现代浏览器做开发](https://cn.vitejs.dev/guide/build.html#browser-compatibility)，不支持低版本的浏览器（如ie），如有需要请自行添加`polyfill`进行适配。
++ [在线预览](https://1esse.github.io/vue-clownfish-admin)
++ [在线预览](http://rcui6i1mn.hn-bkt.clouddn.com)（国内用户访问）
 
-+ [preview online](https://1esse.github.io/vue-clownfish-admin)
+如果你熟悉[vue-element-admin](https://github.com/PanJiaChen/vue-element-admin)，那么你可以更快地上手此项目。作者本人之前也是vue-element-admin的深度使用者，对vue-element-admin表示感谢的同时也注意到了哪些可以再优化，所以一直想把心里的优化方案实现。在技术不断更新迭代的今天，站在巨人的肩膀上，终于使用vue3实现了一版。由于时间原因，该项目没有集成各种案例实现，只提供管理系统前端的基本架构。对标的是[vue-admin-template](https://github.com/PanJiaChen/vue-admin-template)。
 
-This project is a pure project and does not integrate any case examples that is not related to this project. There are only a few codes that you may not use, which are only functional examples of this project for reference. Standing on the shoulders of giants, if you are familiar with [vue-element-admin](https://github.com/PanJiaChen/vue-element-admin), then you can get started with this project faster. The architecture implementation of [vue-clownfish-admin](https://github.com/1esse/vue-clownfish-admin) is inspired by it.
+## 🦑 优势
++ 技术：使用vue最新技术栈开发
++ 纯净：无集成mockjs，案例展示等，可根据自己需求进行配置
++ 布局：布局组件解耦，可轻易切换，替代组件
++ 轻量：框架实现代码行数少，容易学习并快速上手
 
-## 🦑 Advantage
-+ Tech: Use the latest tech stacks of vue3.
-+ Pure: No mockjs, case examples integrated, you can configure freely.
-+ Layout: Layout components are decoupled, easy to use and replace it.
-+ Lightweight：Less codes, easy to learn and get started quickly.
+## 🐳 主要功能
++ 根据路由配置自动生成侧边栏菜单（支持多层嵌套和外链）
++ 根据当前路由信息动态生成面包屑
++ 导航标签页（右键弹出菜单，支持页面刷新，关闭）
++ 侧边栏菜单、面包屑、标签页都支持icon图标(antd图标和svg)
++ 根据路由配置动态缓存页面
++ 路由权限配置
++ Svg Sprite 图标
++ 自动注册全局组件（antd组件及components/*.vue）
++ 支持原生CSS变量和CSSWG草案规定进行开发，编写符合未来标准的css
++ 自动为css代码添加前缀，使样式适配不同浏览器
++ 支持使用JSX/TSX进行开发
 
-## 🐳 Features
-+ Automatically generate sidebar menus based on routing configuration (supports multi-level nesting and external links)
-+ Dynamically generate breadcrumbs based on current routing information
-+ Navigation tabs (right-click pop-up menu, support page refresh, close)
-+ Sidebar menus, breadcrumbs, and tabs all support icons (antd icons and svg)
-+ Dynamically cache pages based on routing configuration
-+ Routing permissions
-+ Svg Sprite Icon
-+ Automatically register global components (antd components and components/*.vue)
-+ Support native CSS variables and CSSWG draft regulations for development, and write CSS that conforms to future standards
-+ Automatically add prefixes to CSS codes to adapt styles to different browsers
-+ Supports development with JSX/TSX
-
-## 🐋 Directory
+## 🐋 项目目录
 ```
 .
 |-- public
@@ -65,35 +65,35 @@ This project is a pure project and does not integrate any case examples that is 
 |-- src
 |   |-- assets
 |   |   `-- logo.png
-|   |-- components // Component directory, all vue components in this directory will be automatically registered as global components, no need to import
+|   |-- components // 组件目录，此目录下的所有vue组件都会自动注册全局组件，无需导入
 |   |   |-- MenuPanel.vue
 |   |   |-- Scrollbar.vue
 |   |   |-- SvgIcon.vue
 |   |   `-- components.expose.d.ts
-|   |-- composables // Composable functions directory
-|   |-- layout // Layout directory
+|   |-- composables // 存放组合式函数
+|   |-- layout // 页面布局
 |   |   |-- BreadCrumb.vue
 |   |   |-- HeadBar.vue
 |   |   |-- SideBar.vue
 |   |   |-- TabsBar.vue
 |   |   |-- index.vue
 |   |   `-- layout.d.ts
-|   |-- router // Router directory
+|   |-- router // 路由目录
 |   |   `-- index.ts
-|   |-- stores // pinia store directory
+|   |-- stores // pinia状态管理库
 |   |   |-- stores.d.ts
 |   |   `-- user.ts
-|   |-- styles // global styles directory
+|   |-- styles // 全局样式
 |   |   |-- _antd.postcss
 |   |   |-- _transition.postcss
 |   |   |-- _variables.postcss
 |   |   `-- index.postcss
-|   |-- svgs // Svg icon directory, all svg icon names in this directory can be directly referenced by the component SvgIcon
+|   |-- svgs // svg图标目录，此目录下的所有svg图标名称都可被组件SvgIcon直接引用
 |   |   |-- dashboard.svg
 |   |   `-- nested.svg
-|   |-- utils // Utils directory
+|   |-- utils // 存放工具函数
 |   |   `-- index.ts
-|   |-- views // Views directory
+|   |-- views // 视图目录
 |       |-- 404.vue
 |       |-- dashboard.vue
 |       |-- login.vue
@@ -102,43 +102,45 @@ This project is a pure project and does not integrate any case examples that is 
 |   |-- appConfig.ts
 |   |-- env.d.ts
 |   |-- main.ts
-|   `-- permission.ts // router guards
+|   `-- permission.ts // 路由权限控制
 |-- index.html
 |-- package.json
 |-- components.d.ts
 |-- tsconfig.json
 |-- tsconfig.node.json
 |-- vite.config.ts
-`-- yarn.lock
+|-- yarn.lock
 |-- LICENSE
-|-- README.md
+`-- README.md
 ```
 
-## 🦀 Ready
-    # clone project
+## 🦀 开发准备
+    # 克隆项目
     git clone https://github.com/1esse/vue-clownfish-admin.git
     
-    # enter the project directory
+    # 进入目录
     cd vue-clownfish-admin
     
-    # install dependency
-    npm install # use npm
-    yarn # use yarn
+    # 下载依赖包
+    npm install # 使用npm
+    yarn # 使用yarn
     
-    # start
-    npm run dev # use npm
-    yarn dev # use yarn
+    # 启动项目
+    npm run dev # 使用npm
+    yarn dev # 使用yarn
 
-## 🐠 Scripts
-+ dev：start development
-+ build：build project
-+ preview：preview the built project
+## 🐠 scripts命令
++ dev：本地开发预览
++ build：打包项目代码
++ preview：预览打包后的项目
 
-## 🦐 Preview
-[preview online](https://1esse.github.io/vue-clownfish-admin)
+## 🦐 预览项目
+[在线预览](https://1esse.github.io/vue-clownfish-admin)
 
-## 🐡 Others
-If you encounter any problems with the project, please submit an [issue](https://github.com/1esse/vue-clownfish-admin/issues/new).
+[在线预览](http://rcui6i1mn.hn-bkt.clouddn.com)（国内用户访问）
+
+## 🐡 其他
+如果遇到项目任何问题欢迎提[issue](https://github.com/1esse/vue-clownfish-admin/issues/new)。
 
 ## 🐙 License
 [MIT License](https://github.com/1esse/vue-clownfish-admin/blob/master/LICENSE)
