@@ -19,7 +19,6 @@ declare module '@vue/runtime-core' {
     ALayoutContent: typeof import('ant-design-vue/es')['LayoutContent']
     ALayoutHeader: typeof import('ant-design-vue/es')['LayoutHeader']
     ALayoutSider: typeof import('ant-design-vue/es')['LayoutSider']
-    AResult: typeof import('ant-design-vue/es')['Result']
     MenuPanel: typeof import('./src/components/MenuPanel.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
