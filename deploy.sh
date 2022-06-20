@@ -3,6 +3,8 @@
 # 发生错误时终止
 set -e
 
+rm -rf dist
+
 # 构建
 npm run build
 
