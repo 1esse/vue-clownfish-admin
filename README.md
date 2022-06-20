@@ -57,63 +57,6 @@
 + 自动为css代码添加前缀，使样式适配不同浏览器
 + 支持使用JSX/TSX进行开发
 
-## 🐋 项目目录
-```
-.
-|-- public
-|   `-- favicon.ico
-|-- src
-|   |-- assets
-|   |   `-- logo.png
-|   |-- components // 组件目录，此目录下的所有vue组件都会自动注册全局组件，无需导入
-|   |   |-- MenuPanel.vue
-|   |   |-- Scrollbar.vue
-|   |   |-- SvgIcon.vue
-|   |   `-- components.expose.d.ts
-|   |-- composables // 存放组合式函数
-|   |-- layout // 页面布局
-|   |   |-- BreadCrumb.vue
-|   |   |-- HeadBar.vue
-|   |   |-- SideBar.vue
-|   |   |-- TabsBar.vue
-|   |   |-- index.vue
-|   |   `-- layout.d.ts
-|   |-- router // 路由目录
-|   |   `-- index.ts
-|   |-- stores // pinia状态管理库
-|   |   |-- stores.d.ts
-|   |   `-- user.ts
-|   |-- styles // 全局样式
-|   |   |-- _antd.postcss
-|   |   |-- _transition.postcss
-|   |   |-- _variables.postcss
-|   |   `-- index.postcss
-|   |-- svgs // svg图标目录，此目录下的所有svg图标名称都可被组件SvgIcon直接引用
-|   |   |-- dashboard.svg
-|   |   `-- nested.svg
-|   |-- utils // 存放工具函数
-|   |   `-- index.ts
-|   |-- views // 视图目录
-|       |-- 404.vue
-|       |-- dashboard.vue
-|       |-- login.vue
-|       |-- redirect.vue
-|   |-- App.vue
-|   |-- appConfig.ts
-|   |-- env.d.ts
-|   |-- main.ts
-|   `-- permission.ts // 路由权限控制
-|-- index.html
-|-- package.json
-|-- components.d.ts
-|-- tsconfig.json
-|-- tsconfig.node.json
-|-- vite.config.ts
-|-- yarn.lock
-|-- LICENSE
-`-- README.md
-```
-
 ## 🦀 开发准备
     # 克隆项目
     git clone https://github.com/1esse/vue-clownfish-admin.git
