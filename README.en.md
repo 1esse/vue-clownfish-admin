@@ -57,63 +57,6 @@ This project is a pure project and does not integrate any case examples that is 
 + Automatically add prefixes to CSS codes to adapt styles to different browsers
 + Supports development with JSX/TSX
 
-## 🐋 Directory
-```
-.
-|-- public
-|   `-- favicon.ico
-|-- src
-|   |-- assets
-|   |   `-- logo.png
-|   |-- components // Component directory, all vue components in this directory will be automatically registered as global components, no need to import
-|   |   |-- MenuPanel.vue
-|   |   |-- Scrollbar.vue
-|   |   |-- SvgIcon.vue
-|   |   `-- components.expose.d.ts
-|   |-- composables // Composable functions directory
-|   |-- layout // Layout directory
-|   |   |-- BreadCrumb.vue
-|   |   |-- HeadBar.vue
-|   |   |-- SideBar.vue
-|   |   |-- TabsBar.vue
-|   |   |-- index.vue
-|   |   `-- layout.d.ts
-|   |-- router // Router directory
-|   |   `-- index.ts
-|   |-- stores // pinia store directory
-|   |   |-- stores.d.ts
-|   |   `-- user.ts
-|   |-- styles // global styles directory
-|   |   |-- _antd.postcss
-|   |   |-- _transition.postcss
-|   |   |-- _variables.postcss
-|   |   `-- index.postcss
-|   |-- svgs // Svg icon directory, all svg icon names in this directory can be directly referenced by the component SvgIcon
-|   |   |-- dashboard.svg
-|   |   `-- nested.svg
-|   |-- utils // Utils directory
-|   |   `-- index.ts
-|   |-- views // Views directory
-|       |-- 404.vue
-|       |-- dashboard.vue
-|       |-- login.vue
-|       |-- redirect.vue
-|   |-- App.vue
-|   |-- appConfig.ts
-|   |-- env.d.ts
-|   |-- main.ts
-|   `-- permission.ts // router guards
-|-- index.html
-|-- package.json
-|-- components.d.ts
-|-- tsconfig.json
-|-- tsconfig.node.json
-|-- vite.config.ts
-`-- yarn.lock
-|-- LICENSE
-|-- README.md
-```
-
 ## 🦀 Ready
     # clone project
     git clone https://github.com/1esse/vue-clownfish-admin.git
