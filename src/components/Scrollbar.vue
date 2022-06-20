@@ -9,13 +9,15 @@ const props = withDefaults(defineProps<{
   height?: string | number
   tag?: string
   direction?: 'horizontal' | 'vertical'
-  initOptions?: Options
+  initOptions?: Options,
+  flex?: number
 }>(), {
   width: '100%',
   height: '100%',
   tag: 'div',
   direction: 'vertical',
-  initOptions: undefined
+  initOptions: undefined,
+  flex: 1
 })
 
 const scrollbar = ref<OverlayScrollbars>()

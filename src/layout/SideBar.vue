@@ -83,7 +83,7 @@ const MenuItemNav = (props: { route: RouteRecordRaw, basePath: string }) => {
 
 const TheSideBar = () => (
   <Scrollbar>
-    <Menu v-model:selectedKeys={selectedKeys.value} v-model:openKeys={openKeys.value} mode="inline" selectable={false}>
+    <Menu v-model:selectedKeys={selectedKeys.value} v-model:openKeys={openKeys.value} mode="inline" inlineIndent={16} selectable={false}>
       {routesList.value.map((route, index) => <MenuItemNav key={index} route={route} basePath={route.path}></MenuItemNav>)}
     </Menu>
   </Scrollbar>
