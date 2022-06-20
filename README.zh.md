@@ -32,7 +32,6 @@
 [vue-clownfish-admin](https://github.com/1esse/vue-clownfish-admin) 是一个由Vue最新技术栈开发的后台管理前端简易框架。基于vue3，集成vue3最新生态系统的核心库实现。主要的技术栈有
 [ES2015+](http://es6.ruanyifeng.com/)，[typescript](https://www.typescriptlang.org/zh/)，[vue3](https://staging-cn.vuejs.org)，[pinia](https://pinia.vuejs.org/)，[vue-router](https://router.vuejs.org/zh/)，[vite](https://cn.vitejs.dev/)，[antd](https://antdv.com/)，了解这些技术会让你更容易入手此项目。此项目基于`vite`构建，并使用`vue3`作为开发技术，所以[只针对现代浏览器做开发](https://cn.vitejs.dev/guide/build.html#browser-compatibility)，不支持低版本的浏览器（如ie），如有需要请自行添加`polyfill`进行适配。
 + [在线预览](https://1esse.github.io/vue-clownfish-admin)
-+ [在线预览](http://rcui6i1mn.hn-bkt.clouddn.com)（国内用户访问）
 
 如果你熟悉[vue-element-admin](https://github.com/PanJiaChen/vue-element-admin)，那么你可以更快地上手此项目。作者本人之前也是vue-element-admin的深度使用者，对vue-element-admin表示感谢的同时也注意到了哪些可以再优化，所以一直想把心里的优化方案实现。在技术不断更新迭代的今天，站在巨人的肩膀上，终于使用vue3实现了一版。由于时间原因，该项目没有集成各种案例实现，只提供管理系统前端的基本架构。对标的是[vue-admin-template](https://github.com/PanJiaChen/vue-admin-template)。
 
@@ -77,8 +76,6 @@
 
 ## 🦐 预览项目
 [在线预览](https://1esse.github.io/vue-clownfish-admin)
-
-[在线预览](http://rcui6i1mn.hn-bkt.clouddn.com)（国内用户访问）
 
 ## 🐡 其他
 如果遇到项目任何问题欢迎提[issue](https://github.com/1esse/vue-clownfish-admin/issues/new)。
