@@ -88,9 +88,7 @@
 
 如果觉得好用，可以点个⭐支持一下。
 
-也可以帮作者买杯☕以表支持。
-
-![捐赠](http://rdrot0fj6.hn-bkt.clouddn.com/paycode.png)
+也可以帮作者[买杯☕](http://rdrot0fj6.hn-bkt.clouddn.com/paycode.png)以表支持。
 
 如果遇到项目任何问题欢迎提[issue](https://github.com/1esse/vue-clownfish-admin/issues/new)。
 
