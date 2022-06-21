@@ -26,6 +26,8 @@
   </a>
 </p>
 
+简体中文 | [English](https://github.com/1esse/vue-clownfish-admin/blob/master/README.en.md)
+
 #### 这里是antd版本，如果你更倾向于使用element-plus，请[点击这里](https://github.com/1esse/vue-clownfish-admin-elem)。
 
 ## 🐬 简介
@@ -78,6 +80,20 @@
 [在线预览](https://1esse.github.io/vue-clownfish-admin)
 
 ## 🐡 其他
+项目基本架构搭建完成，即将启动页面功能解决方案的开发。
+
+由于这是一个业余时间的个人开源项目，作者时间有限，并非全职开发，更新较慢敬请谅解。
+
+如果你有你的想法，也欢迎提pr参与项目开发。
+
+如果觉得好用，可以点个⭐支持一下。
+
+也可以帮作者买杯☕以表支持。
+
+![微信](https://github.com/1esse/vue-clownfish-admin/blob/master/wechatpay.png)
+
+![支付宝](https://github.com/1esse/vue-clownfish-admin/blob/master/alipay.png)
+
 如果遇到项目任何问题欢迎提[issue](https://github.com/1esse/vue-clownfish-admin/issues/new)。
 
 ## 🐙 License
