@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from '@vue/reactivity'
-import { onMounted, provide, reactive, ref } from 'vue'
+import { onBeforeMount, onMounted, provide, reactive, ref } from 'vue'
 import HeadBar from './HeadBar.vue'
 import SideBar from './SideBar.vue'
 import TabsBar from './TabsBar.vue'
@@ -22,7 +22,7 @@ const getKeepAlivePages = computed(() => {
   return Array.from(keepAlivePages.value)
 })
 
-onMounted(() => {
+onBeforeMount(() => {
   setSidebarCollapsed()
 })
 

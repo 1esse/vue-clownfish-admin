@@ -4,13 +4,11 @@ export default function () {
   const WIDTH = 992
   const isMobile = ref(false)
   onBeforeMount(() => {
+    checkIsMobile()
     window.addEventListener('resize', checkIsMobile)
   })
   onBeforeUnmount(() => {
     window.removeEventListener('resize', checkIsMobile)
-  })
-  onMounted(() => {
-    checkIsMobile()
   })
   function checkIsMobile() {
     const rect = document.body.getBoundingClientRect()
