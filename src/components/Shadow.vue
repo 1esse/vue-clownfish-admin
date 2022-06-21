@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { Color } from 'csstype'
 
 const props = withDefaults(defineProps<{
-  color?: Color
+  color?: string
 }>(), {
   color: 'rgba(0, 0, 0, 0.65)'
 })
