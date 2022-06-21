@@ -82,7 +82,7 @@ const routes: RouteRecordRaw[] = [
     path: '/test',
     component: Layout,
     redirect: '/test/test2',
-    meta: { title: '测试菜单', icon: SmileOutlined },
+    meta: { title: '嵌套菜单', icon: SmileOutlined },
     children: [
       {
         path: 'test1',
