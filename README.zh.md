@@ -90,9 +90,7 @@
 
 也可以帮作者买杯☕以表支持。
 
-![微信](https://github.com/1esse/vue-clownfish-admin/blob/master/wechatpay.png)
-
-![支付宝](https://github.com/1esse/vue-clownfish-admin/blob/master/alipay.png)
+![捐赠](http://rdrot0fj6.hn-bkt.clouddn.com/paycode.png)
 
 如果遇到项目任何问题欢迎提[issue](https://github.com/1esse/vue-clownfish-admin/issues/new)。
 
