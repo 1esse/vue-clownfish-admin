@@ -108,20 +108,6 @@ const routes: RouteRecordRaw[] = [
             name: 'Nested1',
             component: () => import('@/views/test/test-nested/nested1.vue'),
             meta: { title: '嵌套页子容器1', icon: SmileOutlined },
-            children: [
-              {
-                path: 'sub-nested1',
-                name: 'SubNested1',
-                component: () => import('@/views/test/test-nested/sub-nested/sub-nested1.vue'),
-                meta: { title: '嵌套页孙容器1', icon: SmileOutlined },
-              },
-              {
-                path: 'sub-nested2',
-                name: 'SubNested2',
-                component: () => import('@/views/test/test-nested/sub-nested/sub-nested2.vue'),
-                meta: { title: '嵌套页孙容器2', icon: SmileOutlined },
-              }
-            ]
           },
           {
             path: 'nested2',
@@ -145,30 +131,5 @@ const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [dashboardRoute, ...routes, ...constantRoutes]
 })
-
-/**
- * 动态路由的实现参考
- * 1、使用addRoute添加所有新增路由（如果不同步显示在侧边菜单，可忽略2、3步骤）
- * 2、如果要显示在侧边菜单栏，需要把所有新增路由同步添加至router.options.routes
- * 3、replace替换当前页面至/redirect页面以刷新所有新增路由
- * 详情见 https://router.vuejs.org/zh/api/#addroute-1
- * 
- * 举个栗子：
- * const newRoute: RouteRecordRaw = {
-    path: '/example',
-    name: 'Example',
-    component: Layout,
-    redirect: '/example/index',
-    children: [{
-      path: 'index',
-      name: 'ExampleIndex',
-      component: () => import('@/views/example.vue'),
-      meta: { title: '新增路由', icon: 'example' },
-    }]
-  }
-  router.addRoute(newRoute)
-  router.options.routes.push(newRoute)
-  router.replace('/redirect/dashboard')
- */
 
 export default router

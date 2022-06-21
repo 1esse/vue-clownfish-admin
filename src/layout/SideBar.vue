@@ -12,9 +12,14 @@ import type { RouteMeta, RouteRecordRaw } from 'vue-router'
 const router = useRouter()
 const route = useRoute()
 const selectedKeys = ref<string[]>([route.path]) // 菜单默认选中项
+// 默认展开第一层及选中项所在菜单
 const openKeys = ref<string[]>(
   router.getRoutes()
-    .filter(matchedRoute => matchedRoute.children.length > 0)
+    .filter(matchedRoute =>
+      route.path.includes(matchedRoute.path) ||
+      (matchedRoute.children.length > 0 &&
+        /^\/\w+?$/.test(matchedRoute.path))
+    )
     .map(matchedRoute => matchedRoute.path)
 ) // 子菜单默认展开项
 const keepAlivePages = inject<Layout.keepAlivePages>('keepAlivePages')
