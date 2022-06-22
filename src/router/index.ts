@@ -79,47 +79,6 @@ const routes: RouteRecordRaw[] = [
     meta: { hidden: true, title: '登录' }
   },
   {
-    path: '/test',
-    component: Layout,
-    redirect: '/test/test2',
-    meta: { title: '嵌套菜单', icon: SmileOutlined },
-    children: [
-      {
-        path: 'test1',
-        name: 'Test1',
-        component: () => import('@/views/test/test1.vue'),
-        meta: { title: '缓存页', icon: SmileOutlined, keepAlive: true }
-      },
-      {
-        path: 'test2',
-        name: 'Test2',
-        component: () => import('@/views/test/test2.vue'),
-        meta: { title: '普通页', icon: SmileOutlined }
-      },
-      {
-        path: 'test3',
-        name: 'Test3',
-        component: () => import('@/views/test/test3.vue'),
-        redirect: '/test/test3/nested1',
-        meta: { title: '嵌套页父级容器', icon: 'nested' },
-        children: [
-          {
-            path: 'nested1',
-            name: 'Nested1',
-            component: () => import('@/views/test/test-nested/nested1.vue'),
-            meta: { title: '嵌套页子容器1', icon: SmileOutlined },
-          },
-          {
-            path: 'nested2',
-            name: 'Nested2',
-            component: () => import('@/views/test/test-nested/nested2.vue'),
-            meta: { title: '嵌套页子容器2', icon: SmileOutlined },
-          }
-        ]
-      }
-    ]
-  },
-  {
     path: '/https://github.com/1esse/vue-clownfish-admin',
     component: undefined,
     redirect: 'https://github.com/1esse/vue-clownfish-admin',
