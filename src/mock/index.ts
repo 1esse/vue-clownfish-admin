@@ -29,7 +29,7 @@ function enableMock(timeout: string | number = '100-1000') {
 
   const mockApis = collectApis()
   for (const api of mockApis) {
-    Mock.mock(new RegExp(import.meta.env.VITE_APP_BASE_API + api.url), api.type || 'get', (options: MockApi.request) => {
+    Mock.mock(new RegExp(api.url), api.type || 'get', (options: MockApi.request) => {
       if (options.body) {
         options.body = JSON.parse(options.body)
       }
