@@ -1,21 +1,7 @@
-import { setCookie, sleep } from "@/utils"
+import { removeCookie, setCookie, sleep } from "@/utils"
 import { defineStore } from "pinia"
-
-const users: ({ username: string, password: string } & Stores.user)[] = [
-  {
-    username: 'david',
-    password: '123456',
-    name: '大卫',
-    age: 18,
-    sex: 'male'
-  }, {
-    username: 'lili',
-    password: '123456',
-    name: '莉莉',
-    age: 16,
-    sex: 'female'
-  },
-]
+import request from "@/utils/request"
+import { message } from "ant-design-vue"
 
 export const userStore = defineStore('user', {
   state: (): Stores.user => ({
@@ -26,35 +12,54 @@ export const userStore = defineStore('user', {
   }),
   actions: {
     async login(username: string, password: string) {
-      await sleep(2000)
-      const user = users.find(item => item.username === username)
-      if (!user || password !== user.password) {
-        return Promise.reject('账号或密码错误')
-      }
-      this.name = user.name
-      this.age = user.age
-      this.sex = user.sex
-      this.token = `${user.username} Token`
-      setCookie('token', this.token)
-      return Promise.resolve('login success')
+      return new Promise((resolve, reject) => {
+        request.post('/user/login', {
+          username, password
+        }).then(res => {
+          const { data, msg } = res.data
+          if (data) {
+            this.name = data.name
+            this.age = data.age
+            this.sex = data.sex
+            this.token = `${data.username}Token`
+            setCookie('token', this.token)
+            resolve(msg)
+          } else {
+            reject(msg)
+          }
+        })
+      })
     },
     async logout() {
-      await sleep(500)
-      setCookie('token', '', -1)
-      return Promise.resolve('logout success')
+      return new Promise((resolve) => {
+        request.get('/user/logout').then(res => {
+          const { msg } = res.data
+          removeCookie('token')
+          message.success(msg)
+          resolve(msg)
+        })
+      })
     },
     async getUserInfo(token: string): Promise<string> {
-      await sleep(500)
-      const user = users.find(item => `${item.username} Token` === token)
-      if (user) {
-        this.name = user.name
-        this.age = user.age
-        this.sex = user.sex
-        this.token = `${user.username} Token`
-        setCookie('token', this.token)
-        return Promise.resolve('get user info success')
-      }
-      return Promise.reject('token 错误')
+      return new Promise((resolve, reject) => {
+        request.get('/user/info', {
+          params: {
+            token: token
+          }
+        }).then(res => {
+          const { data, msg } = res.data
+          if (data) {
+            this.name = data.name
+            this.age = data.age
+            this.sex = data.sex
+            this.token = `${data.username}Token`
+            setCookie('token', this.token)
+            resolve(msg)
+          } else {
+            reject(msg)
+          }
+        })
+      })
     }
   }
 })

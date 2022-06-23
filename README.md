@@ -26,16 +26,31 @@
   </a>
 </p>
 
-简体中文 | [English](https://github.com/1esse/vue-clownfish-admin/blob/master/README.en.md)
-
 #### 这里是antd版本，如果你更倾向于使用element-plus，请[点击这里](https://github.com/1esse/vue-clownfish-admin-elem)。
+
+## ✨ 最新版本 v1.0.5
+1. 新增环境配置，支持staging预发布环境
+2. 支持mock模拟接口，appConfig.ts文件中开启
+   ```language=typescript
+    // appConfig.ts
+
+    /**
+    * 使用mock代理api请求：on开，off关  
+    */
+    export const mock: 'on' | 'off' = 'on'
+
+    /**
+    * mock是否开启namespace，开启后文件名将作为前缀拼接在url
+    */
+    export const mockNamespace: boolean = true
+   ```
+
 
 ## 🐬 简介
 [vue-clownfish-admin](https://github.com/1esse/vue-clownfish-admin) 是一个由Vue最新技术栈开发的后台管理前端简易框架。基于vue3，集成vue3最新生态系统的核心库实现。主要的技术栈有
 [ES2015+](http://es6.ruanyifeng.com/)，[typescript](https://www.typescriptlang.org/zh/)，[vue3](https://staging-cn.vuejs.org)，[pinia](https://pinia.vuejs.org/)，[vue-router](https://router.vuejs.org/zh/)，[vite](https://cn.vitejs.dev/)，[antd](https://antdv.com/)，了解这些技术会让你更容易入手此项目。此项目基于`vite`构建，并使用`vue3`作为开发技术，所以[只针对现代浏览器做开发](https://cn.vitejs.dev/guide/build.html#browser-compatibility)，不支持低版本的浏览器（如ie），如有需要请自行添加`polyfill`进行适配。
 + [在线预览](https://1esse.github.io/vue-clownfish-admin)
 
-如果你熟悉[vue-element-admin](https://github.com/PanJiaChen/vue-element-admin)，那么你可以更快地上手此项目。作者本人之前也是vue-element-admin的深度使用者，对vue-element-admin表示感谢的同时也注意到了哪些可以再优化，所以一直想把心里的优化方案实现。在技术不断更新迭代的今天，站在巨人的肩膀上，终于使用vue3实现了一版。由于时间原因，该项目没有集成各种案例实现，只提供管理系统前端的基本架构。对标的是[vue-admin-template](https://github.com/PanJiaChen/vue-admin-template)。
 
 ## 🦑 优势
 + 几乎使用当前前端最新技术开发（vite, vue3, ts, pinia, csswg）
@@ -53,6 +68,8 @@
 + 支持原生CSS变量和CSSWG草案规定进行开发，编写符合未来标准的css
 + 自动为css代码添加前缀，使样式适配不同浏览器
 + 支持使用JSX/TSX进行开发
++ 支持mock模拟接口
++ 多环境配置
 
 ## 🦀 开发准备
     # 克隆项目
@@ -70,25 +87,21 @@
     yarn dev # 使用yarn
 
 ## 🐠 scripts命令
-+ dev：本地开发预览
++ dev：本地开发
++ stage: 预发布环境开发
 + build：打包项目代码
++ build:preview: 打包预发布环境代码
 + preview：预览打包后的项目
 
 ## 🦐 预览项目
 [在线预览](https://1esse.github.io/vue-clownfish-admin)
 
 ## 🐡 其他
-项目基本架构搭建完成，即将启动页面功能解决方案的开发。
+项目基本架构搭建完成，即将启动页面功能解决方案的开发。如果你有你的想法，也欢迎提pr参与项目开发。
 
-由于这是一个业余时间的个人开源项目，作者时间有限，并非全职开发，更新较慢敬请谅解。
+觉得不错的话，可以点个star⭐，或者[买杯咖啡☕](http://rdrot0fj6.hn-bkt.clouddn.com/paycode.png)。
 
-如果你有你的想法，也欢迎提pr参与项目开发。
-
-如果觉得好用，可以点个⭐支持一下。
-
-也可以帮作者[买杯☕](http://rdrot0fj6.hn-bkt.clouddn.com/paycode.png)以表支持。
-
-如果遇到项目任何问题欢迎提[issue](https://github.com/1esse/vue-clownfish-admin/issues/new)。
+遇到项目任何问题欢迎提[issue](https://github.com/1esse/vue-clownfish-admin/issues/new)。
 
 ## 🐙 License
 [MIT License](https://github.com/1esse/vue-clownfish-admin/blob/master/LICENSE)
