@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router"
 import Layout from '@/layout/index.vue'
-import { SmileOutlined, GithubOutlined } from '@ant-design/icons-vue'
+import { GithubOutlined } from '@ant-design/icons-vue'
 import type { Component } from "vue"
 
 declare module 'vue-router' {
@@ -42,7 +42,7 @@ const dashboardRoute: RouteRecordRaw = {
       path: 'dashboard',
       name: 'Dashboard',
       component: () => import('@/views/dashboard.vue'),
-      meta: { title: 'Dashboard', icon: 'dashboard' }
+      meta: { title: '首页', icon: 'dashboard' }
     }
   ]
 }

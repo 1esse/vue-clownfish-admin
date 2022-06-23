@@ -2,7 +2,7 @@ import router from './router'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 import { appTitle } from './appConfig'
-import { getCookie, setCookie } from './utils'
+import { getCookie, removeCookie } from './utils'
 import { userStore } from './stores/user'
 import { message } from 'ant-design-vue'
 
@@ -28,7 +28,7 @@ router.beforeEach(async (to, from, next) => {
         next()
       } catch (_) {
         message.error('token失效，请重新登录')
-        setCookie('token', '', -1) // 清除cookie
+        removeCookie('token') // 清除cookie
         next('/login')
       }
     } else {

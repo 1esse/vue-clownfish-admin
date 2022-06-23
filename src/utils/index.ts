@@ -24,6 +24,10 @@ export function getCookie(key: string) {
   return match ? match[2] : ""
 }
 
+export function removeCookie(key: string) {
+  setCookie(key, '', -1)
+}
+
 /**
  * @param ms 睡眠时间（毫秒）
  * @returns Promise<unknown>
