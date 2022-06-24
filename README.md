@@ -28,23 +28,17 @@
 
 #### 这里是antd版本，如果你更倾向于使用element-plus，请[点击这里](https://github.com/1esse/vue-clownfish-admin-elem)。
 
-## ✨ 最新版本 v1.0.5
-1. 新增环境配置，支持staging预发布环境
-2. 支持mock模拟接口，appConfig.ts文件中开启
-   ```language=typescript
-    // appConfig.ts
-
-    /**
-    * 使用mock代理api请求：on开，off关  
-    */
-    export const mock: 'on' | 'off' = 'on'
-
-    /**
-    * mock是否开启namespace，开启后文件名将作为前缀拼接在url
-    */
-    export const mockNamespace: boolean = true
-   ```
-
+## ✨ 最新版本 v1.0.6
+1. 优化动画效果，解决某些情况下页面切换动画卡顿的问题，如果您的版本在1.0.6之前，建议重新拉取代码或者修改样式
+  ```
+  # styles/_transition.postcss
+  .fade-scale-enter-from,
+  .fade-scale-leave-to {
+    opacity: 0; 
+    transform: scale(0.95);
+    transform-origin: center;
+  }
+  ```
 
 ## 🐬 简介
 [vue-clownfish-admin](https://github.com/1esse/vue-clownfish-admin) 是一个由Vue最新技术栈开发的后台管理前端简易框架。基于vue3，集成vue3最新生态系统的核心库实现。主要的技术栈有
