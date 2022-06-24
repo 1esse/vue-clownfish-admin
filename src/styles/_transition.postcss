@@ -23,10 +23,44 @@
 .slide-left-enter-from,
 .slide-left-leave-to {
   opacity: 0;
-  transform: translateX(-5vw);
+  transform: translateX(5vw);
 }
 
 .slide-left-enter-active,
 .slide-left-leave-active {
+  transition: all .3s ease;
+}
+
+
+.slide-right-enter-from,
+.slide-right-leave-to {
+  opacity: 0;
+  transform: translateX(-5vw);
+}
+
+.slide-right-enter-active,
+.slide-right-leave-active {
+  transition: all .3s ease;
+}
+
+.slide-up-enter-from,
+.slide-up-leave-to {
+  opacity: 0;
+  transform: translateY(5vw);
+}
+
+.slide-up-enter-active,
+.slide-up-leave-active {
+  transition: all .3s ease;
+}
+
+.slide-down-enter-from,
+.slide-down-leave-to {
+  opacity: 0;
+  transform: translateY(-5vw);
+}
+
+.slide-down-enter-active,
+.slide-down-leave-active {
   transition: all .3s ease;
 }

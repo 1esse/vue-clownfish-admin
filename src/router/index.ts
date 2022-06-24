@@ -79,6 +79,21 @@ const routes: RouteRecordRaw[] = [
     meta: { hidden: true, title: '登录' }
   },
   {
+    path: '/modal',
+    name: 'Modal',
+    component: Layout,
+    redirect: '/modal/index',
+    meta: { breadcrumb: false },
+    children: [
+      {
+        path: 'index',
+        name: 'ModalIndex',
+        component: () => import('@/views/modal.vue'),
+        meta: { title: '模态框', icon: 'dashboard' }
+      }
+    ]
+  },
+  {
     path: '/https://github.com/1esse/vue-clownfish-admin',
     component: undefined,
     redirect: 'https://github.com/1esse/vue-clownfish-admin',
