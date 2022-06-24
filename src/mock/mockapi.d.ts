@@ -4,11 +4,11 @@ declare module MockApi {
   interface request {
     url: string
     type: type
-    body?: any
+    body: any
   }
   interface response {
-    code?: number
-    msg?: string
+    code: number
+    msg: string
     data: any
   }
   interface obj {
