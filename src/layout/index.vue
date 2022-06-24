@@ -65,17 +65,15 @@ provide('loading', loading)
     </ALayout>
   </ALayout>
   <Teleport to="body">
-    <Transition name="fade" mode="in-out" appear>
+    <Transition name="slide-left" mode="out-in" appear>
       <Shadow v-if="_isMobile && !sidebarRelated.collapsed" @shadowClick="sidebarRelated.collapsed = true">
-        <Transition name="slide-left" mode="out-in" appear>
-          <div class="block sidebar-mobile">
-            <RouterLink to="/">
-              <AImage :width="sidebarRelated.width" height="6rem" style="padding: .3rem 0; object-fit: contain;"
-                :preview="false" :src="Logo" />
-            </RouterLink>
-            <SideBar style="padding-right: 1rem;"></SideBar>
-          </div>
-        </Transition>
+        <div class="block sidebar-mobile">
+          <RouterLink to="/">
+            <AImage :width="sidebarRelated.width" height="6rem" style="padding: .3rem 0; object-fit: contain;"
+              :preview="false" :src="Logo" />
+          </RouterLink>
+          <SideBar style="padding-right: 1rem;"></SideBar>
+        </div>
       </Shadow>
     </Transition>
   </Teleport>
