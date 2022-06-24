@@ -32,9 +32,10 @@
 1. 优化动画效果，解决某些情况下页面切换动画卡顿的问题，如果您的版本在1.0.6之前，建议重新拉取代码或者修改样式
   ```
   # styles/_transition.postcss
+  
   .fade-scale-enter-from,
   .fade-scale-leave-to {
-    opacity: 0; 
+    opacity: 0;  # opacity: 0.05 -> opacity: 0，使用0.05可能造成transition动画卡顿
     transform: scale(0.95);
     transform-origin: center;
   }
