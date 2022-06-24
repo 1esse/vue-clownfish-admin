@@ -94,8 +94,6 @@
 ## 🐡 其他
 项目基本架构搭建完成，即将启动页面功能解决方案的开发。如果你有你的想法，也欢迎提pr参与项目开发。
 
-觉得不错的话，可以点个star⭐，或者[买杯咖啡☕](http://rdrot0fj6.hn-bkt.clouddn.com/paycode.png)。
-
 遇到项目任何问题欢迎提[issue](https://github.com/1esse/vue-clownfish-admin/issues/new)。
 
 ## 🐙 License
