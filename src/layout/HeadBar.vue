@@ -64,6 +64,7 @@ header {
 }
 
 .icon-sidebar-trigger {
+  cursor: pointer;
   margin-right: 1.2rem;
   font-size: 1.2rem;
 
