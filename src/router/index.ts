@@ -97,7 +97,7 @@ const routes: RouteRecordRaw[] = [
     path: '/https://github.com/1esse/vue-clownfish-admin',
     component: undefined,
     redirect: 'https://github.com/1esse/vue-clownfish-admin',
-    meta: { title: '测试外链', icon: GithubOutlined, external: true }
+    meta: { title: 'github', icon: GithubOutlined, external: true }
   }
 ]
 
