@@ -96,9 +96,7 @@ const TheSideBar = () => (
 
 function getOnlyChildPath(parentRoute: RouteRecordRaw): RouteRecordRaw {
   const childRoute = parentRoute.children?.find((route: RouteRecordRaw) => !route.meta?.hidden)
-  if (childRoute)
-    childRoute.path = `${parentRoute.path}/${childRoute.path}`
-  return (childRoute || {}) as RouteRecordRaw
+  return Object.assign({}, childRoute, {path: `${parentRoute.path}/${childRoute?.path}`} as RouteRecordRaw )
 }
 </script>
 
