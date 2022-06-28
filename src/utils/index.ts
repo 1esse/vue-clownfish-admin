@@ -39,3 +39,12 @@ export function sleep(ms: number) {
     }, ms)
   })
 }
+
+/**
+ * 
+ * @param arr Array<any>
+ * @returns 数组随机项
+ */
+export function randomPick(arr: Array<any>) {
+  return arr[Math.floor(Math.random() * arr.length)]
+}
