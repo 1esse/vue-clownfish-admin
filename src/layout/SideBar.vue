@@ -86,22 +86,19 @@ const MenuItemNav = (props: { route: RouteRecordRaw, basePath: string }) => {
       menuItemTemplate(props.route)
 }
 
-const TheSideBar = () => (
-  <Scrollbar>
-    <Menu v-model:selectedKeys={selectedKeys.value} v-model:openKeys={openKeys.value} mode="inline" inlineIndent={16} selectable={false}>
-      {routesList.value.map((route, index) => <MenuItemNav key={index} route={route} basePath={route.path}></MenuItemNav>)}
-    </Menu>
-  </Scrollbar>
-)
-
 function getOnlyChildPath(parentRoute: RouteRecordRaw): RouteRecordRaw {
   const childRoute = parentRoute.children?.find((route: RouteRecordRaw) => !route.meta?.hidden)
-  if (childRoute)
-    childRoute.path = `${parentRoute.path}/${childRoute.path}`
-  return (childRoute || {}) as RouteRecordRaw
+  return Object.assign({}, childRoute, { path: `${parentRoute.path}/${childRoute?.path}` } as RouteRecordRaw)
 }
 </script>
 
 <template>
-  <TheSideBar />
+  <Scrollbar>
+    <AMenu v-model:selectedKeys="selectedKeys" v-model:openKeys="openKeys" mode="inline" :inlineIndent="16"
+      :selectable="false">
+      <template v-for="route in routesList" key="index">
+        <MenuItemNav :route="route" :basePath="route.path"></MenuItemNav>
+      </template>
+    </AMenu>
+  </Scrollbar>
 </template>

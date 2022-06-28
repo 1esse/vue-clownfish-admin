@@ -28,10 +28,8 @@
 
 #### 这里是antd版本，如果你更倾向于使用element-plus，请[点击这里](https://github.com/1esse/vue-clownfish-admin-elem)。
 
-## ✨ 最新版本 v1.0.7
-1. 新增modal模态框组件
-2. 新增loading加载组件
-3. 新增模态框展示页面
+## ✨ 最新版本 v1.0.8
+1. 废弃使用tsx形式定义antd-menu组件，使用template定义（修复antd的menu组件在tsx中样式出错问题）
 
 ## 🐬 简介
 [vue-clownfish-admin](https://github.com/1esse/vue-clownfish-admin) 是一个由Vue最新技术栈开发的后台管理前端简易框架。基于vue3，集成vue3最新生态系统的核心库实现。主要的技术栈有
