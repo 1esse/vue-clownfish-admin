@@ -19,7 +19,7 @@ export function setCookie(key: string, value: string | number, expires: number =
  * @returns cookie的值
  */
 export function getCookie(key: string) {
-  const reg = new RegExp("(^| )" + key + "=([^;]+)")
+  const reg = new RegExp("(^| )" + encodeURIComponent(key) + "=([^;]+)")
   const match = document.cookie.match(reg)
   return match ? decodeURIComponent(match[2]) : ""
 }
