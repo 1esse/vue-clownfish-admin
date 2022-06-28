@@ -19,6 +19,7 @@ declare module '@vue/runtime-core' {
     ALayoutContent: typeof import('ant-design-vue/es')['LayoutContent']
     ALayoutHeader: typeof import('ant-design-vue/es')['LayoutHeader']
     ALayoutSider: typeof import('ant-design-vue/es')['LayoutSider']
+    AMenu: typeof import('ant-design-vue/es')['Menu']
     AResult: typeof import('ant-design-vue/es')['Result']
     Dialog: typeof import('./src/components/Dialog.vue')['default']
     Loading: typeof import('./src/components/Loading.vue')['default']
