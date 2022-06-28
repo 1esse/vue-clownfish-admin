@@ -5,7 +5,6 @@ import HeadBar from './HeadBar.vue'
 import SideBar from './SideBar.vue'
 import TabsBar from './TabsBar.vue'
 import isMobile from '@/composables/isMobile'
-import Shadow from '@/components/Shadow.vue'
 import Logo from '@/assets/logo.png'
 
 const _isMobile = isMobile()
@@ -65,7 +64,7 @@ provide('loading', loading)
     </ALayout>
   </ALayout>
   <Teleport to="body">
-    <Transition name="slide-left" mode="out-in" appear>
+    <Transition name="slide-right" mode="out-in" appear>
       <Shadow v-if="_isMobile && !sidebarRelated.collapsed" @shadowClick="sidebarRelated.collapsed = true">
         <div class="block sidebar-mobile">
           <RouterLink to="/">

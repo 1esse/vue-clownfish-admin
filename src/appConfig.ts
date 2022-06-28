@@ -1,7 +1,7 @@
 /**
  * app标题
  */
-export const appTitle = 'ClownFish Admin'
+export const appTitle = '红坚果CPC'
 
 /**
  * 使用mock代理api请求：on开，off关  
@@ -15,7 +15,18 @@ export const mockNamespace: boolean = true
 
 /**
  * mock代理指定环境
- * 只在开发环境且appConfig的mock字段为‘on’的情况启动mock，
- * 由于线上预览需要，这里不限制环境
+ * 只在开发环境且appConfig的mock字段为‘on’的情况启动mock
  */
 export const mockEnv: envType[] = ['development', 'staging', 'production']
+
+/**
+ * 过渡动画类型
+ */
+export enum transitions {
+  fade = 'fade',
+  fadeScale = 'fade-scale',
+  slideLeft = 'slide-left',
+  slideRight = 'slide-right',
+  slideUp = 'slide-up',
+  slideDown = 'slide-down',
+}

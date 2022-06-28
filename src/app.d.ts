@@ -11,8 +11,3 @@ type SwitchType = 'on' | 'off'
  * production：生产环境；
  */
 type envType = 'development' | 'staging' | 'production'
-
-/**
- * 动画类型
- */
-type transitionType = 'fade' | 'fade-scale' | 'slide-left' | 'slide-right' | 'slide-up' | 'slide-down'
