@@ -4,7 +4,7 @@
  * @param expires cookie的过期时间（天数），不传则关闭会话后失效，传参为负数则清除该cookie
  * @param path cookie生效路径范围，默认"/"全局生效
  */
- export function setCookie(key: string, value: string | number, expires: number = 0, path: string = '/') {
+export function setCookie(key: string, value: string | number, expires: number = 0, path: string = '/') {
   let cookie = `${key}=${encodeURIComponent(value)};path=${path}`
   if (expires !== 0) {
     const date = new Date()
