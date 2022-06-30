@@ -2,14 +2,16 @@
 import { inject, nextTick, onBeforeMount, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { CloseOutlined, RedoOutlined } from '@ant-design/icons-vue'
+import Scrollbar from '@/components/Scrollbar.vue'
+import MenuPanel from '@/components/MenuPanel.vue'
 import type { ComponentPublicInstance } from 'vue'
 import type { RouteLocationNormalizedLoaded } from 'vue-router'
 
 const router = useRouter()
 const route = useRoute()
 const tabs = ref<RouteLocationNormalizedLoaded[]>([])
-const scrollbarDom = ref<ComponentPublicInstance<ComponentsExpose.Scrollbar>>()
-const menuPanelDom = ref<ComponentPublicInstance<ComponentsExpose.MenuPanel>>()
+const scrollbarDom = ref<InstanceType<typeof Scrollbar>>()
+const menuPanelDom = ref<InstanceType<typeof MenuPanel>>()
 const tabDoms = ref<ComponentPublicInstance[]>([])
 const keepAlivePages = inject<Layout.keepAlivePages>('keepAlivePages')
 const props = withDefaults(defineProps<{
@@ -42,9 +44,9 @@ function moveToTab(tab: RouteLocationNormalizedLoaded) {
   if (tabIndex === lastTabIndex) return
   const tabDom = tabDoms.value?.[tabIndex]
   const { offsetWidth, offsetLeft } = tabDom.$el
-  const scrollbarState = scrollbarDom.value?.scrollbar.getState()
+  const scrollbarState = scrollbarDom.value?.scrollbar?.getState()
 
-  scrollbarDom.value?.scrollbar.scroll({
+  scrollbarDom.value?.scrollbar?.scroll({
     x: lastTabIndex < tabIndex ?
       (offsetLeft + offsetWidth) < (scrollbarState?.viewportSize.width || 0) ?
         null :

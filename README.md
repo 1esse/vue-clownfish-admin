@@ -7,7 +7,7 @@
     <img src="https://img.shields.io/badge/vue-3.2.37-brightgreen.svg" alt="vue">
   </a>
   <a href="https://github.com/vitejs/vite">
-    <img src="https://img.shields.io/badge/vite-2.9.10-brightgreen.svg" alt="vue">
+    <img src="https://img.shields.io/badge/vite-2.9.13-brightgreen.svg" alt="vue">
   </a>
   <a href="https://github.com/vuejs/pinia">
     <img src="https://img.shields.io/badge/pinia-2.0.14-brightgreen.svg" alt="vue">
@@ -28,8 +28,8 @@
 
 #### 这里是antd版本，如果你更倾向于使用element-plus，请[点击这里](https://github.com/1esse/vue-clownfish-admin-elem)。
 
-## ✨ 最新版本 v1.0.10
-1. 优化模态框展示
+## ✨ 最新版本 v1.0.11
+1. 优化代码
 
 ## 🐬 简介
 [vue-clownfish-admin](https://github.com/1esse/vue-clownfish-admin) 是一个由Vue最新技术栈开发的后台管理前端简易框架。基于vue3，集成vue3最新生态系统的核心库实现。主要的技术栈有

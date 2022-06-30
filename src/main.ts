@@ -9,6 +9,6 @@ import '@/styles/index.postcss' // 全局样式
 import 'virtual:svg-icons-register'
 import './permission'
 
-mockEnv.includes(import.meta.env.MODE as envType) && mock === 'on' && enableMock()
+mockEnv.includes(import.meta.env.MODE as AppGlobal.EnvType) && mock === 'on' && enableMock()
 
 createApp(App).use(createPinia()).use(router).mount('#app')
