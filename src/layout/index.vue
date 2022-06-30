@@ -56,7 +56,11 @@ provide('loading', loading)
         <RouterView v-slot="{ Component, route }">
           <Transition name="fade-scale" mode="out-in">
             <KeepAlive :include="getKeepAlivePages">
-              <component :is="Component" :key="route.path" />
+              <Suspense>
+                <template #default>
+                  <component :is="Component" :key="route.path" />
+                </template>
+              </Suspense>
             </KeepAlive>
           </Transition>
         </RouterView>

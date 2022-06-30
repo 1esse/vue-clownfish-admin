@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type { TablePaginationConfig } from 'ant-design-vue'
 import { requestGet } from '@/composables/useRequest'
-import { onBeforeMount, ref, shallowRef, reactive, watch } from 'vue'
+import { onBeforeMount, ref, shallowRef, reactive, watch, onMounted } from 'vue'
 
 // 页面加载集中放置处
 const loading = reactive({
