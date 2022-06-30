@@ -1,4 +1,4 @@
-declare module Stores {
+declare namespace Stores {
   interface user {
     name: string
     age: number | null

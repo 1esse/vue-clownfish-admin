@@ -5,7 +5,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { resolve } from 'pathe' // path包es代码实现
 import Scrollbar from '../components/Scrollbar.vue'
 import { RouterLink } from 'vue-router'
-import { SubMenu, MenuItem, Menu } from 'ant-design-vue/es'
+import { SubMenu, MenuItem } from 'ant-design-vue/es'
 import type { Component, Slots } from 'vue'
 import type { RouteMeta, RouteRecordRaw } from 'vue-router'
 

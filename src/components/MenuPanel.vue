@@ -13,7 +13,7 @@ watch(() => show.value, (val) => {
   }
 })
 
-defineExpose<ComponentsExpose.MenuPanel>({
+defineExpose({
   setPosition,
   showPanel,
   hidePanel,

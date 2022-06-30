@@ -32,7 +32,7 @@ onBeforeUnmount(() => {
   scrollbar.value?.destroy()
 })
 
-defineExpose<ComponentsExpose.Scrollbar>({
+defineExpose({
   scrollbar: scrollbar
 })
 

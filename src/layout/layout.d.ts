@@ -1,4 +1,4 @@
-declare module Layout {
+declare namespace Layout {
   interface SidebarRelated {
     collapsed: boolean,
     width: string,
