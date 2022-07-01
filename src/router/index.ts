@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router"
 import Layout from '@/layout/index.vue'
-import { GithubOutlined } from '@ant-design/icons-vue'
+import { GithubOutlined, TableOutlined } from '@ant-design/icons-vue'
 import type { Component } from "vue"
 
 declare module 'vue-router' {
@@ -90,6 +90,21 @@ const routes: RouteRecordRaw[] = [
         name: 'ModalIndex',
         component: () => import('@/views/modal.vue'),
         meta: { title: '模态框', icon: 'dashboard' }
+      }
+    ]
+  },
+  {
+    path: '/table',
+    name: 'Table',
+    component: Layout,
+    redirect: '/table/index',
+    meta: { breadcrumb: false },
+    children: [
+      {
+        path: 'index',
+        name: 'TableIndex',
+        component: () => import('@/views/table.vue'),
+        meta: { title: '表格', icon: TableOutlined }
       }
     ]
   },

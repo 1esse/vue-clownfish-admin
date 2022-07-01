@@ -55,6 +55,10 @@ provide('loading', loading)
       <ALayoutContent>
         <RouterView v-slot="{ Component, route }">
           <Transition name="fade-scale" mode="out-in">
+            <!-- 
+              vite的热更新会导致keepalive组件出错 
+              https://github.com/vuejs/core/pull/5165 
+            -->
             <KeepAlive :include="getKeepAlivePages">
               <component :is="Component" :key="route.path" />
             </KeepAlive>
