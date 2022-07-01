@@ -5,7 +5,7 @@
     "email": "572116385@qq.com",
     "url": "https://1esse.github.io/vue-clownfish-admin/"
   },
-  "version": "1.0.11",
+  "version": "1.0.12",
   "scripts": {
     "dev": "vite",
     "stage": "vite --mode staging",
@@ -23,7 +23,7 @@
     "pinia": "^2.0.14",
     "qs": "^6.11.0",
     "vue": "^3.2.37",
-    "vue-router": "^4.0.15"
+    "vue-router": "^4.0.16"
   },
   "devDependencies": {
     "@types/mockjs": "^1.0.6",

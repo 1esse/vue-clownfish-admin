@@ -42,7 +42,7 @@ const dashboardRoute: RouteRecordRaw = {
       path: 'dashboard',
       name: 'Dashboard',
       component: () => import('@/views/dashboard.vue'),
-      meta: { title: '首页', icon: 'dashboard', keepAlive: true }
+      meta: { title: '首页', icon: 'dashboard' }
     }
   ]
 }
@@ -104,7 +104,7 @@ const routes: RouteRecordRaw[] = [
         path: 'index',
         name: 'TableIndex',
         component: () => import('@/views/table.vue'),
-        meta: { title: '表格', icon: TableOutlined, keepAlive: true }
+        meta: { title: '表格', icon: TableOutlined }
       }
     ]
   },
