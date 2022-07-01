@@ -17,7 +17,7 @@ function generateData(len: number) {
     return data
 }
 
-const data = generateData(100)
+const data = generateData(1000)
 
 export default <MockApi.obj[]>[
     {

@@ -17,6 +17,7 @@
   "dependencies": {
     "ant-design-vue": "^3.2.5",
     "axios": "^0.27.2",
+    "lodash": "^4.17.21",
     "nprogress": "^0.2.0",
     "overlayscrollbars": "^1.13.1",
     "pathe": "^0.3.0",
@@ -26,6 +27,7 @@
     "vue-router": "^4.0.16"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.182",
     "@types/mockjs": "^1.0.6",
     "@types/node": "^17.0.34",
     "@types/nprogress": "^0.2.0",
