@@ -8,6 +8,7 @@ import { RouterLink } from 'vue-router'
 import { SubMenu, MenuItem } from 'ant-design-vue/es'
 import type { Component, Slots } from 'vue'
 import type { RouteMeta, RouteRecordRaw } from 'vue-router'
+import { Layout } from 'types/layout'
 
 const router = useRouter()
 const route = useRoute()
@@ -23,6 +24,7 @@ const openKeys = ref<string[]>(
     .map(matchedRoute => matchedRoute.path)
 ) // 子菜单默认展开项
 const keepAlivePages = inject<Layout.keepAlivePages>('keepAlivePages')
+
 const routesList = computed(() => {
   return router.options.routes
 })

@@ -29,7 +29,9 @@
 #### 这里是antd版本，如果你更倾向于使用element-plus，请[点击这里](https://github.com/1esse/vue-clownfish-admin-elem)。
 
 ## ✨ 最新版本 v1.0.12
-1. 表格页面...ing
+1. 优化项目结构，mock目录移动到项目根目录
+2. 优化类型定义，新增types目录用于存放类型文件
+3. 优化request封装，请求成功默认返回res.data，支持定义data类型
 
 ## 🐬 简介
 [vue-clownfish-admin](https://github.com/1esse/vue-clownfish-admin) 是一个由Vue最新技术栈开发的后台管理前端简易框架。基于vue3，集成vue3最新生态系统的核心库实现。主要的技术栈有

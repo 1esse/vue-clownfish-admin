@@ -1,4 +1,4 @@
-declare namespace Layout {
+export namespace Layout {
   interface SidebarRelated {
     collapsed: boolean,
     width: string,

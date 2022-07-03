@@ -1,3 +1,6 @@
+import { Stores } from '../../types/stores'
+import { MockApi } from '../mockapi'
+
 const users: ({ username: string, password: string } & Stores.user)[] = [
   {
     username: 'david',

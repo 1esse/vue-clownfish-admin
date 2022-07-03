@@ -1,5 +1,6 @@
 import Mock from 'mockjs'
 import { mockNamespace } from '@/appConfig'
+import { MockApi } from './mockapi'
 
 function collectApis(): MockApi.obj[] {
   const mockApis = []

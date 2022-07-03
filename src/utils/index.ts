@@ -24,6 +24,9 @@ export function getCookie(key: string) {
   return match ? decodeURIComponent(match[2]) : ""
 }
 
+/**
+ * @param key cookie键
+ */
 export function removeCookie(key: string) {
   setCookie(key, '', -1)
 }
