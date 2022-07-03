@@ -1,7 +1,8 @@
-import { removeCookie, setCookie, sleep } from "@/utils"
+import { removeCookie, setCookie } from "@/utils"
 import { defineStore } from "pinia"
 import request from "@/utils/request"
 import { message } from "ant-design-vue"
+import { Stores } from "types/stores"
 
 export const userStore = defineStore('user', {
   state: (): Stores.user => ({
@@ -13,15 +14,15 @@ export const userStore = defineStore('user', {
   actions: {
     async login(username: string, password: string) {
       return new Promise((resolve, reject) => {
-        request.post('/user/login', {
+        request.post<Stores.user>('/user/login', {
           username, password
         }).then(res => {
-          const { data, msg } = res.data
+          const { data, msg } = res
           if (data) {
             this.name = data.name
             this.age = data.age
             this.sex = data.sex
-            this.token = `${data.username}Token`
+            this.token = `${username}Token`
             setCookie('token', this.token)
             resolve(msg)
           } else {
@@ -32,8 +33,8 @@ export const userStore = defineStore('user', {
     },
     async logout() {
       return new Promise((resolve) => {
-        request.get('/user/logout').then(res => {
-          const { msg } = res.data
+        request.get<Stores.user>('/user/logout').then((res) => {
+          const { msg } = res
           removeCookie('token')
           message.success(msg)
           resolve(msg)
@@ -42,17 +43,17 @@ export const userStore = defineStore('user', {
     },
     async getUserInfo(token: string): Promise<string> {
       return new Promise((resolve, reject) => {
-        request.get('/user/info', {
+        request.get<Stores.user>('/user/info', {
           params: {
             token: token
           }
         }).then(res => {
-          const { data, msg } = res.data
+          const { data, msg } = res
           if (data) {
             this.name = data.name
             this.age = data.age
             this.sex = data.sex
-            this.token = `${data.username}Token`
+            this.token = token
             setCookie('token', this.token)
             resolve(msg)
           } else {

@@ -1,4 +1,4 @@
-declare namespace MockApi {
+export namespace MockApi {
   type type = Lowercase<'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH'>
   type responseFunc = (options: request) => response
   interface request {

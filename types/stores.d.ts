@@ -1,4 +1,4 @@
-declare namespace Stores {
+export namespace Stores {
   interface user {
     name: string
     age: number | null

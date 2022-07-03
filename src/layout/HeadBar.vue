@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { MenuFoldOutlined, LogoutOutlined } from '@ant-design/icons-vue'
+import { Layout } from 'types/layout'
 import { inject } from 'vue'
 import { useRouter } from 'vue-router'
 import { userStore } from '../stores/user'

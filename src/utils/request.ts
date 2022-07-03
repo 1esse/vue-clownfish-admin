@@ -30,7 +30,7 @@ request.interceptors.response.use(
       message.error(`错误码${code}：${msg || '未知错误'}`, 5 * 1000)
       return Promise.reject(new Error(msg || '未知错误'))
     } else {
-      return response
+      return response.data
     }
   },
   error => {

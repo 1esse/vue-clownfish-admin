@@ -6,6 +6,7 @@ import SideBar from './SideBar.vue'
 import TabsBar from './TabsBar.vue'
 import isMobile from '@/composables/isMobile'
 import Logo from '@/assets/logo.png'
+import { Layout } from 'types/layout'
 
 const _isMobile = isMobile()
 const sidebarRelated = reactive<Layout.SidebarRelated>({
@@ -56,8 +57,9 @@ provide('loading', loading)
         <RouterView v-slot="{ Component, route }">
           <Transition name="fade-scale" mode="out-in">
             <!-- 
-              vite的热更新会导致keepalive组件出错 
+              vite的热更新会导致keepalive组件出错
               https://github.com/vuejs/core/pull/5165 
+              开发过程中可以注释掉keepalive，生产环境不受影响
             -->
             <KeepAlive :include="getKeepAlivePages">
               <component :is="Component" :key="route.path" />

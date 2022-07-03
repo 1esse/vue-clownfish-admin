@@ -1,8 +1,9 @@
 import { mock, Random } from "mockjs"
 import QueryString from "qs"
+import { MockApi } from "../mockapi"
 
 function generateData(len: number) {
-    const data = []
+    const data = <any[]>[]
     let i = 0
     while (i < len) {
         const item = mock({
