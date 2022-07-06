@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router"
 import Layout from '@/layout/index.vue'
-import { GithubOutlined, TableOutlined } from '@ant-design/icons-vue'
+import { GithubOutlined, TableOutlined, HomeOutlined, BlockOutlined } from '@ant-design/icons-vue'
 
 const dashboardRoute: RouteRecordRaw = {
   path: '/',
@@ -12,7 +12,7 @@ const dashboardRoute: RouteRecordRaw = {
       path: 'dashboard',
       name: 'Dashboard',
       component: () => import('@/views/dashboard.vue'),
-      meta: { title: '首页', icon: 'dashboard' }
+      meta: { title: '首页', icon: HomeOutlined }
     }
   ]
 }
@@ -59,7 +59,7 @@ const routes: RouteRecordRaw[] = [
         path: 'index',
         name: 'ModalIndex',
         component: () => import('@/views/modal.vue'),
-        meta: { title: '模态框', icon: 'dashboard' }
+        meta: { title: '模态框', icon: BlockOutlined }
       }
     ]
   },

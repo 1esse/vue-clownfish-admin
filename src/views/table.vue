@@ -11,21 +11,27 @@ const loading = reactive({
 const dataSource = tableDataSource()
 // 初始化表格属性
 const columns = tableColumns([
-  { title: 'id', dataIndex: 'key', key: 'key' },
+  {
+    title: 'id', dataIndex: 'key', key: 'key',
+    width: 70,
+  },
   {
     title: '姓名',
     dataIndex: 'name',
     key: 'name',
+    width: 300,
   },
   {
     title: '年龄',
     dataIndex: 'age',
     key: 'age',
+    width: 300,
   },
   {
     title: '住址',
     dataIndex: 'address',
     key: 'address',
+    width: 300
   }
 ])
 // 表格分页信息
@@ -56,9 +62,8 @@ function updateTable() {
   <main>
     <header class="block shadow">头部</header>
     <ATable class="table shadow" :dataSource="dataSource" :columns="columns" :pagination="pagination"
-      :loading="loading.table" bordered :scroll="{ scrollToFirstRowOnChange: true, y: tableWrapperHeight - 88 }"
+      :loading="loading.table" bordered :scroll="{ scrollToFirstRowOnChange: true, x: 100, y: tableWrapperHeight - 88 }"
       size="small" />
-    <footer class="block shadow">脚部</footer>
   </main>
 </template>
 <style lang="postcss" scoped>

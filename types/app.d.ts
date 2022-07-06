@@ -1,4 +1,5 @@
-import { Ref } from "vue"
+import { DefaultOptionType, SelectValue } from "ant-design-vue/es/select"
+import { Ref, ShallowRef } from "vue"
 
 /**
  * 开关类型：on开 off关
@@ -14,12 +15,20 @@ export type SwitchType = 'on' | 'off'
  */
 export type EnvType = 'development' | 'staging' | 'production'
 
-export type TextType<T = string> = {
-    field?: T,
+export type TextType = {
+    kind: 'text'
+    field?: string
     title: string
-    value?: string | number
+    value?: string | number | Ref<string | number>
 }
 
-export type FilterForm<T> = {
-    [K in keyof T]: TextType<K>
+export type SelectType = {
+    kind: 'select'
+    field?: string
+    title: string
+    value: SelectValue | Ref<SelectValue>
+    options: DefaultOptionType[] | ShallowRef<DefaultOptionType[]>
+    onChange?: (value: SelectValue, option: DefaultOptionType | DefaultOptionType[]) => void
 }
+
+
