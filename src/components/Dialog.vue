@@ -72,7 +72,7 @@ function shadowClick() {
   display: flex;
   flex-direction: column;
   background-color: white;
-  transition: ease .3s;
+  transition: ease .2s;
   transition-property: width, height;
 }
 

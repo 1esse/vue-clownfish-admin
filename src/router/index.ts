@@ -2,7 +2,7 @@ import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router"
 import Layout from '@/layout/index.vue'
 import { GithubOutlined, TableOutlined, HomeOutlined, BlockOutlined } from '@ant-design/icons-vue'
 
-const dashboardRoute: RouteRecordRaw = {
+export const dashboardRoute: RouteRecordRaw = {
   path: '/',
   component: Layout,
   redirect: '/dashboard',
