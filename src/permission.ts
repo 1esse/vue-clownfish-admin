@@ -9,6 +9,8 @@ import { message } from 'ant-design-vue'
 NProgress.configure({ showSpinner: false })
 
 const whitelist: string[] = ['/login', '/404']
+let scrollTimeout: NodeJS.Timeout | null = null
+let contentWindowDom: HTMLElement | null = null
 
 router.beforeEach(async (to, from, next) => {
   NProgress.start()
@@ -37,6 +39,18 @@ router.beforeEach(async (to, from, next) => {
   }
 })
 
-router.afterEach(() => {
+router.afterEach((to, from) => {
   NProgress.done()
+  scrollTimeout && clearTimeout(scrollTimeout)
+  if (from.path === '/') return
+  scrollTimeout = setTimeout(() => {
+    if (contentWindowDom) {
+      contentWindowDom.scrollTo({ top: 0, left: 0 })
+      return
+    }
+    contentWindowDom = document.querySelector('#content-window')
+    if (contentWindowDom) {
+      contentWindowDom.scrollTo({ top: 0, left: 0 })
+    }
+  }, 350)
 })
