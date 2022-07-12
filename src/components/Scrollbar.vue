@@ -11,13 +11,15 @@ const props = withDefaults(defineProps<{
   direction?: 'horizontal' | 'vertical'
   initOptions?: Options,
   flex?: number
+  speed?: number
 }>(), {
   width: '100%',
   height: '100%',
   tag: 'div',
   direction: 'vertical',
   initOptions: undefined,
-  flex: 1
+  flex: 1,
+  speed: 1
 })
 
 const scrollbar = ref<OverlayScrollbars>()
@@ -37,15 +39,27 @@ defineExpose({
 })
 
 function listenWheel() {
-  scrollbarDom.value.addEventListener('wheel', (e: WheelEventInit): void => {
-    const viewport = scrollbar.value?.getElements().viewport
-    const scrollOffset = (viewport && (
-      props.direction === 'horizontal' ? viewport.scrollLeft : viewport.scrollTop) || 0) + ((e.deltaY || 0) / 4)
-    scrollbar.value?.scroll({
-      x: props.direction === 'horizontal' ? scrollOffset : 0,
-      y: props.direction === 'vertical' ? scrollOffset : 0
-    }, 30)
-  })
+  scrollbarDom.value.addEventListener('wheel', (e) => onWheel(e as WheelEvent))
+}
+
+function onWheel(e: WheelEvent): void {
+  const viewport = scrollbar.value?.getElements().viewport
+  const states = scrollbar.value?.getState()
+
+  if (
+    (states?.hasOverflow.x && props.direction === 'horizontal') ||
+    (states?.hasOverflow.y && props.direction === 'vertical')
+  ) {
+    // 阻止浏览器默认滚动行为
+    e.preventDefault()
+  }
+
+  const scrollOffset = (viewport && (
+    props.direction === 'horizontal' ? viewport.scrollLeft : viewport.scrollTop) || 0) + ((e.deltaY || 0) / 4 * props.speed)
+  scrollbar.value?.scroll({
+    x: props.direction === 'horizontal' ? scrollOffset : 0,
+    y: props.direction === 'vertical' ? scrollOffset : 0
+  }, 30)
 }
 
 function getDirectionOptions(): Options {

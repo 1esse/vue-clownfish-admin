@@ -3,6 +3,7 @@ import { onBeforeMount, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import type { RouteLocationMatched, RouteLocationNormalizedLoaded } from 'vue-router'
 import { dashboardRoute } from '@/router'
+import { resolve } from 'pathe'
 
 const route = useRoute()
 const routeMatched = ref<RouteLocationMatched[]>([])
@@ -19,7 +20,7 @@ function refreshBreadCrumb(route: RouteLocationNormalizedLoaded) {
   routeMatched.value = route.matched.filter((item) => item.meta.breadcrumb !== false && !item.meta.hidden)
   if (routeMatched.value.length === 0) return
   if (routeMatched.value[0].path !== '/dashboard') {
-    routeMatched.value.unshift(<RouteLocationMatched>dashboardRoute.children?.[0])
+    routeMatched.value.unshift(<RouteLocationMatched>{ ...dashboardRoute.children?.[0], path: resolve('/', dashboardRoute.children?.[0].path as string) })
   }
 }
 </script>
