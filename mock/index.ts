@@ -31,7 +31,7 @@ function enableMock(timeout: string | number = '100-1000') {
   const mockApis = collectApis()
   for (const api of mockApis) {
     Mock.mock(new RegExp(api.url), api.type || 'get', (options: MockApi.request) => {
-      if (options.body) {
+      if (typeof options.body === 'string' && options.body) {
         options.body = JSON.parse(options.body)
       }
       return api.response instanceof Function ? api.response(options) : api.response

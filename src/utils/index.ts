@@ -5,7 +5,7 @@
  * @param path cookie生效路径范围，默认"/"全局生效
  */
 export function setCookie(key: string, value: string | number, expires: number = 0, path: string = '/') {
-  let cookie = `${key}=${encodeURIComponent(value)};path=${path}`
+  let cookie = `${key}=${encodeURIComponent(value)};path=${path};SameSite=None;Secure`
   if (expires !== 0) {
     const date = new Date()
     date.setDate(date.getDate() + expires)
