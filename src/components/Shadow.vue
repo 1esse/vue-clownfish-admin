@@ -27,7 +27,7 @@ const emit = defineEmits<{
   position: fixed;
   top: -25vh;
   left: -25vw;
-  z-index: 9999;
+  z-index: 999;
   padding: 25vh 25vw;
   background-color: v-bind('props.color');
 }
