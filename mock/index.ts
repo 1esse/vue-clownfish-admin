@@ -2,18 +2,22 @@ import Mock from 'mockjs'
 import { mockNamespace } from '@/appConfig'
 import { MockApi } from './mockapi'
 
+interface GlobModule {
+  default: MockApi.obj[]
+}
+
 function collectApis(): MockApi.obj[] {
   const mockApis = []
-  const apiModules = import.meta.globEager('./api/*.ts')
+  const apiModules = import.meta.glob('./api/*.ts', { eager: true })
   if (mockNamespace) {
     for (const [filePath, apiModule] of Object.entries(apiModules)) {
-      const apis: MockApi.obj[] = apiModule.default
+      const apis: MockApi.obj[] = (apiModule as GlobModule).default
       apis.forEach(api => api.url = filePath.replace(/^.+([\/\\].*)\.ts$/, '$1') + api.url)
-      mockApis.push(...apiModule.default)
+      mockApis.push(...(apiModule as GlobModule).default)
     }
   } else {
     for (const [, apiModule] of Object.entries(apiModules)) {
-      mockApis.push(...apiModule.default)
+      mockApis.push(...(apiModule as GlobModule).default)
     }
   }
   return mockApis
