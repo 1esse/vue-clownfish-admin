@@ -28,10 +28,12 @@
 
 #### 这里是antd版本，如果你更倾向于使用element-plus，请[点击这里](https://github.com/1esse/vue-clownfish-admin-elem)。
 
-## ✨ 最新版本 v1.0.15
+## ✨ 最新版本 v1.0.16
 1. cookie增加SameSite=None;Secure设置
 2. 优化表格自动高度
 3. 优化侧边栏和标签栏滚动速度
+4. 将vite版本更新至3.0，更新所有其他以来至最新版本
+5. 运行项目成功后默认不自动打开浏览器窗口
 
 ## 🐬 简介
 [vue-clownfish-admin](https://github.com/1esse/vue-clownfish-admin) 是一个由Vue最新技术栈开发的后台管理前端简易框架。基于vue3，集成vue3最新生态系统的核心库实现。主要的技术栈有
