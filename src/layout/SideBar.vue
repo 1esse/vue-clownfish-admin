@@ -95,7 +95,7 @@ function getOnlyChildPath(parentRoute: RouteRecordRaw): RouteRecordRaw {
 </script>
 
 <template>
-  <Scrollbar>
+  <Scrollbar :speed="3">
     <AMenu v-model:selectedKeys="selectedKeys" v-model:openKeys="openKeys" mode="inline" :inlineIndent="16"
       :selectable="false">
       <template v-for="route in routesList" key="index">

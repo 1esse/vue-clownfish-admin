@@ -1,4 +1,4 @@
-import { onBeforeUnmount, onMounted, reactive, ref, shallowRef } from "vue"
+import { ComponentPublicInstance, onBeforeUnmount, onMounted, reactive, Ref, ref, shallowRef } from "vue"
 import { debounce } from 'lodash'
 import { TableColumnsType, TablePaginationConfig } from "ant-design-vue"
 
@@ -30,8 +30,8 @@ export function tablePagination(pagination: TablePaginationConfig, changeCb?: Fu
   return _pagination
 }
 
-export function tableHeight(target: string) {
-  const height = ref<number>(500)
+export function tableHeight(target?: Ref<ComponentPublicInstance<any>>) {
+  const height = ref<number>(350)
   onMounted(() => {
     // 等待动画过渡结束
     setTimeout(() => {
@@ -43,11 +43,10 @@ export function tableHeight(target: string) {
     window.removeEventListener('resize', calHeight)
   })
   function calHeight() {
-    const _target = document.querySelector(target)
-    const boundingRect = _target?.getBoundingClientRect()
-    if (boundingRect && boundingRect.height) {
-      height.value = boundingRect.height
-    }
+    if (!target || !target.value) return
+    const table = target?.value.$el as HTMLElement
+    if (!table) return
+    height.value = table.clientHeight
   }
   return height
 }

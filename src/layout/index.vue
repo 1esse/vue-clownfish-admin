@@ -56,9 +56,14 @@ provide('loading', loading)
       <ALayoutContent id="content-window">
         <RouterView v-slot="{ Component, route }">
           <Transition name="fade-scale" mode="out-in">
-            <KeepAlive :include="getKeepAlivePages">
-              <component :is="Component" :key="route.path" />
-            </KeepAlive>
+            <!-- 
+              vite的hmr和keepalive组件冲突会导致vite热更新后路由失效，
+              https://github.com/vuejs/core/pull/5165
+              开发过程注释掉keepalive
+            -->
+            <!-- <KeepAlive :include="getKeepAlivePages"> -->
+            <component :is="Component" :key="route.path" />
+            <!-- </KeepAlive> -->
           </Transition>
         </RouterView>
       </ALayoutContent>

@@ -1,12 +1,13 @@
 <script lang="ts" setup>
 import { requestGet } from '@/composables/useRequest'
 import { tableHeight, tableDataSource, tableColumns, tablePagination } from '@/composables/getTable'
-import { onBeforeMount, reactive, watch } from 'vue'
+import { onBeforeMount, reactive, ref, watch } from 'vue'
 
 // 页面加载集中放置处
 const loading = reactive({
   table: false
 })
+const tableRef = ref()
 // 表格数据
 const dataSource = tableDataSource()
 // 初始化表格属性
@@ -38,7 +39,7 @@ const columns = tableColumns([
 const pagination = tablePagination({}, updateTable)
 
 // 表格容器高度
-const tableWrapperHeight = tableHeight('.table')
+const tableWrapperHeight = tableHeight(tableRef)
 
 onBeforeMount(() => {
   updateTable()
@@ -61,7 +62,7 @@ function updateTable() {
 <template>
   <main>
     <header class="block shadow">头部</header>
-    <ATable class="table shadow" :dataSource="dataSource" :columns="columns" :pagination="pagination"
+    <ATable ref="tableRef" class="table shadow" :dataSource="dataSource" :columns="columns" :pagination="pagination"
       :loading="loading.table" bordered :scroll="{ scrollToFirstRowOnChange: true, x: 100, y: tableWrapperHeight - 88 }"
       size="small" />
   </main>
