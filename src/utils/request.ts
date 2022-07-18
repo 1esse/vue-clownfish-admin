@@ -27,7 +27,7 @@ request.interceptors.response.use(
   response => {
     const { code, msg } = response.data
     if (code !== 200) {
-      message.error(`错误码${code}：${msg || '未知错误'}`, 5 * 1000)
+      message.error(`错误码${code}：${msg || '未知错误'}`, 5)
       return Promise.reject(new Error(msg || '未知错误'))
     } else {
       return response.data
@@ -35,7 +35,7 @@ request.interceptors.response.use(
   },
   error => {
     console.error(error)
-    message.error(error.message, 5 * 1000)
+    message.error(error.message, 5)
     return Promise.reject(error)
   }
 )
