@@ -1,0 +1,1 @@
+import{_ as e,c as o,o as t}from"./index.6494c418.js";const s={name:"Dashboard"},c={class:"block shadow flex-center",style:{width:"100%","min-height":"100%",color:"var(--gray)","font-size":"5rem"}};function a(n,r,d,i,_,l){return t(),o("section",c," To be continued ")}const h=e(s,[["render",a]]);export{h as default};
