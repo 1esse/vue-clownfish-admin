@@ -8,7 +8,7 @@ import { RouterLink } from 'vue-router'
 import { SubMenu, MenuItem } from 'ant-design-vue/es'
 import type { Component, Slots } from 'vue'
 import type { RouteMeta, RouteRecordRaw } from 'vue-router'
-import { Layout } from 'types/layout'
+import type { Layout } from 'types/layout'
 
 const router = useRouter()
 const route = useRoute()
@@ -81,7 +81,7 @@ const MenuItemNav = (props: { route: RouteRecordRaw, basePath: string }) => {
     )
   }
   return props.route.meta?.hidden ? <div style="display: none"></div> :
-    props.route.children ?
+    props.route.children && props.route.children.filter((route: RouteRecordRaw) => !route.meta?.hidden).length > 0 ?
       props.route.children.filter((route: RouteRecordRaw) => !route.meta?.hidden).length > 1 ?
         subMenuTemplate(props.route) :
         menuItemTemplate(getOnlyChildPath(props.route)) :

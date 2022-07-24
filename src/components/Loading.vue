@@ -19,7 +19,7 @@ import loadingGif from '@/assets/loading.gif'
 }
 
 .loading-gif {
-  width: 5rem;
+  width: 15rem;
   height: auto;
   object-fit: contain;
 }

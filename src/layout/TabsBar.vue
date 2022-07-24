@@ -6,7 +6,8 @@ import Scrollbar from '@/components/Scrollbar.vue'
 import MenuPanel from '@/components/MenuPanel.vue'
 import type { ComponentPublicInstance } from 'vue'
 import type { RouteLocationNormalizedLoaded } from 'vue-router'
-import { Layout } from 'types/layout'
+import type { Layout } from 'types/layout'
+import { showHiddenTabs } from '@/appConfig'
 
 const router = useRouter()
 const route = useRoute()
@@ -26,7 +27,7 @@ onBeforeMount(() => { addTab(route) })
 watch(route, (currentRoute) => { addTab(currentRoute) })
 
 function addTab(tab: RouteLocationNormalizedLoaded) {
-  if (tab.meta?.hidden) return
+  if (tab.meta?.hidden && !showHiddenTabs) return
   if (tabs.value.every(route => route.path !== tab.path)) {
     /**
      * 参数传进来的meta是递归合并后的结果，此处需要找出属于该路由的meta

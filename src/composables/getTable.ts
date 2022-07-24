@@ -1,5 +1,4 @@
 import { ComponentPublicInstance, onBeforeUnmount, onMounted, reactive, Ref, ref, shallowRef } from "vue"
-import { debounce } from 'lodash'
 import { TableColumnsType, TablePaginationConfig } from "ant-design-vue"
 
 export function tableDataSource(dataSource?: any[]) {
@@ -37,7 +36,7 @@ export function tableHeight(target?: Ref<ComponentPublicInstance<any>>) {
     setTimeout(() => {
       calHeight()
     }, 350)
-    window.addEventListener('resize', debounce(calHeight, 350))
+    window.addEventListener('resize', calHeight)
   })
   onBeforeUnmount(() => {
     window.removeEventListener('resize', calHeight)

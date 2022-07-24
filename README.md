@@ -28,12 +28,9 @@
 
 #### 这里是antd版本，如果你更倾向于使用element-plus，请[点击这里](https://github.com/1esse/vue-clownfish-admin-elem)。
 
-## ✨ 最新版本 v1.0.16
-1. cookie增加SameSite=None;Secure设置
-2. 优化表格自动高度
-3. 优化侧边栏和标签栏滚动速度
-4. 将vite版本更新至3.0，更新所有其他依赖包至最新版本
-5. 运行项目成功后默认不自动打开浏览器窗口
+## ✨ 最新版本 v1.0.17
+1. mock支持获取get参数
+2. tabs标签页支持添加hidden页面
 
 ## 🐬 简介
 [vue-clownfish-admin](https://github.com/1esse/vue-clownfish-admin) 是一个由Vue最新技术栈开发的后台管理前端简易框架。基于vue3，集成vue3最新生态系统的核心库实现。主要的技术栈有
@@ -50,6 +47,7 @@
 1. 定义在src/components下的组件，可在页面的template直接使用，不必导入（tsx除外）。
 2. 本项目采用[vite官方推荐的css编写方式](https://www.vitejs.net/guide/features.html#css-pre-processors)，可能是volar插件的原因，并没有对vue文件的postcss代码进行高亮，但如果关闭了编辑器的css语法检查，也可以使用原生css编写嵌套style，但可能会失去一些代码提示。如果你不喜欢用postcss-nesting，也可以下载其他css预处理器依赖如scss，less等，不会造成冲突。
 3. 不需要对flex，grid等css样式进行多浏览器适配，框架已配置了自动适配。
+4. 大部分场景推荐使用rem代替px以适配更多不同分辨率屏幕
 
 ## 🐳 主要功能
 + 根据路由配置自动生成侧边栏菜单（支持多层嵌套和外链）
