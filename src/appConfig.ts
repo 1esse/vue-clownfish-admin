@@ -6,6 +6,11 @@ import { EnvType, SwitchType } from "types/app"
 export const appTitle = 'Clownfish Admin'
 
 /**
+ * 标签页是否展示设置hidden的页面
+ */
+export const showHiddenTabs: boolean = false
+
+/**
  * 使用mock代理api请求：on开，off关  
  */
 export const mock: SwitchType = 'on'

@@ -6,7 +6,7 @@ import SideBar from './SideBar.vue'
 import TabsBar from './TabsBar.vue'
 import isMobile from '@/composables/isMobile'
 import Logo from '@/assets/logo.png'
-import { Layout } from 'types/layout'
+import type { Layout } from 'types/layout'
 
 const _isMobile = isMobile()
 const sidebarRelated = reactive<Layout.SidebarRelated>({

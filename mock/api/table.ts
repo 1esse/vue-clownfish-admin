@@ -25,7 +25,7 @@ export default <MockApi.obj[]>[
         url: '/list',
         type: 'get',
         response: (options) => {
-            const { page, perPage } = <object & { page: number, perPage: number }>QueryString.parse(options.url.slice(options.url.indexOf('?')), { ignoreQueryPrefix: true })
+            const { page, perPage } = options.params
             const _page = +page
             const _perPage = +perPage
             return {

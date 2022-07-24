@@ -5,6 +5,7 @@ export namespace MockApi {
     url: string
     type: type
     body: any
+    params: any
   }
   interface response {
     code: number

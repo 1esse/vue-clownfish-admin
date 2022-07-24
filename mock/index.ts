@@ -1,6 +1,7 @@
 import Mock from 'mockjs'
 import { mockNamespace } from '@/appConfig'
 import { MockApi } from './mockapi'
+import QueryString from 'qs'
 
 interface GlobModule {
   default: MockApi.obj[]
@@ -37,6 +38,9 @@ function enableMock(timeout: string | number = '100-1000') {
     Mock.mock(new RegExp(api.url), api.type || 'get', (options: MockApi.request) => {
       if (typeof options.body === 'string' && options.body) {
         options.body = JSON.parse(options.body)
+      }
+      if (options.url.indexOf('?') > 0) {
+        options.params = QueryString.parse(options.url.slice(options.url.indexOf('?')), { ignoreQueryPrefix: true })
       }
       return api.response instanceof Function ? api.response(options) : api.response
     })

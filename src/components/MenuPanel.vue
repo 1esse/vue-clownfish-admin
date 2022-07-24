@@ -56,6 +56,7 @@ function hidePanel() {
 .menu-panel {
   min-width: 8rem;
   position: fixed;
+  z-index: 10;
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
