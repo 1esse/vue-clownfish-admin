@@ -21,7 +21,7 @@ const constantRoutes: RouteRecordRaw[] = [
   {
     path: '/redirect',
     component: Layout,
-    meta: { hidden: true, title: '页面跳转' },
+    meta: { hidden: true, title: '页面跳转', hiddenTab: true },
     children: [
       {
         path: '/redirect/:path(.*)',
@@ -74,7 +74,7 @@ const routes: RouteRecordRaw[] = [
         path: 'index',
         name: 'TableIndex',
         component: () => import('@/views/table.vue'),
-        meta: { title: '表格', icon: TableOutlined }
+        meta: { title: '表格', icon: TableOutlined, askBeforeCloseTab: true }
       }
     ]
   },

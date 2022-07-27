@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onBeforeMount, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import type { RouteLocationMatched, RouteLocationNormalizedLoaded } from 'vue-router'
+import type { RouteLocationMatched } from 'vue-router'
 import { dashboardRoute } from '@/router'
 import { resolve } from 'pathe'
 
@@ -13,10 +13,10 @@ const props = withDefaults(defineProps<{
   withIcons: false
 })
 
-onBeforeMount(() => refreshBreadCrumb(route))
-watch(route, refreshBreadCrumb)
+onBeforeMount(() => refreshBreadCrumb())
+watch(() => route.path, refreshBreadCrumb)
 
-function refreshBreadCrumb(route: RouteLocationNormalizedLoaded) {
+function refreshBreadCrumb() {
   routeMatched.value = route.matched.filter((item) => item.meta.breadcrumb !== false && !item.meta.hidden)
   if (routeMatched.value.length === 0) return
   if (routeMatched.value[0].path !== '/dashboard') {

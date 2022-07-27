@@ -29,11 +29,11 @@ const routesList = computed(() => {
   return router.options.routes
 })
 
-watch(route, (currentRoute) => {
-  selectedKeys.value = [currentRoute.path]
+watch(() => route.path, () => {
+  selectedKeys.value = [route.path]
   // 如果该路由设置页面缓存则推进缓存组
-  if (currentRoute.meta.keepAlive && !keepAlivePages?.has(currentRoute.name as string)) {
-    keepAlivePages?.add(currentRoute.name as string)
+  if (route.meta.keepAlive && !keepAlivePages?.has(route.name as string)) {
+    keepAlivePages?.add(route.name as string)
   }
 })
 
