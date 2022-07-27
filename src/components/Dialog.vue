@@ -21,7 +21,7 @@ const props = withDefaults(defineProps<{
   loading: false,
   preventShadowEvent: true,
   showClose: true,
-  transition: transitions.fade
+  transition: transitions.slideDown
 })
 
 const _isMobile = isMobile()

@@ -87,5 +87,7 @@ footer {
   width: 100%;
   height: 100px;
   flex: 1;
+  background-color: #fff;
+  border-radius: 0.7rem;
 }
 </style>

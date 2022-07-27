@@ -5,7 +5,7 @@
     "email": "572116385@qq.com",
     "url": "https://1esse.github.io/vue-clownfish-admin/"
   },
-  "version": "1.0.17",
+  "version": "1.0.18",
   "scripts": {
     "dev": "vite",
     "stage": "vite --mode staging",

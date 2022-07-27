@@ -28,9 +28,10 @@
 
 #### 这里是antd版本，如果你更倾向于使用element-plus，请[点击这里](https://github.com/1esse/vue-clownfish-admin-elem)。
 
-## ✨ 最新版本 v1.0.17
-1. mock支持获取get参数
-2. tabs标签页支持添加hidden页面
+## ✨ 最新版本 v1.0.18
+1. tabs不再局限于菜单页保持一致，可添加任意路径的路由，包括hidden页
+2. 关闭tab标签页可以弹窗确认
+3. 优化路由监听
 
 ## 🐬 简介
 [vue-clownfish-admin](https://github.com/1esse/vue-clownfish-admin) 是一个由Vue最新技术栈开发的后台管理前端简易框架。基于vue3，集成vue3最新生态系统的核心库实现。主要的技术栈有

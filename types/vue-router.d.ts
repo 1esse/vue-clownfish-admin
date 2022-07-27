@@ -26,5 +26,13 @@ declare module 'vue-router' {
      * keepAlive：是否缓存该路由，只有当页面定义的name和路由定义的name一致时，才能生效
      */
     keepAlive?: boolean
+    /**
+     * hiddenTab：是否在标签页隐藏
+     */
+    hiddenTab?: boolean
+    /**
+     * askBeforeCloseTab：在关闭标签页时弹窗确认
+     */
+    askBeforeCloseTab?: boolean
   }
 }
