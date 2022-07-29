@@ -46,7 +46,7 @@
 
 ## 🐟了解这些可能会有帮助
 1. 定义在src/components下的组件，可在页面的template直接使用，不必导入（tsx除外）。
-2. 本项目采用[vite官方推荐的css编写方式](https://www.vitejs.net/guide/features.html#css-pre-processors)，可能是volar插件的原因，并没有对vue文件的postcss代码进行高亮，但如果关闭了编辑器的css语法检查，也可以使用原生css编写嵌套style，但可能会失去一些代码提示。如果你不喜欢用postcss-nesting，也可以下载其他css预处理器依赖如scss，less等，不会造成冲突。
+2. 本项目采用[vite官方推荐的css编写方式](https://www.vitejs.net/guide/features.html#css-pre-processors)，如果你用的vscode编辑器，可下载language-postcss插件进行代码高亮。如果你不喜欢用postcss-nesting，也可以下载其他css预处理器依赖如scss，less等，不会造成冲突。
 3. 不需要对flex，grid等css样式进行多浏览器适配，框架已配置了自动适配。
 4. 大部分场景推荐使用rem代替px以适配更多不同分辨率屏幕
 
