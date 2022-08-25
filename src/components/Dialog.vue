@@ -45,7 +45,7 @@ function shadowClick() {
     <Transition :name="props.transition" mode="out-in" appear>
       <Shadow v-if="props.show" contentCenter @shadowClick="shadowClick">
         <div :style="{ position: 'relative', maxHeight: _isMobile ? '80vh' : props.maxHeight }">
-          <div class="block shadow modal"
+          <div class="block modal"
             :style="{ padding: 0, width: props.loading ? '30rem' : props.width, height: props.loading ? '20rem' : props.height, maxWidth: props.maxWidth, maxHeight: _isMobile ? '80vh' : props.maxHeight }">
             <Loading v-if="props.loading"></Loading>
             <template v-else>

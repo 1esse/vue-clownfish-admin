@@ -141,7 +141,7 @@ function showTabMenu(e: MouseEvent, tab: RouteLocationNormalizedLoaded) {
 <template>
   <Scrollbar ref="scrollbarDom" height="2rem" direction="horizontal" :speed="3">
     <div class="tabs">
-      <RouterLink ref="tabDoms" v-for="tab in tabs" :key="tab.path" :to="tab.path" class="tab shadow-sm"
+      <RouterLink ref="tabDoms" v-for="tab in tabs" :key="tab.path" :to="tab.path" class="tab"
         :class="{ active: tab.path === route.path }" @click.right.prevent="showTabMenu($event, tab)">
         <template v-if="props.withIcons && tab.meta.icon">
           <SvgIcon v-if="typeof tab.meta.icon === 'string'" :icon-name="(tab.meta.icon as string)"></SvgIcon>
@@ -199,6 +199,7 @@ function showTabMenu(e: MouseEvent, tab: RouteLocationNormalizedLoaded) {
     background-color: var(--white);
     color: var(--black);
     border-radius: 0.5rem;
+    box-shadow: 0.1rem 0.2rem 0.2rem rgba(0, 0, 0, .1);
 
     &.active {
       background-color: var(--blue);

@@ -41,42 +41,12 @@ const constantRoutes: RouteRecordRaw[] = [
   }
 ]
 
-const routes: RouteRecordRaw[] = [
+export const routes: RouteRecordRaw[] = [
   {
     path: '/login',
     name: 'Login',
     component: () => import('@/views/login.vue'),
     meta: { hidden: true, title: '登录' }
-  },
-  {
-    path: '/modal',
-    name: 'Modal',
-    component: Layout,
-    redirect: '/modal/index',
-    meta: { breadcrumb: false },
-    children: [
-      {
-        path: 'index',
-        name: 'ModalIndex',
-        component: () => import('@/views/modal.vue'),
-        meta: { title: '模态框', icon: BlockOutlined }
-      }
-    ]
-  },
-  {
-    path: '/table',
-    name: 'Table',
-    component: Layout,
-    redirect: '/table/index',
-    meta: { breadcrumb: false },
-    children: [
-      {
-        path: 'index',
-        name: 'TableIndex',
-        component: () => import('@/views/table.vue'),
-        meta: { title: '表格', icon: TableOutlined, askBeforeCloseTab: true }
-      }
-    ]
   },
   {
     path: '/https://github.com/1esse/vue-clownfish-admin',

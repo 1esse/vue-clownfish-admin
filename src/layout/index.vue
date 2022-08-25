@@ -6,6 +6,7 @@ import SideBar from './SideBar.vue'
 import TabsBar from './TabsBar.vue'
 import isMobile from '@/composables/isMobile'
 import Logo from '@/assets/logo.png'
+import { transitions } from '@/appConfig'
 import type { Layout } from 'types/layout'
 
 const _isMobile = isMobile()
@@ -39,13 +40,13 @@ provide('loading', loading)
 <template>
   <ALayout>
     <ALayoutSider v-if="!_isMobile" v-model:collapsed="sidebarRelated.collapsed" collapsible :trigger="null"
-      :width="sidebarRelated.width" :collapsedWidth="sidebarRelated.collapsedWidth" breakpoint="md" class="shadow-lg">
+      :width="sidebarRelated.width" :collapsedWidth="sidebarRelated.collapsedWidth" breakpoint="md">
       <div style="display: flex; flex-direction: column; width: 100%; height: 100%;">
         <RouterLink to="/">
           <AImage width="100%" :height="sidebarRelated.collapsed ? '3rem' : '6rem'"
             style="padding: .3rem 0; object-fit: contain;" :src="Logo" :preview="false" />
         </RouterLink>
-        <SideBar :style="{ paddingRight: sidebarRelated.collapsed ? '0' : '1rem' }"></SideBar>
+        <SideBar :style="{ paddingRight: sidebarRelated.collapsed ? '0' : '0' }"></SideBar>
       </div>
     </ALayoutSider>
     <ALayout>
@@ -55,15 +56,15 @@ provide('loading', loading)
       </ALayoutHeader>
       <ALayoutContent id="content-window">
         <RouterView v-slot="{ Component, route }">
-          <Transition name="fade-scale" mode="out-in">
+          <Transition :name="transitions.fadeScale" mode="out-in" appear>
             <!-- 
-              vite的hmr和keepalive组件冲突会导致vite热更新后路由失效，
+              vite的hmr和keepalive组件冲突会导致路由失效，
               https://github.com/vuejs/core/pull/5165
               开发过程注释掉keepalive
             -->
-            <!-- <KeepAlive :include="getKeepAlivePages"> -->
-            <component :is="Component" :key="route.path" />
-            <!-- </KeepAlive> -->
+            <KeepAlive :include="getKeepAlivePages" :max="10">
+              <component :is="Component" :key="route.name" />
+            </KeepAlive>
           </Transition>
         </RouterView>
       </ALayoutContent>
@@ -77,14 +78,14 @@ provide('loading', loading)
             <AImage :width="sidebarRelated.width" height="6rem" style="padding: .3rem 0; object-fit: contain;"
               :preview="false" :src="Logo" />
           </RouterLink>
-          <SideBar style="padding-right: 1rem;"></SideBar>
+          <SideBar></SideBar>
         </div>
       </Shadow>
     </Transition>
   </Teleport>
 </template>
 
-<style lang="postcss" scoped>
+<style scoped>
 .sidebar-mobile {
   width: v-bind('sidebarRelated.width');
   height: 96vh;
