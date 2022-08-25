@@ -3,13 +3,14 @@ import { mockNamespace } from '@/appConfig'
 import { MockApi } from './mockapi'
 import QueryString from 'qs'
 
-interface GlobModule {
+type GlobModule = {
   default: MockApi.obj[]
 }
 
 function collectApis(): MockApi.obj[] {
   const mockApis = []
   const apiModules = import.meta.glob('./api/*.ts', { eager: true })
+
   if (mockNamespace) {
     for (const [filePath, apiModule] of Object.entries(apiModules)) {
       const apis: MockApi.obj[] = (apiModule as GlobModule).default
@@ -36,11 +37,14 @@ function enableMock(timeout: string | number = '100-1000') {
   const mockApis = collectApis()
   for (const api of mockApis) {
     Mock.mock(new RegExp(api.url), api.type || 'get', (options: MockApi.request) => {
+      // 如果传过来的body是序列化且有值，则解析body内容
       if (typeof options.body === 'string' && options.body) {
         options.body = JSON.parse(options.body)
       }
+      // 提取params
       if (options.url.indexOf('?') > 0) {
-        options.params = QueryString.parse(options.url.slice(options.url.indexOf('?')), { ignoreQueryPrefix: true })
+        const paramsStr = options.url.slice(options.url.indexOf('?'))
+        options.params = QueryString.parse(paramsStr, { ignoreQueryPrefix: true })
       }
       return api.response instanceof Function ? api.response(options) : api.response
     })
