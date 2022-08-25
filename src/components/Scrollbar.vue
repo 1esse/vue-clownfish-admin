@@ -10,16 +10,16 @@ const props = withDefaults(defineProps<{
   tag?: string
   direction?: 'horizontal' | 'vertical'
   initOptions?: Options,
-  flex?: number
   speed?: number
+  minHeight?: string | number
 }>(), {
   width: '100%',
   height: '100%',
   tag: 'div',
   direction: 'vertical',
   initOptions: undefined,
-  flex: 1,
-  speed: 1
+  speed: 1,
+  minHeight: 'unset'
 })
 
 const scrollbar = ref<OverlayScrollbars>()
@@ -84,7 +84,7 @@ function getDirectionOptions(): Options {
 
 <template>
   <component ref="scrollbarDom" :is="props.tag" :class="['scrollbar', `scrollbar-${props.direction}`]"
-    :style="{ width: props.width, height: props.height }">
+    :style="{ width: props.width, height: props.height, minHeight: props.minHeight }">
     <slot />
   </component>
 </template>

@@ -70,7 +70,7 @@ export const guid = () => {
  * @param {string} str
  * @returns {Boolean}
  */
- export function isPhone(str: string) {
+export const isPhone = (str: string) => {
   const reg = /^1[3456789]\d{9}$/
   return reg.test(str)
 }
@@ -80,7 +80,7 @@ export const guid = () => {
  * @param {string} str
  * @returns {Boolean}
  */
-export function isEmail(str: string) {
+export const isEmail = (str: string) => {
   const reg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/
   return reg.test(str)
 }

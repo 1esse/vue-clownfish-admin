@@ -9,7 +9,7 @@ import { SubMenu, MenuItem } from 'ant-design-vue/es'
 import type { Component, Slots } from 'vue'
 import type { RouteMeta, RouteRecordRaw } from 'vue-router'
 import type { Layout } from 'types/layout'
-import { getSidebarList, refreshSidebar } from '../composables/useSideBar'
+import { sidebarStore } from '@/stores/sidebar'
 
 const router = useRouter()
 const route = useRoute()
@@ -24,8 +24,8 @@ const openKeys = ref<string[]>(
 ) // 子菜单默认展开项
 const keepAlivePages = inject<Layout.keepAlivePages>('keepAlivePages')
 
-const sidebarList = getSidebarList()
-refreshSidebar()
+const sidebar = sidebarStore()
+sidebar.refreshSidebar()
 
 watch(() => route.path, () => {
   selectedKeys.value = [route.meta.belongs || route.path]
@@ -97,7 +97,7 @@ function getOnlyChildPath(parentRoute: RouteRecordRaw): RouteRecordRaw {
   <Scrollbar :speed="4">
     <AMenu v-model:selectedKeys="selectedKeys" v-model:openKeys="openKeys" mode="inline" :inlineIndent="16"
       :selectable="false">
-      <template v-for="route in sidebarList" key="index">
+      <template v-for="route in sidebar.getSidebarList" key="index">
         <MenuItemNav :route="route" :basePath="route.path"></MenuItemNav>
       </template>
     </AMenu>

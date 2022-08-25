@@ -25,6 +25,7 @@ declare module '@vue/runtime-core' {
     Dialog: typeof import('./src/components/Dialog.vue')['default']
     Loading: typeof import('./src/components/Loading.vue')['default']
     MenuPanel: typeof import('./src/components/MenuPanel.vue')['default']
+    MovableArea: typeof import('./src/components/MovableArea.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Scrollbar: typeof import('./src/components/Scrollbar.vue')['default']

@@ -55,13 +55,12 @@ function hidePanel() {
 .menu-panel {
   min-width: 8rem;
   position: fixed;
-  z-index: 10;
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
   border-radius: 0.3rem;
   padding: .7rem;
-  box-shadow: 0.1rem 0.2rem 0.2rem rgba(0, 0, 0, .1);
+  z-index: 999;
 }
 
 :global(.menu-panel>*) {
