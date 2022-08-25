@@ -2,7 +2,7 @@
 import { CloseOutlined } from '@ant-design/icons-vue'
 import isMobile from '@/composables/isMobile'
 import { transitions } from '@/appConfig'
-import { watch } from 'vue'
+import { useSlots, watch } from 'vue'
 
 const props = withDefaults(defineProps<{
   show: boolean
@@ -37,6 +37,7 @@ const emit = defineEmits<{
 const _isMobile = isMobile()
 
 watch(() => props.show, (val) => {
+  // 监听show=false
   if (!val) {
     props.onClose?.()
   }
@@ -66,13 +67,13 @@ function closeDialog() {
               :style="{ padding: 0, width: props.loading ? '30rem' : props.width, height: props.loading ? '20rem' : props.height, maxWidth: props.maxWidth, maxHeight: _isMobile ? '80vh' : 'unset', overflow: _isMobile ? 'auto' : 'unset' }">
               <Loading v-if="props.loading" :text="props.loadingText"></Loading>
               <template v-else>
-                <header class="dialog-header">
+                <header v-if="!!useSlots().dialogHeader" class="dialog-header">
                   <slot name="dialogHeader"></slot>
                 </header>
                 <main class="dialog-main">
                   <slot></slot>
                 </main>
-                <footer class="dialog-footer">
+                <footer v-if="!!useSlots().dialogFooter" class="dialog-footer">
                   <slot name="dialogFooter"></slot>
                 </footer>
               </template>
@@ -89,13 +90,13 @@ function closeDialog() {
               :style="{ padding: 0, width: props.loading ? '30rem' : props.width, height: props.loading ? '20rem' : props.height, maxWidth: props.maxWidth, maxHeight: _isMobile ? '80vh' : 'unset', overflow: _isMobile ? 'auto' : 'unset' }">
               <Loading v-if="props.loading" :text="props.loadingText"></Loading>
               <template v-else>
-                <header class="dialog-header">
+                <header v-if="!!useSlots().dialogHeader" class="dialog-header">
                   <slot name="dialogHeader"></slot>
                 </header>
                 <main class="dialog-main">
                   <slot></slot>
                 </main>
-                <footer class="dialog-footer">
+                <footer v-if="!!useSlots().dialogFooter" class="dialog-footer">
                   <slot name="dialogFooter"></slot>
                 </footer>
               </template>
