@@ -13,6 +13,7 @@ const props = withDefaults(defineProps<{
   loading?: boolean
   preventShadowEvent?: boolean
   showClose?: boolean
+  /** 使用v-if代替v-show */
   destroyOnClose?: boolean
   loadingText?: string
   transition?: transitions
