@@ -83,7 +83,7 @@ function showModal3() {
       </template>
     </Dialog>
     <Dialog v-model:show="visibles.dialog3" :loading="loading.dialog3" :loadingText="loadingText.dialog3" width="50rem"
-      height="80vh">
+      height="50vh">
       <template #dialogHeader>
         <div>
           <FireTwoTone style="margin-right: .5rem" />固定宽高模态框

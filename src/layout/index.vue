@@ -9,7 +9,7 @@ import Logo from '@/assets/logo.png'
 import { transitions, fixedHeader } from '@/appConfig'
 import type { Layout } from 'types/layout'
 
-const _isMobile = isMobile()
+const _isMobile = isMobile(setSidebarCollapsed)
 const sidebarRelated = reactive<Layout.SidebarRelated>({
   collapsed: true,
   width: '15rem',

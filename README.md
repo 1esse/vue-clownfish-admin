@@ -28,10 +28,15 @@
 
 #### 这里是antd版本，如果你更倾向于使用element-plus，请[点击这里](https://github.com/1esse/vue-clownfish-admin-elem)。
 
-## ✨ 最新版本 v1.0.18
-1. tabs不再局限于菜单页保持一致，可添加任意路径的路由，包括hidden页
-2. 关闭tab标签页可以弹窗确认
-3. 优化路由监听
+## ✨ 最新版本 v1.0.19
+1. 新增动态固定头部，appconfig可配置初始值
+2. 增加完善示例
+   + dashboard
+   + 模态框
+   + 表格列表
+   + 表格导出
+   + 动态路由
+   + 动态菜单
 
 ## 🐬 简介
 [vue-clownfish-admin](https://github.com/1esse/vue-clownfish-admin) 是一个由Vue最新技术栈开发的后台管理前端简易框架。基于vue3，集成vue3最新生态系统的核心库实现。主要的技术栈有
@@ -56,6 +61,8 @@
 + 导航标签页（右键弹出菜单，支持页面刷新，关闭）
 + 侧边栏菜单、面包屑、标签页都支持icon图标(antd图标和svg)
 + 根据路由配置动态缓存页面
++ 动态路由页面
++ 动态菜单
 + 路由权限配置
 + 自动注册全局组件（antd组件及components/*.vue）
 + 支持原生CSS变量和CSSWG草案规定进行开发，编写符合未来标准的css

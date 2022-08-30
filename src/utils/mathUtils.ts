@@ -1,8 +1,7 @@
 /**
    * 加法函数，避免小数丢失精度
    */
-const decimalsAdd = function () {
-  const args = arguments // 获取所有的参数
+const decimalsAdd = function (...args: number[]) {
   let d = 0 // 定义小数位的初始长度，默认为整数，即小数位为0
   let sum = 0 // 定义sum来接收所有数据的和
   // 循环所有的参数
