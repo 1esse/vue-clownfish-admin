@@ -1,66 +1,111 @@
 <script setup lang="ts">
-import { transitions } from '@/appConfig'
 import { reactive } from 'vue'
-import { randomPick } from '@/utils'
+import { FireTwoTone } from '@ant-design/icons-vue'
 
-const dialogs = reactive({
-  dialog1: {
-    show: false,
-    loading: false,
-    timeout: <NodeJS.Timeout | null>null,
-    transition: <transitions>transitions.fade
-  }
+const visibles = reactive({
+  dialog1: false,
+  dialog2: false,
+  dialog3: false,
+})
+const loading = reactive({
+  dialog1: false,
+  dialog2: false,
+  dialog3: false,
+})
+const loadingText = reactive({
+  dialog1: '',
+  dialog2: '',
+  dialog3: '',
 })
 
-function showDialog(transition: transitions) {
-  dialogs.dialog1.timeout && clearTimeout(dialogs.dialog1.timeout)
-  dialogs.dialog1.loading = true
-  dialogs.dialog1.transition = transition
-  dialogs.dialog1.show = true
-  dialogs.dialog1.timeout = setTimeout(() => {
-    dialogs.dialog1.loading = false
+function showModal1() {
+  visibles.dialog1 = true
+}
+function showModal2() {
+  visibles.dialog2 = true
+}
+function showModal3() {
+  loading.dialog3 = true
+  loadingText.dialog3 = '加载中...'
+  visibles.dialog3 = true
+  setTimeout(() => {
+    loading.dialog3 = false
   }, 2000)
 }
 </script>
 
 <template>
-  <div>
-    <Dialog v-model:show="dialogs.dialog1.show" :loading="dialogs.dialog1.loading"
-      :transition="dialogs.dialog1.transition" height="63vh">
-      <template #modalHeader>
-        <span>Hello :)</span>
+  <ASpace>
+    <AButton @click="showModal1">基本用法</AButton>
+    <AButton @click="showModal2">自定义页头/页脚</AButton>
+    <AButton @click="showModal3">固定宽高</AButton>
+
+    <Dialog v-model:show="visibles.dialog1">
+      <div>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur atque omnis fugiat. Alias delectus animi
+          perferendis, eligendi velit assumenda. Voluptates fugiat a magni minus commodi sapiente harum fuga tempora
+          voluptatum.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel voluptatem eveniet magni repudiandae natus
+          quaerat
+          ab enim odit. Qui velit dolore impedit adipisci saepe officiis tempore quo corporis minima iste.
+        </p>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima sed cum saepe accusamus quae porro
+          voluptatibus, perferendis dolorum doloremque? Fugit corporis eos consequuntur sequi quae, quia officiis maxime
+          inventore doloribus!
+        </p>
+      </div>
+    </Dialog>
+    <Dialog v-model:show="visibles.dialog2">
+      <template #dialogHeader>
+        <div>
+          <FireTwoTone style="margin-right: .5rem" />自定义页头
+        </div>
       </template>
       <div>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis laborum aut deleniti in distinctio
-          accusamus, qui at labore, enim iure officia quis nobis odio aliquam perspiciatis fugit ratione. Voluptatibus,
-          repudiandae.</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, ut necessitatibus? Autem deserunt eos
-          dolorum quaerat atque, magnam accusantium, vitae inventore repellat doloremque officiis numquam voluptates in,
-          unde ad minus.</p>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam, sunt similique quasi delectus culpa, ex quo
-          eveniet libero quibusdam animi rerum, repellat veritatis nemo? Deleniti possimus incidunt iusto placeat
-          consequatur.</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut accusamus possimus, incidunt, nostrum est ipsum
-          fugit eveniet voluptatum facere porro facilis id perferendis a dicta voluptates soluta doloribus voluptas
-          consectetur!</p>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis quam quisquam nisi nihil autem
-          reprehenderit nesciunt natus molestias ipsum perferendis iste cupiditate atque veritatis quidem beatae
-          adipisci, maxime inventore quia.</p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis voluptatum quaerat labore deserunt
+        cupiditate, aliquam, sequi illo, molestiae excepturi quidem commodi recusandae velit laboriosam id porro alias
+        itaque. Minima, inventore.
+        Minima earum sit obcaecati, blanditiis harum recusandae, molestiae sapiente quos officiis eum velit adipisci
+        nisi beatae placeat amet dicta eos provident autem voluptate, inventore excepturi? Ipsa quibusdam vero
+        distinctio tempore!
+        Rerum tempore sapiente, provident dolore necessitatibus fugiat et distinctio accusantium sint. Doloribus,
+        architecto necessitatibus, consectetur velit asperiores quam aliquid beatae ullam similique dicta expedita
+        ducimus laboriosam vel omnis dolor optio?
       </div>
-      <template #modalFooter>
-        <AButton @click="dialogs.dialog1.show = false">取消</AButton>
-        <AButton type="primary" @click="dialogs.dialog1.show = false">确定</AButton>
+      <template #dialogFooter>
+        <div>
+          <FireTwoTone style="margin-right: .5rem" />自定义页脚
+        </div>
       </template>
     </Dialog>
-    <AButton @click="showDialog(randomPick(Object.values(transitions)))">随机模态框</AButton>
-    <AButton @click="showDialog(transitions.fade)">fade模态框</AButton>
-    <AButton @click="showDialog(transitions.fadeScale)">fade-scale模态框</AButton>
-    <AButton @click="showDialog(transitions.slideUp)">slide-up模态框</AButton>
-    <AButton @click="showDialog(transitions.slideDown)">slide-down模态框</AButton>
-    <AButton @click="showDialog(transitions.slideLeft)">slide-left模态框</AButton>
-    <AButton @click="showDialog(transitions.slideRight)">slide-right模态框</AButton>
-  </div>
+    <Dialog v-model:show="visibles.dialog3" :loading="loading.dialog3" :loadingText="loadingText.dialog3" width="50rem"
+      height="50vh">
+      <template #dialogHeader>
+        <div>
+          <FireTwoTone style="margin-right: .5rem" />固定宽高模态框
+        </div>
+      </template>
+      <div>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur atque omnis fugiat. Alias delectus animi
+          perferendis, eligendi velit assumenda. Voluptates fugiat a magni minus commodi sapiente harum fuga tempora
+          voluptatum.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel voluptatem eveniet magni repudiandae natus
+          quaerat
+          ab enim odit. Qui velit dolore impedit adipisci saepe officiis tempore quo corporis minima iste.
+        </p>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima sed cum saepe accusamus quae porro
+          voluptatibus, perferendis dolorum doloremque? Fugit corporis eos consequuntur sequi quae, quia officiis maxime
+          inventore doloribus!
+        </p>
+      </div>
+    </Dialog>
+  </ASpace>
 </template>
-
-<style>
-</style>

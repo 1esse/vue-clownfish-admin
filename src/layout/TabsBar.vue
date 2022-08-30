@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { createVNode, inject, nextTick, onBeforeMount, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { CloseOutlined, ExclamationCircleOutlined, RedoOutlined } from '@ant-design/icons-vue'
+import { CloseOutlined, RedoOutlined, QuestionOutlined } from '@ant-design/icons-vue'
 import Scrollbar from '@/components/Scrollbar.vue'
 import MenuPanel from '@/components/MenuPanel.vue'
 import type { ComponentPublicInstance } from 'vue'
@@ -28,7 +28,8 @@ watch(() => route.path, addTab)
 
 function addTab() {
   const tab: RouteLocationNormalizedLoaded = route
-  if (tab.meta?.hiddenTab) return
+  // if (tab.meta?.hidden) return
+  if (tab.meta.hiddenTab) return
   if (tabs.value.every(route => route.path !== tab.path)) {
     /**
      * 参数传进来的meta是递归合并后的结果，此处需要找出属于该路由的meta
@@ -73,9 +74,9 @@ function refreshPage(page: RouteLocationNormalizedLoaded) {
 }
 
 async function closeTab(tab: RouteLocationNormalizedLoaded) {
-  if (tab.meta.askBeforeCloseTab) {
-    const isClose = await askBeforeCloseTab(tab)
-    if (!isClose) return
+  if (tab.meta.askBeforeClose) {
+    const confirm = await checkCloseTab(tab)
+    if (!confirm) return
   }
   deleteKeepAlivePage(tab)
   const closePath = tab.path
@@ -91,14 +92,17 @@ async function closeTab(tab: RouteLocationNormalizedLoaded) {
   }
 }
 
-function askBeforeCloseTab(tab: RouteLocationNormalizedLoaded) {
+function checkCloseTab(tab: RouteLocationNormalizedLoaded) {
   return new Promise((resolve) => {
     Modal.confirm({
       title: '关闭提示',
-      icon: createVNode(ExclamationCircleOutlined),
-      content: `确定关闭页面「${tab.meta.title}」吗？`,
+      icon: createVNode(QuestionOutlined),
+      content: `确定关闭页面「${tab.meta.title || '无标题'}」吗?`,
       okText: '确认',
       cancelText: '取消',
+      getContainer: () => {
+        return document.body
+      },
       onOk() {
         resolve(true)
       },
@@ -141,7 +145,7 @@ function showTabMenu(e: MouseEvent, tab: RouteLocationNormalizedLoaded) {
 <template>
   <Scrollbar ref="scrollbarDom" height="2rem" direction="horizontal" :speed="3">
     <div class="tabs">
-      <RouterLink ref="tabDoms" v-for="tab in tabs" :key="tab.path" :to="tab.path" class="tab shadow-sm"
+      <RouterLink ref="tabDoms" v-for="tab in tabs" :key="tab.path" :to="tab.path" class="tab"
         :class="{ active: tab.path === route.path }" @click.right.prevent="showTabMenu($event, tab)">
         <template v-if="props.withIcons && tab.meta.icon">
           <SvgIcon v-if="typeof tab.meta.icon === 'string'" :icon-name="(tab.meta.icon as string)"></SvgIcon>
@@ -199,6 +203,7 @@ function showTabMenu(e: MouseEvent, tab: RouteLocationNormalizedLoaded) {
     background-color: var(--white);
     color: var(--black);
     border-radius: 0.5rem;
+    box-shadow: 0.1rem 0.2rem 0.2rem rgba(0, 0, 0, .1);
 
     &.active {
       background-color: var(--blue);

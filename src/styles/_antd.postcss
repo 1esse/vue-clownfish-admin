@@ -1,12 +1,13 @@
 .ant-layout {
     height: 100%;
+    background: var(--background-color);
 
-    & .ant-layout-sider,
-    & .ant-layout-header {
-        background-color: var(--theme-color);
+    & .ant-layout-sider {
+        background-color: var(--sidebar-background-color);
     }
 
     & .ant-layout-header {
+        background-color: var(--headbar-background-color);
         height: auto;
         line-height: unset;
         padding: 0 1rem;
@@ -15,7 +16,6 @@
     }
 
     & .ant-layout-content {
-        padding: 1rem;
         overflow: auto;
     }
 }
@@ -23,35 +23,29 @@
 .ant-menu {
     background-color: var(--theme-color) !important;
     border-right: unset !important;
-    
+
     & .ant-menu-item {
         & a {
-            color: var(--black);
+            color: var(--sidebar-font-color);
         }
         &.ant-menu-item-active{
             & a {
-                color: var(--blue);
+                color: var(--sidebar-font-active-color);
             }
         }
         & .ant-menu-item-icon {
-            font-size: .9rem;
-            padding: .5rem;
-            border-radius: .3rem;
-            background-color: #fff;
-            box-shadow: 0 1.25rem 1.68rem rgba(0, 0, 0, .05);
-            color: var(--black);
+            font-size: 1.1rem;
+            color: var(--sidebar-font-color);
         }
 
         &.ant-menu-item-selected {
-            background-color: transparent;
-
+            background: linear-gradient(90deg, #fff, var(--light-blue) 25%, var(--light-blue) 75%, transparent);
             & a {
-                color: var(--blue);
+                color: var(--sidebar-font-active-color);
             }
 
             & .ant-menu-item-icon {
-                background-color: var(--blue);
-                color: var(--white);
+                color: var(--sidebar-font-active-color);
             }
         }
     }
@@ -66,11 +60,10 @@
 
     & .ant-menu-submenu-selected {
         & .ant-menu-submenu-title {
-            color: var(--blue);
+            color: var(--sidebar-font-active-color);
 
             & .ant-menu-item-icon {
-                background-color: var(--light-blue);
-                color: var(--blue);
+                color: var(--sidebar-font-active-color);
             }
         }
     }
@@ -79,45 +72,41 @@
         line-height: 1 !important;
     }
 }
+.ant-menu-inline .ant-menu-item::after {
+    border-right: unset;
+}
+.ant-menu.ant-menu-inline-collapsed > .ant-menu-item .ant-menu-item-icon,
+.ant-menu.ant-menu-inline-collapsed > .ant-menu-submenu > .ant-menu-submenu-title .ant-menu-item-icon{
+    font-size: 1.1rem;
+    margin-left: .4rem;
+}
+.ant-menu.ant-menu-inline-collapsed > .ant-menu-item.ant-menu-item-selected {
+    background: transparent;
+}
 
 .ant-menu-submenu {
-    color: var(--black);
+    color: var(--sidebar-font-color);
 
     & .ant-menu-item-icon {
-        font-size: .9rem;
-        padding: .5rem;
-        border-radius: .3rem;
-        background-color: #fff;
-        box-shadow: 0 1.25rem 1.68rem rgba(0, 0, 0, .05);
-        color: var(--black);
+        font-size: 1.1rem;
+        color: var(--sidebar-font-color);
     }
 
     &.ant-menu-submenu-inline {
-        /* &.ant-menu-submenu-open {
-            & .ant-menu-submenu-title {
-                pointer-events: none;
-            }
-        } */
-
         &.ant-menu-submenu-selected {
             &>.ant-menu-submenu-title {
-                color: var(--blue);
+                color: var(--sidebar-font-active-color);
 
                 & .ant-menu-item-icon {
-                    background-color: var(--light-blue);
-                    color: var(--blue);
+                    color: var(--sidebar-font-active-color);
                 }
             }
         }
     }
-
-    /* & .ant-menu-submenu-arrow {
-        display: none;
-    } */
-
+    
     &.ant-menu-submenu-popup {
         & .ant-menu {
-            background-color: var(--white) !important;
+            background-color: var(--sidebar-background-color) !important;
         }
     }
 }
@@ -128,6 +117,34 @@
     text-overflow: ellipsis;
 }
 
+.ant-select{
+    min-width: 6rem;
+}
+
 .ant-table-pagination.ant-pagination{
-    margin: 1rem !important;
+    margin: 0.7rem 1rem !important;
+}
+
+.ant-form-inline {
+    margin-bottom: -0.6rem !important;
+    & .ant-form-item{
+        margin-bottom: .6rem !important;
+    }
+}
+
+.ant-table-wrapper{
+    & .ant-spin-blur{
+        & .ant-table-body {
+            overflow: hidden;
+        }
+    }
+}
+
+.ant-table {
+    background: var(--white) !important;
+}
+
+.ant-table-thead > tr > th {
+    font-weight: bold !important;
+    color: #999 !important;
 }

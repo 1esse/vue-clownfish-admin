@@ -1,6 +1,6 @@
 import { onBeforeMount, onBeforeUnmount, ref } from "vue"
 
-export default function () {
+export default function (cb?: Function) {
   const WIDTH = 992
   const isMobile = ref(false)
   onBeforeMount(() => {
@@ -13,6 +13,9 @@ export default function () {
   function checkIsMobile() {
     const rect = document.body.getBoundingClientRect()
     isMobile.value = rect.width < WIDTH
+    if (isMobile.value) {
+      cb && cb()
+    }
   }
   return isMobile
 }

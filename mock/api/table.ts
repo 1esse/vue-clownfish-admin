@@ -1,5 +1,4 @@
 import { mock, Random } from "mockjs"
-import QueryString from "qs"
 import { MockApi } from "../mockapi"
 
 function generateData(len: number) {
@@ -25,7 +24,7 @@ export default <MockApi.obj[]>[
         url: '/list',
         type: 'get',
         response: (options) => {
-            const { page, perPage } = options.params
+            const { page, perPage } = options.params as { page: string, perPage: string }
             const _page = +page
             const _perPage = +perPage
             return {

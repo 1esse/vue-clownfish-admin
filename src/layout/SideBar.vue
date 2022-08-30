@@ -9,33 +9,31 @@ import { SubMenu, MenuItem } from 'ant-design-vue/es'
 import type { Component, Slots } from 'vue'
 import type { RouteMeta, RouteRecordRaw } from 'vue-router'
 import type { Layout } from 'types/layout'
+import { sidebarStore } from '@/stores/sidebar'
 
 const router = useRouter()
 const route = useRoute()
 const selectedKeys = ref<string[]>([route.path]) // 菜单默认选中项
-// 默认展开第一层及选中项所在菜单
+// 默认展开选中项所在菜单
 const openKeys = ref<string[]>(
   router.getRoutes()
     .filter(matchedRoute =>
-      route.path.includes(matchedRoute.path) ||
-      (matchedRoute.children.length > 0 &&
-        /^\/\w+?$/.test(matchedRoute.path))
+      route.path.includes(matchedRoute.path)
     )
     .map(matchedRoute => matchedRoute.path)
 ) // 子菜单默认展开项
 const keepAlivePages = inject<Layout.keepAlivePages>('keepAlivePages')
 
-const routesList = computed(() => {
-  return router.options.routes
-})
+const sidebar = sidebarStore()
+sidebar.refreshSidebar()
 
 watch(() => route.path, () => {
-  selectedKeys.value = [route.path]
+  selectedKeys.value = [route.meta.belongs || route.path]
   // 如果该路由设置页面缓存则推进缓存组
   if (route.meta.keepAlive && !keepAlivePages?.has(route.name as string)) {
     keepAlivePages?.add(route.name as string)
   }
-})
+}, { immediate: true })
 
 const getNavIcon = (item: RouteMeta | undefined) => {
   if (!item || (item && !item.icon)) return null
@@ -80,6 +78,7 @@ const MenuItemNav = (props: { route: RouteRecordRaw, basePath: string }) => {
       </MenuItem>
     )
   }
+
   return props.route.meta?.hidden ? <div style="display: none"></div> :
     props.route.children && props.route.children.filter((route: RouteRecordRaw) => !route.meta?.hidden).length > 0 ?
       props.route.children.filter((route: RouteRecordRaw) => !route.meta?.hidden).length > 1 ?
@@ -95,10 +94,10 @@ function getOnlyChildPath(parentRoute: RouteRecordRaw): RouteRecordRaw {
 </script>
 
 <template>
-  <Scrollbar :speed="3">
+  <Scrollbar :speed="4">
     <AMenu v-model:selectedKeys="selectedKeys" v-model:openKeys="openKeys" mode="inline" :inlineIndent="16"
       :selectable="false">
-      <template v-for="route in routesList" key="index">
+      <template v-for="route in sidebar.getSidebarList" key="index">
         <MenuItemNav :route="route" :basePath="route.path"></MenuItemNav>
       </template>
     </AMenu>

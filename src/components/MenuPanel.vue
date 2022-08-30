@@ -45,8 +45,7 @@ function hidePanel() {
 
 <template>
   <Teleport to="body">
-    <nav v-if="show" class="block shadow-sm border menu-panel"
-      :style="{ left: position.x + 'px', top: position.y + 'px' }">
+    <nav v-if="show" class="block border menu-panel" :style="{ left: position.x + 'px', top: position.y + 'px' }">
       <slot />
     </nav>
   </Teleport>
@@ -56,12 +55,12 @@ function hidePanel() {
 .menu-panel {
   min-width: 8rem;
   position: fixed;
-  z-index: 10;
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
   border-radius: 0.3rem;
   padding: .7rem;
+  z-index: 999;
 }
 
 :global(.menu-panel>*) {

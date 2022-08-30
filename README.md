@@ -28,10 +28,15 @@
 
 #### 这里是antd版本，如果你更倾向于使用element-plus，请[点击这里](https://github.com/1esse/vue-clownfish-admin-elem)。
 
-## ✨ 最新版本 v1.0.18
-1. tabs不再局限于菜单页保持一致，可添加任意路径的路由，包括hidden页
-2. 关闭tab标签页可以弹窗确认
-3. 优化路由监听
+## ✨ 最新版本 v1.0.19
+1. 新增动态固定头部，appconfig可配置初始值
+2. 增加完善示例
+   + dashboard
+   + 模态框
+   + 表格列表
+   + 表格导出
+   + 动态路由
+   + 动态菜单
 
 ## 🐬 简介
 [vue-clownfish-admin](https://github.com/1esse/vue-clownfish-admin) 是一个由Vue最新技术栈开发的后台管理前端简易框架。基于vue3，集成vue3最新生态系统的核心库实现。主要的技术栈有
@@ -46,7 +51,7 @@
 
 ## 🐟了解这些可能会有帮助
 1. 定义在src/components下的组件，可在页面的template直接使用，不必导入（tsx除外）。
-2. 本项目采用[vite官方推荐的css编写方式](https://www.vitejs.net/guide/features.html#css-pre-processors)，可能是volar插件的原因，并没有对vue文件的postcss代码进行高亮，但如果关闭了编辑器的css语法检查，也可以使用原生css编写嵌套style，但可能会失去一些代码提示。如果你不喜欢用postcss-nesting，也可以下载其他css预处理器依赖如scss，less等，不会造成冲突。
+2. 本项目采用[vite官方推荐的css编写方式](https://www.vitejs.net/guide/features.html#css-pre-processors)，如果你用的vscode编辑器，可下载language-postcss插件进行代码高亮。如果你不喜欢用postcss-nesting，也可以下载其他css预处理器依赖如scss，less等，不会造成冲突。
 3. 不需要对flex，grid等css样式进行多浏览器适配，框架已配置了自动适配。
 4. 大部分场景推荐使用rem代替px以适配更多不同分辨率屏幕
 
@@ -56,6 +61,8 @@
 + 导航标签页（右键弹出菜单，支持页面刷新，关闭）
 + 侧边栏菜单、面包屑、标签页都支持icon图标(antd图标和svg)
 + 根据路由配置动态缓存页面
++ 动态路由页面
++ 动态菜单
 + 路由权限配置
 + 自动注册全局组件（antd组件及components/*.vue）
 + 支持原生CSS变量和CSSWG草案规定进行开发，编写符合未来标准的css

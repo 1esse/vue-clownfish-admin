@@ -27,12 +27,16 @@ declare module 'vue-router' {
      */
     keepAlive?: boolean
     /**
-     * hiddenTab：是否在标签页隐藏
+     * 当前路由页面所指向的菜单路径
+     */
+    belongs?: string
+    /**
+     * 是否在标签页隐藏
      */
     hiddenTab?: boolean
     /**
-     * askBeforeCloseTab：在关闭标签页时弹窗确认
+     * 关闭标签页时确认询问
      */
-    askBeforeCloseTab?: boolean
+    askBeforeClose?: boolean
   }
 }
