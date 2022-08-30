@@ -78,7 +78,7 @@ function deviceTest() {
                   <span>+</span>
                   <AInput v-model:value="state.plus2" style="width: 6rem"></AInput>
                   <span>=</span>
-                  <span>{{  decimalsAdd(state.plus1, state.plus2)  }}</span>
+                  <span>{{ decimalsAdd(state.plus1, state.plus2) }}</span>
                 </ASpace>
               </ACard>
             </ACol>
@@ -89,7 +89,7 @@ function deviceTest() {
                   <span>-</span>
                   <AInput v-model:value="state.minus2" style="width: 6rem"></AInput>
                   <span>=</span>
-                  <span>{{  decimalsAdd(state.minus1, -state.minus2)  }}</span>
+                  <span>{{ decimalsAdd(state.minus1, -state.minus2) }}</span>
                 </ASpace>
               </ACard>
             </ACol>
@@ -100,7 +100,7 @@ function deviceTest() {
                   <span>x</span>
                   <AInput v-model:value="state.accMul2" style="width: 6rem"></AInput>
                   <span>=</span>
-                  <span>{{  accMul(state.accMul1, state.accMul2)  }}</span>
+                  <span>{{ accMul(state.accMul1, state.accMul2) }}</span>
                 </ASpace>
               </ACard>
             </ACol>
@@ -111,7 +111,7 @@ function deviceTest() {
                   <span>/</span>
                   <AInput v-model:value="state.accDiv2" style="width: 6rem"></AInput>
                   <span>=</span>
-                  <span>{{  accDiv(state.accDiv1, state.accDiv2)  }}</span>
+                  <span>{{ accDiv(state.accDiv1, state.accDiv2) }}</span>
                 </ASpace>
               </ACard>
             </ACol>
@@ -120,7 +120,7 @@ function deviceTest() {
       </ACol>
     </ARow>
     <Dialog v-model:show="visibles.dialog1" :loading="loading.dialog1" :loadingText="loadingText.dialog1" width="20rem"
-      height="10rem">
+      height="12rem">
       <template #dialogHeader>请输入您的身高</template>
       <AInput v-model:value="state.height">
         <template #suffix>
