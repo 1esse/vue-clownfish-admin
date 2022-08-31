@@ -68,7 +68,7 @@ function deviceTest() {
         <ACard title="精准计算" :bordered="false">
           <ACardMeta description="此程序可以精准计算加减乘除，且不会丢失精度！" />
           <ARow :gutter="12" style="margin-top: 1rem">
-            <ACol :xs="24" :sm="12" :md="12" :lg="6" :xl="6">
+            <ACol :xs="24" :sm="12" :md="12" :lg="12" :xl="6">
               <ACard title="加法计算">
                 <ASpace>
                   <AInput v-model:value="state.plus1" style="width: 6rem"></AInput>
@@ -79,7 +79,7 @@ function deviceTest() {
                 </ASpace>
               </ACard>
             </ACol>
-            <ACol :xs="24" :sm="12" :md="12" :lg="6" :xl="6">
+            <ACol :xs="24" :sm="12" :md="12" :lg="12" :xl="6">
               <ACard title="减法计算">
                 <ASpace>
                   <AInput v-model:value="state.minus1" style="width: 6rem"></AInput>
@@ -90,7 +90,7 @@ function deviceTest() {
                 </ASpace>
               </ACard>
             </ACol>
-            <ACol :xs="24" :sm="12" :md="12" :lg="6" :xl="6">
+            <ACol :xs="24" :sm="12" :md="12" :lg="12" :xl="6">
               <ACard title="乘法计算">
                 <ASpace>
                   <AInput v-model:value="state.accMul1" style="width: 6rem"></AInput>
@@ -101,7 +101,7 @@ function deviceTest() {
                 </ASpace>
               </ACard>
             </ACol>
-            <ACol :xs="24" :sm="12" :md="12" :lg="6" :xl="6">
+            <ACol :xs="24" :sm="12" :md="12" :lg="12" :xl="6">
               <ACard title="除法计算">
                 <ASpace>
                   <AInput v-model:value="state.accDiv1" style="width: 6rem"></AInput>
