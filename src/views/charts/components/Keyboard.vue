@@ -1,7 +1,7 @@
 
 <script setup lang="ts">
 import * as echarts from 'echarts'
-import { Layout } from 'types/layout'
+import type { Layout } from 'types/layout'
 import { onMounted, ref, onBeforeUnmount, shallowRef, ShallowRef, inject, watch, useAttrs } from 'vue'
 
 const sidebarRelated = inject<Layout.SidebarRelated>('sidebarRelated')
@@ -9,7 +9,24 @@ const attrs = useAttrs()
 const chartRef = ref()
 const chart: ShallowRef<echarts.ECharts | null> = shallowRef(null)
 
-const initChart = () => {
+onMounted(() => {
+  initChart()
+  window.addEventListener('resize', resizeChart)
+})
+onBeforeUnmount(() => {
+  if (!chart.value) {
+    return
+  }
+  chart.value.dispose()
+  chart.value = null
+  window.removeEventListener('resize', resizeChart)
+})
+watch(() => sidebarRelated?.collapsed, () => {
+  setTimeout(() => {
+    resizeChart()
+  }, 300)
+})
+function initChart() {
   chart.value = echarts.init(chartRef.value)
   const xAxisData = []
   const data = []
@@ -19,8 +36,8 @@ const initChart = () => {
     data.push((Math.sin(i / 5) * (i / 5 - 10) + i / 6) * 5)
     data2.push((Math.sin(i / 5) * (i / 5 + 10) + i / 6) * 3)
   }
-  chart.value.setOption({
-    backgroundColor: '#08263a',
+  const option: echarts.EChartsOption = {
+    backgroundColor: '#fff',
     grid: {
       left: '3%',
       right: '3%'
@@ -41,7 +58,7 @@ const initChart = () => {
       max: 50,
       dimension: 0,
       inRange: {
-        color: ['#4a657a', '#308e92', '#b1cfa5', '#f5d69f', '#f5898b', '#ef5055']
+        color: ['#e6f7ff', '#1890ff', '#51c565', '#85e1a1', '#ff7875', '#d9363e']
       }
     },
     yAxis: {
@@ -49,12 +66,12 @@ const initChart = () => {
         show: false
       },
       axisLabel: {
-        color: '#4a657a'
+        color: '#aaa'
       },
       splitLine: {
         show: true,
         lineStyle: {
-          color: '#08263f'
+          color: '#ddd'
         }
       },
       axisTick: {
@@ -87,9 +104,9 @@ const initChart = () => {
           color: 'transparent'
         },
         areaStyle: {
-          color: '#08263a',
+          color: '#fff',
           shadowBlur: 50,
-          shadowColor: '#000'
+          shadowColor: '#fff'
         }
       },
       {
@@ -111,25 +128,9 @@ const initChart = () => {
     animationDelayUpdate(idx) {
       return idx * 20
     }
-  } as echarts.EChartsOption)
-}
-onMounted(() => {
-  initChart()
-  window.addEventListener('resize', resizeChart)
-})
-onBeforeUnmount(() => {
-  if (!chart.value) {
-    return
   }
-  chart.value.dispose()
-  chart.value = null
-  window.removeEventListener('resize', resizeChart)
-})
-watch(() => sidebarRelated?.collapsed, () => {
-  setTimeout(() => {
-    resizeChart()
-  }, 300)
-})
+  chart.value.setOption(option)
+}
 
 function resizeChart() {
   chart.value?.resize()

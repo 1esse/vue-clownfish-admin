@@ -1,6 +1,9 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router"
 import Layout from '@/layout/index.vue'
-import { GithubOutlined, TableOutlined, HomeOutlined, BlockOutlined, ExportOutlined, FireOutlined, DotChartOutlined, BarChartOutlined } from '@ant-design/icons-vue'
+import {
+  GithubOutlined, TableOutlined, HomeOutlined, BlockOutlined, ExportOutlined, FireOutlined,
+  DotChartOutlined, BarChartOutlined, FieldBinaryOutlined, LineChartOutlined
+} from '@ant-design/icons-vue'
 
 export const dashboardRoute: RouteRecordRaw = {
   path: '/',
@@ -113,10 +116,28 @@ export const routes: RouteRecordRaw[] = [
     meta: { title: '图表', icon: DotChartOutlined },
     children: [
       {
+        path: 'line',
+        name: 'line',
+        component: () => import('@/views/charts/line.vue'),
+        meta: { title: '折线图', icon: LineChartOutlined }
+      },
+      {
         path: 'keyboard',
         name: 'keyboard',
         component: () => import('@/views/charts/keyboard.vue'),
-        meta: { title: '键盘', icon: BarChartOutlined, keepAlive: true }
+        meta: { title: '键盘', icon: BarChartOutlined }
+      },
+      {
+        path: 'earth',
+        name: 'earth',
+        component: () => import('@/views/charts/earth.vue'),
+        meta: { title: '地球', icon: 'earth', keepAlive: true }
+      },
+      {
+        path: 'mathRomantic',
+        name: 'mathRomantic',
+        component: () => import('@/views/charts/mathRomantic.vue'),
+        meta: { title: '数学的浪漫', icon: FieldBinaryOutlined }
       },
     ]
   },
