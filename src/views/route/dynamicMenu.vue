@@ -1,6 +1,3 @@
-<script lang="ts">
-export default { name: 'DynamicMenu' }
-</script>
 <script lang="ts" setup>
 import { routes } from '@/router'
 import { sidebarStore } from '@/stores/sidebar'

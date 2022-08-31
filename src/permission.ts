@@ -13,6 +13,8 @@ let scrollTimeout: NodeJS.Timeout | null = null
 let contentWindowDom: HTMLElement | null = null
 
 router.beforeEach(async (to, from, next) => {
+  console.log({ to, from })
+
   NProgress.start()
   // 设置页面标题
   document.title = `${to.meta.title}-${appTitle}`
