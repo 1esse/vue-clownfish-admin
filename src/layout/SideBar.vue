@@ -27,7 +27,7 @@ const keepAlivePages = inject<Layout.keepAlivePages>('keepAlivePages')
 const sidebar = sidebarStore()
 sidebar.refreshSidebar()
 
-watch(() => route.path, () => {
+watch(() => route.name, () => {
   selectedKeys.value = [route.meta.belongs || route.path]
   // 如果该路由设置页面缓存则推进缓存组
   if (route.meta.keepAlive && !keepAlivePages?.has(route.name as string)) {

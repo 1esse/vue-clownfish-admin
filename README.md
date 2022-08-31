@@ -4,19 +4,19 @@
 <h3 align="center">Vite + Vue3 + Antd + Typescript 管理后台前端简易框架</h3>
 <p align="center">
   <a href="https://github.com/vuejs/core">
-    <img src="https://img.shields.io/badge/vue-3.2.37-brightgreen.svg" alt="vue">
+    <img src="https://img.shields.io/badge/vue-3.2.38-brightgreen.svg" alt="vue">
   </a>
   <a href="https://github.com/vitejs/vite">
-    <img src="https://img.shields.io/badge/vite-3.0.0-brightgreen.svg" alt="vue">
+    <img src="https://img.shields.io/badge/vite-3.0.9-brightgreen.svg" alt="vue">
   </a>
   <a href="https://github.com/vuejs/pinia">
-    <img src="https://img.shields.io/badge/pinia-2.0.16-brightgreen.svg" alt="vue">
+    <img src="https://img.shields.io/badge/pinia-2.0.21-brightgreen.svg" alt="vue">
   </a>
   <a href="https://github.com/vuejs/router">
-    <img src="https://img.shields.io/badge/vueRouter-4.1.2-brightgreen.svg" alt="vue">
+    <img src="https://img.shields.io/badge/vueRouter-4.1.5-brightgreen.svg" alt="vue">
   </a>
   <a href="https://github.com/vueComponent/ant-design-vue">
-    <img src="https://img.shields.io/badge/antdv-3.2.10-brightgreen.svg" alt="element-ui">
+    <img src="https://img.shields.io/badge/antdv-3.2.11-brightgreen.svg" alt="element-ui">
   </a>
   <a href="https://github.com/1esse/vue-clownfish-admin/blob/master/LICENSE">
     <img src="https://img.shields.io/github/license/mashape/apistatus.svg" alt="license">
@@ -28,15 +28,10 @@
 
 #### 这里是antd版本，如果你更倾向于使用element-plus，请[点击这里](https://github.com/1esse/vue-clownfish-admin-elem)。
 
-## ✨ 最新版本 v1.0.19
-1. 新增动态固定头部，appconfig可配置初始值
-2. 增加完善示例
-   + dashboard
-   + 模态框
-   + 表格列表
-   + 表格导出
-   + 动态路由
-   + 动态菜单
+## ✨ 最新版本 v1.1.0
+1. 升级所有依赖包至最新版本
+2. 优化缓存页面
+3. 新增功能示例
 
 ## 🐬 简介
 [vue-clownfish-admin](https://github.com/1esse/vue-clownfish-admin) 是一个由Vue最新技术栈开发的后台管理前端简易框架。基于vue3，集成vue3最新生态系统的核心库实现。主要的技术栈有

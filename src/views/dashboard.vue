@@ -1,6 +1,3 @@
-<script lang="ts">
-export default { name: 'Dashboard' }
-</script>
 <script setup lang="ts">
 import { message, Modal } from 'ant-design-vue'
 import { h, reactive } from 'vue'

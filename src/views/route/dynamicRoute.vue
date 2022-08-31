@@ -1,6 +1,3 @@
-<script lang="ts">
-export default { name: 'DynamicRoute' }
-</script>
 <script lang="ts" setup>
 import { routes } from '@/router'
 import { FireOutlined } from '@ant-design/icons-vue'
@@ -43,7 +40,7 @@ function addDynamicRoute(keepAlive: boolean = false, askBeforeClose: boolean = f
 
 <template>
   <div>
-    <p>已创建动态路由数：{{  count  }}</p>
+    <p>已创建动态路由数：{{ count }}</p>
     <ASpace>
       <AButton @click="() => addDynamicRoute()">新增动态路由</AButton>
       <AButton @click="() => addDynamicRoute(true)">新增动态路由（缓存）</AButton>

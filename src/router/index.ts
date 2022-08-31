@@ -52,14 +52,14 @@ export const routes: RouteRecordRaw[] = [
     path: '/modal',
     name: 'Modal',
     component: Layout,
-    redirect: { name: 'ModalIndex' },
+    redirect: { name: 'modal' },
     meta: { breadcrumb: false },
     children: [
       {
         path: 'index',
-        name: 'ModalIndex',
+        name: 'modal',
         component: () => import('@/views/modal.vue'),
-        meta: { title: '模态框', icon: BlockOutlined }
+        meta: { title: '模态框', icon: BlockOutlined, keepAlive: true }
       }
     ]
   },
@@ -67,20 +67,20 @@ export const routes: RouteRecordRaw[] = [
     path: '/table',
     name: 'Table',
     component: Layout,
-    redirect: { name: 'TableIndex' },
+    redirect: { name: 'tableList' },
     meta: { title: '表格管理', icon: TableOutlined },
     children: [
       {
         path: 'index',
-        name: 'TableIndex',
-        component: () => import('@/views/table/index.vue'),
-        meta: { title: '表格列表', icon: TableOutlined }
+        name: 'tableList',
+        component: () => import('@/views/table/tableList.vue'),
+        meta: { title: '表格列表', icon: TableOutlined, keepAlive: true }
       },
       {
         path: 'export',
-        name: 'TableExport',
-        component: () => import('@/views/table/export.vue'),
-        meta: { title: '表格导出', icon: ExportOutlined }
+        name: 'tableExport',
+        component: () => import('@/views/table/tableExport.vue'),
+        meta: { title: '表格导出', icon: ExportOutlined, keepAlive: true }
       }
     ]
   },
@@ -88,18 +88,18 @@ export const routes: RouteRecordRaw[] = [
     path: '/route',
     name: 'Route',
     component: Layout,
-    redirect: { name: 'DynamicRoute' },
+    redirect: { name: 'dynamicRoute' },
     meta: { title: '路由管理', icon: FireOutlined },
     children: [
       {
         path: 'dynamicRoute',
-        name: 'DynamicRoute',
+        name: 'dynamicRoute',
         component: () => import('@/views/route/dynamicRoute.vue'),
         meta: { title: '动态路由', icon: FireOutlined, keepAlive: true }
       },
       {
         path: 'dynamicMenu',
-        name: 'DynamicMenu',
+        name: 'dynamicMenu',
         component: () => import('@/views/route/dynamicMenu.vue'),
         meta: { title: '动态菜单', icon: FireOutlined, keepAlive: true }
       }
