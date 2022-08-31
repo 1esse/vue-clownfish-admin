@@ -50,10 +50,12 @@
             }
             & a {
                 color: var(--sidebar-font-active-color);
+                animation: menuSelectedFont 1s ease-in;
             }
 
             & .ant-menu-item-icon {
                 color: var(--sidebar-font-active-color);
+                animation: menuSelectedFont 1s ease-in;
             }
         }
     }
@@ -65,6 +67,15 @@
     }
     to {
         transform: translateX(0rem);
+    }
+}
+
+@keyframes menuSelectedFont {
+    from{
+        color: var(--sidebar-font-color);
+    }
+    to {
+        color: var(--sidebar-font-active-color);
     }
 }
 
