@@ -17,6 +17,7 @@
   "dependencies": {
     "ant-design-vue": "^3.2.11",
     "axios": "^0.27.2",
+    "echarts": "^5.3.3",
     "lodash": "^4.17.21",
     "nprogress": "^0.2.0",
     "overlayscrollbars": "^1.13.2",
