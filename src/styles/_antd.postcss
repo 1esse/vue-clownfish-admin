@@ -40,22 +40,24 @@
 
         &.ant-menu-item-selected {
             background: transparent;
-            &::after {
-                position: reactive;
+            &::before {
+                content: '';
+                position: absolute;
                 width: 100%;
                 height: 100%;
-                z-index: -1;
                 animation: menuSelected 1s ease;
                 background: linear-gradient(90deg, #fff, var(--light-blue) 25%, var(--light-blue) 75%, var(--background-color));
             }
             & a {
                 color: var(--sidebar-font-active-color);
                 animation: menuSelectedFont 1s ease-in;
+                position: relative;
             }
 
             & .ant-menu-item-icon {
                 color: var(--sidebar-font-active-color);
                 animation: menuSelectedFont 1s ease-in;
+                position: relative;
             }
         }
     }
