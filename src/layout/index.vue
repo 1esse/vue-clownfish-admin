@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed } from '@vue/reactivity'
 import { onBeforeMount, provide, reactive, ref } from 'vue'
 import HeadBar from './HeadBar.vue'
 import SideBar from './SideBar.vue'

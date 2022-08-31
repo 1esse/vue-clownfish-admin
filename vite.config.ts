@@ -54,5 +54,8 @@ export default defineConfig({
   server: {
     open: false,
     port: 7777
+  },
+  build: {
+    chunkSizeWarningLimit: 1024
   }
 })
