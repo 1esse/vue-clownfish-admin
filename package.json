@@ -5,7 +5,7 @@
     "email": "572116385@qq.com",
     "url": "https://1esse.github.io/vue-clownfish-admin/"
   },
-  "version": "1.1.1",
+  "version": "1.1.2",
   "scripts": {
     "dev": "vite",
     "stage": "vite --mode staging",
@@ -17,6 +17,8 @@
   "dependencies": {
     "ant-design-vue": "^3.2.11",
     "axios": "^0.27.2",
+    "echarts": "^5.3.3",
+    "echarts-gl": "^2.0.9",
     "lodash": "^4.17.21",
     "nprogress": "^0.2.0",
     "overlayscrollbars": "^1.13.2",
