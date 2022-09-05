@@ -28,8 +28,8 @@
 
 #### 这里是antd版本，如果你更倾向于使用element-plus，请[点击这里](https://github.com/1esse/vue-clownfish-admin-elem)。
 
-## ✨ 最新版本 v1.1.3
-1. 弃用postcss-nesting，改用scss以获得编辑器更好的支持。
+## ✨ 最新版本 v1.1.4
+1. 优化样式，新增刷新页面按钮
 
 ## 🐬 简介
 [vue-clownfish-admin](https://github.com/1esse/vue-clownfish-admin) 是一个由Vue最新技术栈开发的后台管理前端简易框架。基于vue3，集成vue3最新生态系统的核心库实现。主要的技术栈有

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { createVNode, inject, nextTick, onBeforeMount, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { CloseOutlined, RedoOutlined, QuestionOutlined } from '@ant-design/icons-vue'
+import { CloseOutlined, QuestionOutlined, ReloadOutlined } from '@ant-design/icons-vue'
 import Scrollbar from '@/components/Scrollbar.vue'
 import MenuPanel from '@/components/MenuPanel.vue'
 import type { ComponentPublicInstance } from 'vue'
@@ -141,25 +141,46 @@ function showTabMenu(e: MouseEvent, tab: RouteLocationNormalizedLoaded) {
   menuPanelDom.value.showPanel()
 }
 </script>
-
-<template>
-  <Scrollbar ref="scrollbarDom" height="2rem" direction="horizontal" :speed="3">
-    <div class="tabs">
-      <RouterLink ref="tabDoms" v-for="tab in tabs" :key="tab.path" :to="tab.path" class="tab"
-        :class="{ active: tab.path === route.path }" @click.right.prevent="showTabMenu($event, tab)">
-        <template v-if="props.withIcons && tab.meta.icon">
-          <SvgIcon v-if="typeof tab.meta.icon === 'string'" :icon-name="(tab.meta.icon as string)"></SvgIcon>
-          <component v-else :is="tab.meta.icon"></component>
-        </template>
-        <span style="margin: 0 5px">{{ tab.meta.title || '无标题' }}</span>
-        <CloseOutlined class="icon-tab-close" @click.prevent="closeTab(tab)" />
-      </RouterLink>
-    </div>
-  </Scrollbar>
+  
+  <template>
+  <div class="tabs-bar">
+    <ASpace class="functional-btns">
+      <ATooltip>
+        <template #title>刷新当前页</template>
+        <AButton class="btn-item" shape="circle" @click="refreshPage(route)">
+          <template #icon>
+            <ReloadOutlined />
+          </template>
+        </AButton>
+      </ATooltip>
+      <ATooltip>
+        <template #title>关闭其他页</template>
+        <AButton class="btn-item" shape="circle" @click="closeOtherTabs(route)">
+          <template #icon>
+            <CloseOutlined />
+          </template>
+        </AButton>
+      </ATooltip>
+      <ADivider type="vertical" style="background-color: #e1e1e1; height: 1rem; margin: 0"></ADivider>
+    </ASpace>
+    <Scrollbar ref="scrollbarDom" height="2rem" direction="horizontal" :speed="3">
+      <div class="tabs">
+        <RouterLink ref="tabDoms" v-for="tab in tabs" :key="tab.path" :to="tab.path" class="tab"
+          :class="{ active: tab.path === route.path }" @click.right.prevent="showTabMenu($event, tab)">
+          <template v-if="props.withIcons && tab.meta.icon">
+            <SvgIcon v-if="typeof tab.meta.icon === 'string'" :icon-name="(tab.meta.icon as string)"></SvgIcon>
+            <component v-else :is="tab.meta.icon"></component>
+          </template>
+          <span style="margin: 0 5px">{{ tab.meta.title || '无标题' }}</span>
+          <CloseOutlined class="icon-tab-close" @click.prevent="closeTab(tab)" />
+        </RouterLink>
+      </div>
+    </Scrollbar>
+  </div>
   <MenuPanel ref="menuPanelDom">
     <AButton type="text" @click="refreshPage(menuPanelDom?.getContext())">
       <template #icon>
-        <RedoOutlined />
+        <ReloadOutlined />
       </template> 刷新
     </AButton>
     <AButton type="text" @click="closeTab(menuPanelDom?.getContext())">
@@ -179,49 +200,66 @@ function showTabMenu(e: MouseEvent, tab: RouteLocationNormalizedLoaded) {
     </AButton>
   </MenuPanel>
 </template>
-
-<style scoped lang="scss">
-.tabs {
-  position: relative;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  flex-wrap: nowrap;
-  font-size: 0.7rem;
-
-  .tab {
-    height: 1.6rem;
-    padding: 0 0.5rem;
-    margin-right: 0.5rem;
-    white-space: nowrap;
-    display: inline-flex;
-    justify-content: center;
+  
+  <style scoped lang="scss">
+  .tabs-bar {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
     flex-wrap: nowrap;
-    flex-shrink: 0;
-    background-color: #f1f1f1;
-    background-color: var(--white);
-    color: var(--black);
-    border-radius: 0.5rem;
-    box-shadow: 0.1rem 0.2rem 0.2rem rgba(0, 0, 0, .1);
-
-    &.active {
-      background-color: var(--blue);
-      color: var(--white);
+  
+    .tabs {
+      position: relative;
+      height: 100%;
+      display: inline-flex;
+      align-items: center;
+      flex-wrap: nowrap;
+      font-size: 0.7rem;
+      padding: 0 .5rem;
+  
+      .tab {
+        height: 1.8rem;
+        padding: 0 0.5rem;
+        margin-right: 0.5rem;
+        white-space: nowrap;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: nowrap;
+        flex-shrink: 0;
+        background-color: var(--white);
+        color: var(--sidebar-font-color);
+        border-radius: 0.3rem;
+        border: 1px solid #e1e1e1;
+        font-size: .75rem;
+  
+        &.active {
+          background-color: var(--light-blue);
+          color: var(--blue);
+        }
+  
+        &:hover:not(&.active) {
+          background-color: var(--light-blue);
+          color: var(--sidebar-font-color);
+        }
+  
+        .icon-tab-close {
+          &:hover {
+            background-color: #666;
+            color: #fff;
+            border-radius: 50%;
+          }
+        }
+      }
     }
-
-    &:hover:not(&.active) {
-      background-color: var(--light-blue);
-      color: var(--black);
-    }
-
-    .icon-tab-close {
-      &:hover {
-        background-color: #666;
-        color: #fff;
-        border-radius: 50%;
+  
+    .functional-btns {
+      white-space: nowrap;
+      padding-right: .5rem;
+  
+      .btn-item {
+        border-color: transparent;
       }
     }
   }
-}
-</style>
+  </style>
