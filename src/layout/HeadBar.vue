@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { MenuFoldOutlined, LogoutOutlined } from '@ant-design/icons-vue'
+import { MenuFoldOutlined, UserOutlined, DownOutlined, LogoutOutlined } from '@ant-design/icons-vue'
+import type { EnvType } from 'types/app'
 import type { Layout } from 'types/layout'
 import { inject } from 'vue'
 import { useRouter } from 'vue-router'
@@ -18,8 +19,8 @@ function logout() {
   })
 }
 </script>
-
-<template>
+  
+  <template>
   <header>
     <section>
       <MenuFoldOutlined :class="['icon-sidebar-trigger', sidebarRelated?.collapsed && 'collapsed']"
@@ -27,50 +28,60 @@ function logout() {
       <BreadCrumb :withIcons="true"></BreadCrumb>
     </section>
     <section>
-      <span style="margin-right: 1rem">{{ user.name }}</span>
-      <AButton type="primary" shape="circle" :loading="loading?.logout" @click="logout" title="退出登录">
-        <template #icon>
-          <LogoutOutlined />
+      <ADropdown :trigger="['click']">
+        <div style="display: inline-flex; align-items: center; cursor:pointer;">
+          <UserOutlined style="margin-right: .5rem;" />
+          <span>{{ user.name }}</span>
+          <DownOutlined style="margin-left: .5rem;" />
+        </div>
+        <template #overlay>
+          <AMenu>
+            <AMenuItem>
+              <span @click="logout">
+                <LogoutOutlined style="margin-right: .5rem;" />退出登录
+              </span>
+            </AMenuItem>
+          </AMenu>
         </template>
-      </AButton>
+      </ADropdown>
     </section>
   </header>
 </template>
-
-<style scoped lang="scss">
-header {
-  height: 2.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: nowrap;
-
-  section {
-    &:first-of-type {
-      display: inline-flex;
-      flex-wrap: nowrap;
-      align-items: center;
-      flex-shrink: 0;
-      overflow: hidden;
-      flex: 1
-    }
-
-    &:last-of-type {
-      display: inline-flex;
-      flex-wrap: nowrap;
-      flex-shrink: 0;
-      align-items: center;
+  
+  <style scoped lang="scss">
+  header {
+    height: 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+  
+    section {
+      &:first-of-type {
+        display: inline-flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        flex-shrink: 0;
+        overflow: hidden;
+        flex: 1
+      }
+  
+      &:last-of-type {
+        display: inline-flex;
+        flex-wrap: nowrap;
+        flex-shrink: 0;
+        align-items: center;
+      }
     }
   }
-}
-
-.icon-sidebar-trigger {
-  cursor: pointer;
-  margin-right: 1.2rem;
-  font-size: 1.2rem;
-
-  &.collapsed {
-    transform: rotate(180deg);
+  
+  .icon-sidebar-trigger {
+    cursor: pointer;
+    margin-right: 1.2rem;
+    font-size: 1.2rem;
+  
+    &.collapsed {
+      transform: rotate(180deg);
+    }
   }
-}
-</style>
+  </style>
