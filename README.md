@@ -28,8 +28,8 @@
 
 #### 这里是antd版本，如果你更倾向于使用element-plus，请[点击这里](https://github.com/1esse/vue-clownfish-admin-elem)。
 
-## ✨ 最新版本 v1.1.2
-1. 新增echarts示例
+## ✨ 最新版本 v1.1.3
+1. 弃用postcss-nesting，改用scss以获得编辑器更好的支持。
 
 ## 🐬 简介
 [vue-clownfish-admin](https://github.com/1esse/vue-clownfish-admin) 是一个由Vue最新技术栈开发的后台管理前端简易框架。基于vue3，集成vue3最新生态系统的核心库实现。主要的技术栈有
@@ -38,15 +38,14 @@
 
 
 ## 🦑 优势
-+ 几乎使用当前前端最新技术开发（vite, vue3, ts, pinia, csswg）
++ 几乎使用当前前端最新技术开发（vite, vue3, ts, pinia
 + 布局组件解耦，可轻易切换，替代组件
 + 框架实现代码行数少，通俗易懂容易上手
 
 ## 🐟了解这些可能会有帮助
 1. 定义在src/components下的组件，可在页面的template直接使用，不必导入（tsx除外）。
-2. 本项目采用[vite官方推荐的css编写方式](https://www.vitejs.net/guide/features.html#css-pre-processors)，如果你用的vscode编辑器，可下载language-postcss插件进行代码高亮。如果你不喜欢用postcss-nesting，也可以下载其他css预处理器依赖如scss，less等，不会造成冲突。
-3. 不需要对flex，grid等css样式进行多浏览器适配，框架已配置了自动适配。
-4. 大部分场景推荐使用rem代替px以适配更多不同分辨率屏幕
+2. 不需要对flex，grid等css样式进行多浏览器适配，框架已配置了自动适配。
+3. 大部分场景推荐使用rem代替px以适配更多不同分辨率屏幕
 
 ## 🐳 主要功能
 + 根据路由配置自动生成侧边栏菜单（支持多层嵌套和外链）

@@ -402,11 +402,6 @@
     "@babel/helper-validator-identifier" "^7.18.6"
     to-fast-properties "^2.0.0"
 
-"@csstools/selector-specificity@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.npmjs.org/@csstools/selector-specificity/-/selector-specificity-2.0.0.tgz#65b12f12db55188422070e34687bf3af09870922"
-  integrity sha512-rZ6vufeY/UjAgtyiJ4WvfF6XP6HizIyOfbZOg0RnecIwjrvH8Am3nN1BpKnnPZunYAkUcPPXDhwbxOtGop8cfQ==
-
 "@ctrl/tinycolor@^3.4.0":
   version "3.4.1"
   resolved "https://registry.npmjs.org/@ctrl/tinycolor/-/tinycolor-3.4.1.tgz#75b4c27948c81e88ccd3a8902047bcd797f38d32"
@@ -1071,7 +1066,7 @@ chalk@^2.0.0:
     escape-string-regexp "^1.0.5"
     supports-color "^5.3.0"
 
-chokidar@^3.5.3:
+"chokidar@>=3.0.0 <4.0.0", chokidar@^3.5.3:
   version "3.5.3"
   resolved "https://registry.npmjs.org/chokidar/-/chokidar-3.5.3.tgz#1cf37c8707b932bd1af1ae22c0432e2acd1903bd"
   integrity sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw==
@@ -1211,11 +1206,6 @@ css-what@^6.0.1:
   version "6.1.0"
   resolved "https://registry.npmjs.org/css-what/-/css-what-6.1.0.tgz#fb5effcf76f1ddea2c81bdfaa4de44e79bac70f4"
   integrity sha512-HTUrgRJ7r4dsZKU6GjmpfRK1O76h97Z8MfS1G0FozR+oF2kG6Vfe8JE6zwrkbxigziPHinCJ+gCPjA9EaBDtRw==
-
-cssesc@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.npmjs.org/cssesc/-/cssesc-3.0.0.tgz#37741919903b868565e1c09ea747445cd18983ee"
-  integrity sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==
 
 csso@^4.2.0:
   version "4.2.0"
@@ -1790,6 +1780,11 @@ image-size@^0.5.1:
   resolved "https://registry.npmjs.org/image-size/-/image-size-0.5.5.tgz#09dfd4ab9d20e29eb1c3e80b8990378df9e3cb9c"
   integrity sha512-6TDAlDPZxUFCv+fuOkIoXT/V/f3Qbq8e37p+YOiYrUv3v9cc3/6x78VdfPgFVaB9dZYeLUfKgHRebpkm/oP2VQ==
 
+immutable@^4.0.0:
+  version "4.1.0"
+  resolved "https://registry.npmjs.org/immutable/-/immutable-4.1.0.tgz#f795787f0db780183307b9eb2091fcac1f6fafef"
+  integrity sha512-oNkuqVTA8jqG1Q6c+UglTOD1xhC1BtjKI7XkCXRkZHrN5m18/XsnUp8Q89GkQO/z+0WjonSvl0FLhDYftp46nQ==
+
 inherits@^2.0.1, inherits@^2.0.3:
   version "2.0.4"
   resolved "https://registry.npmjs.org/inherits/-/inherits-2.0.4.tgz#0fa2c64f932917c3433a0ded55363aae37416b7c"
@@ -2297,26 +2292,10 @@ postcss-flexbugs-fixes@^5.0.2:
   resolved "https://registry.npmjs.org/postcss-flexbugs-fixes/-/postcss-flexbugs-fixes-5.0.2.tgz#2028e145313074fc9abe276cb7ca14e5401eb49d"
   integrity sha512-18f9voByak7bTktR2QgDveglpn9DTbBWPUzSOe9g0N4WR/2eSt6Vrcbf0hmspvMI6YWGywz6B9f7jzpFNJJgnQ==
 
-postcss-nesting@^10.1.10:
-  version "10.1.10"
-  resolved "https://registry.npmjs.org/postcss-nesting/-/postcss-nesting-10.1.10.tgz#9c396df3d8232cbedfa95baaac6b765b8fd2a817"
-  integrity sha512-lqd7LXCq0gWc0wKXtoKDru5wEUNjm3OryLVNRZ8OnW8km6fSNUuFrjEhU3nklxXE2jvd4qrox566acgh+xQt8w==
-  dependencies:
-    "@csstools/selector-specificity" "^2.0.0"
-    postcss-selector-parser "^6.0.10"
-
 postcss-prefix-selector@^1.6.0:
   version "1.15.0"
   resolved "https://registry.npmjs.org/postcss-prefix-selector/-/postcss-prefix-selector-1.15.0.tgz#b35f63d414954e59d9331071c6a3bb17369ee7bf"
   integrity sha512-9taaTPs6I4906QC03zBBt0LfTWAhrqEWlKSj0jRlxrg1yV+O91h0wcquu6krcA5L6aEv3QnCeG8B1vZ5WT4ecQ==
-
-postcss-selector-parser@^6.0.10:
-  version "6.0.10"
-  resolved "https://registry.npmjs.org/postcss-selector-parser/-/postcss-selector-parser-6.0.10.tgz#79b61e2c0d1bfc2602d549e11d0876256f8df88d"
-  integrity sha512-IQ7TZdoaqbT+LCpShg46jnZVlhWD2w6iQYAcYXfHARZ7X1t/UGhhceQDs5X0cGqKvYlHNOuv7Oa1xmb0oQuA3w==
-  dependencies:
-    cssesc "^3.0.0"
-    util-deprecate "^1.0.2"
 
 postcss-value-parser@^4.2.0:
   version "4.2.0"
@@ -2508,6 +2487,15 @@ safe-regex@^1.1.0:
   dependencies:
     ret "~0.1.10"
 
+sass@^1.54.8:
+  version "1.54.8"
+  resolved "https://registry.npmjs.org/sass/-/sass-1.54.8.tgz#4adef0dd86ea2b1e4074f551eeda4fc5f812a996"
+  integrity sha512-ib4JhLRRgbg6QVy6bsv5uJxnJMTS2soVcCp9Y88Extyy13A8vV0G1fAwujOzmNkFQbR3LvedudAMbtuNRPbQww==
+  dependencies:
+    chokidar ">=3.0.0 <4.0.0"
+    immutable "^4.0.0"
+    source-map-js ">=0.6.2 <2.0.0"
+
 scroll-into-view-if-needed@^2.2.25:
   version "2.2.29"
   resolved "https://registry.npmjs.org/scroll-into-view-if-needed/-/scroll-into-view-if-needed-2.2.29.tgz#551791a84b7e2287706511f8c68161e4990ab885"
@@ -2581,7 +2569,7 @@ snapdragon@^0.8.1:
     source-map-resolve "^0.5.0"
     use "^3.1.0"
 
-source-map-js@^1.0.2:
+"source-map-js@>=0.6.2 <2.0.0", source-map-js@^1.0.2:
   version "1.0.2"
   resolved "https://registry.npmjs.org/source-map-js/-/source-map-js-1.0.2.tgz#adbc361d9c62df380125e7f161f71c826f1e490c"
   integrity sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==
@@ -2843,7 +2831,7 @@ use@^3.1.0:
   resolved "https://registry.npmjs.org/use/-/use-3.1.1.tgz#d50c8cac79a19fbc20f2911f56eb973f4e10070f"
   integrity sha512-cwESVXlO3url9YWlFW/TA9cshCEhtu7IKJ/p5soJ/gGpj7vbvFrAY/eIioQ6Dw23KjZhYgiIo8HOs1nQ2vr/oQ==
 
-util-deprecate@^1.0.1, util-deprecate@^1.0.2:
+util-deprecate@^1.0.1:
   version "1.0.2"
   resolved "https://registry.npmjs.org/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
   integrity sha1-RQ1Nyfpw3nMnYvvS1KKJgUGaDM8=

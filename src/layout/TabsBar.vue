@@ -180,7 +180,7 @@ function showTabMenu(e: MouseEvent, tab: RouteLocationNormalizedLoaded) {
   </MenuPanel>
 </template>
 
-<style scoped lang="postcss">
+<style scoped lang="scss">
 .tabs {
   position: relative;
   height: 100%;
@@ -189,7 +189,7 @@ function showTabMenu(e: MouseEvent, tab: RouteLocationNormalizedLoaded) {
   flex-wrap: nowrap;
   font-size: 0.7rem;
 
-  & .tab {
+  .tab {
     height: 1.6rem;
     padding: 0 0.5rem;
     margin-right: 0.5rem;
@@ -215,7 +215,7 @@ function showTabMenu(e: MouseEvent, tab: RouteLocationNormalizedLoaded) {
       color: var(--black);
     }
 
-    & .icon-tab-close {
+    .icon-tab-close {
       &:hover {
         background-color: #666;
         color: #fff;

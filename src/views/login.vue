@@ -63,7 +63,7 @@ function login() {
     </section>
   </main>
 </template>
-<style scoped lang="postcss">
+<style scoped lang="scss">
 .main {
   background-image: linear-gradient(-170deg, #44cee9, #2b74c1);
   width: 100vw;
@@ -75,21 +75,21 @@ function login() {
   align-items: center;
   flex-direction: column;
 
-  & .login-wrapper {
+  .login-wrapper {
     margin-top: -10rem;
 
-    & .title {
+    .title {
       color: var(--white);
       text-align: center;
     }
 
-    & .login-form {
+    .login-form {
       background-color: var(--white);
       padding: 2rem 1.5rem;
       width: 25rem;
       border-radius: .5rem;
 
-      & .wrapper-remember {
+      .wrapper-remember {
         margin-bottom: 1rem;
       }
     }

@@ -26,7 +26,7 @@ const emit = defineEmits<{
   </div>
 </template>
 
-<style lang="postcss" scoped>
+<style scoped>
 .shadow-wrapper {
   width: 150vw;
   height: 150vh;

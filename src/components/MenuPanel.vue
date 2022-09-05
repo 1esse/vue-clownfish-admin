@@ -51,7 +51,7 @@ function hidePanel() {
   </Teleport>
 </template>
 
-<style scoped lang="postcss">
+<style scoped>
 .menu-panel {
   min-width: 8rem;
   position: fixed;

@@ -9,7 +9,7 @@ import MathRomantic from './components/MathRomantic.vue'
   </main>
 </template>
     
-<style scoped lang="postcss">
+<style scoped>
 .main {
   position: relative;
   width: 100%;
