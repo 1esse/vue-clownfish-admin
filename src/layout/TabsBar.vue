@@ -215,7 +215,7 @@ function showTabMenu(e: MouseEvent, tab: RouteLocationNormalizedLoaded) {
       align-items: center;
       flex-wrap: nowrap;
       font-size: 0.7rem;
-      padding: 0 .5rem;
+      padding: 0 .5rem 0 0;
   
       .tab {
         height: 1.8rem;
@@ -259,6 +259,9 @@ function showTabMenu(e: MouseEvent, tab: RouteLocationNormalizedLoaded) {
   
       .btn-item {
         border-color: transparent;
+        width: 1.8rem;
+        height: 1.8rem;
+        min-width: 1.8rem;
       }
     }
   }
