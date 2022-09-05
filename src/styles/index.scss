@@ -1,6 +1,6 @@
-@import url('./_variables.postcss');
-@import url('./_antd.postcss');
-@import url('./_transition.postcss');
+@use './_variables.scss';
+@use './_antd.scss';
+@use './_transition.scss';
 
 * {
     margin: 0;
@@ -21,14 +21,14 @@
     padding: 1rem;
 }
 
-.flex-center{
+.flex-center {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.border{
-  border: 1px solid #e9e9e9;
+.border {
+    border: 1px solid #e9e9e9;
 }
 
 @media screen and (min-width: 2201px) {

@@ -37,7 +37,7 @@ function logout() {
   </header>
 </template>
 
-<style scoped lang="postcss">
+<style scoped lang="scss">
 header {
   height: 2.5rem;
   display: flex;
@@ -45,7 +45,7 @@ header {
   align-items: center;
   flex-wrap: nowrap;
 
-  & section {
+  section {
     &:first-of-type {
       display: inline-flex;
       flex-wrap: nowrap;

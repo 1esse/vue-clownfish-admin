@@ -89,9 +89,9 @@ function getDirectionOptions(): Options {
   </component>
 </template>
 
-<style lang="postcss">
+<style lang="scss">
 .scrollbar {
-  & .os-scrollbar-handle {
+  .os-scrollbar-handle {
     background: rgba(0, 0, 0, 0.15) !important;
 
     &:hover,

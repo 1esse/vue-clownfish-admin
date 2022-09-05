@@ -5,7 +5,6 @@ import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import path from 'path'
 import vueJsx from '@vitejs/plugin-vue-jsx'
-import postcssNesting from 'postcss-nesting'
 import autoprefixer from 'autoprefixer'
 import flexbugsFixes from 'postcss-flexbugs-fixes'
 
@@ -30,7 +29,6 @@ export default defineConfig({
   css: {
     postcss: {
       plugins: [
-        postcssNesting,
         autoprefixer({
           overrideBrowserslist: [
             'Android 4.1',
