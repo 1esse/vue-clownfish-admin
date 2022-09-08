@@ -3,8 +3,6 @@ import { CloseOutlined } from '@ant-design/icons-vue'
 import isMobile from '@/composables/isMobile'
 import { transitions } from '@/appConfig'
 import { useSlots, watch } from 'vue'
-import createSharedComposable from '@/composables/sharedComposable'
-
 const props = withDefaults(defineProps<{
   show: boolean
   width?: string
