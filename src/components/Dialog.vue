@@ -3,6 +3,7 @@ import { CloseOutlined } from '@ant-design/icons-vue'
 import isMobile from '@/composables/isMobile'
 import { transitions } from '@/appConfig'
 import { useSlots, watch } from 'vue'
+import createSharedComposable from '@/composables/sharedComposable'
 
 const props = withDefaults(defineProps<{
   show: boolean
@@ -18,6 +19,7 @@ const props = withDefaults(defineProps<{
   loadingText?: string
   transition?: transitions
   onClose?: Function
+  onShow?: Function
 }>(), {
   width: '40rem',
   height: 'auto',
@@ -38,8 +40,9 @@ const emit = defineEmits<{
 const _isMobile = isMobile()
 
 watch(() => props.show, (val) => {
-  // 监听show=false
-  if (!val) {
+  if (val) {
+    props.onShow?.()
+  } else {
     props.onClose?.()
   }
 })
