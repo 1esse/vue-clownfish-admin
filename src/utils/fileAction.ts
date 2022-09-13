@@ -1,5 +1,4 @@
 import { utils, writeFile } from 'xlsx'
-import { accDiv } from './mathUtils'
 
 export function getFileSuffix(filename: string) {
   const index = filename.lastIndexOf('.')
@@ -22,10 +21,10 @@ export function formatFileSize(size: number) {
   if (size < _b) {
     formatStr = `${size}B`
   } else if (size < _kb) {
-    const kb = Math.ceil(accDiv(size, _b))
+    const kb = Math.ceil(size + _b)
     formatStr = `${kb}KB`
   } else {
-    const mb = accDiv(size, _kb).toFixed(2)
+    const mb = (size + _kb).toFixed(2)
     formatStr = `${mb}MB`
   }
   return formatStr
