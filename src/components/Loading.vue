@@ -2,17 +2,19 @@
 import loadingGif from '@/assets/loading.gif'
 const props = withDefaults(defineProps<{
   text?: string
-  width?: string
+  width?: string,
+  background?: string
 }>(), {
   text: '',
-  width: '10rem'
+  width: '10rem',
+  background: '#fff'
 })
 </script>
   
 <template>
   <div class="loading-wrapper">
     <img class="loading-gif" :src="loadingGif" alt="加载中...">
-    <span v-if="props.text">{{  props.text  }}</span>
+    <span v-if="props.text">{{ props.text }}</span>
   </div>
 </template>
   
@@ -27,6 +29,10 @@ const props = withDefaults(defineProps<{
   flex: 1;
   font-size: .9rem;
   color: #666;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: v-bind('props.background');
 }
 
 .loading-gif {

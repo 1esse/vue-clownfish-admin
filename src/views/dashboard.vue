@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { message, Modal } from 'ant-design-vue'
 import { h, reactive } from 'vue'
-import { decimalsAdd, accDiv, accMul } from '@/utils/mathUtils'
 
 const visibles = reactive({
   dialog1: false,
@@ -63,59 +62,6 @@ function deviceTest() {
         </ACard>
       </ACol>
     </ARow>
-    <ARow :gutter="16" style="margin-top: 1rem">
-      <ACol :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
-        <ACard title="精准计算" :bordered="false">
-          <ACardMeta description="此程序可以精准计算加减乘除，且不会丢失精度！" />
-          <ARow :gutter="12" style="margin-top: 1rem">
-            <ACol :xs="24" :sm="12" :md="12" :lg="12" :xl="6">
-              <ACard title="加法计算">
-                <ASpace>
-                  <AInput v-model:value="state.plus1" style="width: 6rem"></AInput>
-                  <span>+</span>
-                  <AInput v-model:value="state.plus2" style="width: 6rem"></AInput>
-                  <span>=</span>
-                  <span>{{ decimalsAdd(state.plus1, state.plus2) }}</span>
-                </ASpace>
-              </ACard>
-            </ACol>
-            <ACol :xs="24" :sm="12" :md="12" :lg="12" :xl="6">
-              <ACard title="减法计算">
-                <ASpace>
-                  <AInput v-model:value="state.minus1" style="width: 6rem"></AInput>
-                  <span>-</span>
-                  <AInput v-model:value="state.minus2" style="width: 6rem"></AInput>
-                  <span>=</span>
-                  <span>{{ decimalsAdd(state.minus1, -state.minus2) }}</span>
-                </ASpace>
-              </ACard>
-            </ACol>
-            <ACol :xs="24" :sm="12" :md="12" :lg="12" :xl="6">
-              <ACard title="乘法计算">
-                <ASpace>
-                  <AInput v-model:value="state.accMul1" style="width: 6rem"></AInput>
-                  <span>x</span>
-                  <AInput v-model:value="state.accMul2" style="width: 6rem"></AInput>
-                  <span>=</span>
-                  <span>{{ accMul(state.accMul1, state.accMul2) }}</span>
-                </ASpace>
-              </ACard>
-            </ACol>
-            <ACol :xs="24" :sm="12" :md="12" :lg="12" :xl="6">
-              <ACard title="除法计算">
-                <ASpace>
-                  <AInput v-model:value="state.accDiv1" style="width: 6rem"></AInput>
-                  <span>/</span>
-                  <AInput v-model:value="state.accDiv2" style="width: 6rem"></AInput>
-                  <span>=</span>
-                  <span>{{ accDiv(state.accDiv1, state.accDiv2) }}</span>
-                </ASpace>
-              </ACard>
-            </ACol>
-          </ARow>
-        </ACard>
-      </ACol>
-    </ARow>
     <Dialog v-model:show="visibles.dialog1" :loading="loading.dialog1" :loadingText="loadingText.dialog1" width="20rem"
       height="12rem">
       <template #dialogHeader>请输入您的身高</template>
@@ -133,4 +79,5 @@ function deviceTest() {
 </template>
 
 <style>
+
 </style>
