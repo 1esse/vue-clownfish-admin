@@ -1,4 +1,4 @@
-import { onBeforeMount, onBeforeUnmount, ref } from "vue"
+import { onBeforeMount, onBeforeUnmount, onScopeDispose, ref } from "vue"
 
 export default function (cb?: Function) {
   const WIDTH = 992
@@ -8,6 +8,9 @@ export default function (cb?: Function) {
     window.addEventListener('resize', checkIsMobile)
   })
   onBeforeUnmount(() => {
+    window.removeEventListener('resize', checkIsMobile)
+  })
+  onScopeDispose(() => {
     window.removeEventListener('resize', checkIsMobile)
   })
   function checkIsMobile() {
