@@ -69,6 +69,7 @@ function deleteKeepAlivePage(page: RouteLocationNormalizedLoaded) {
 }
 
 function refreshPage(page: RouteLocationNormalizedLoaded) {
+  if (page.path.startsWith('/redirect')) return
   deleteKeepAlivePage(page)
   router.replace({ path: `/redirect${page.path}`, query: page.query })
 }
@@ -142,7 +143,7 @@ function showTabMenu(e: MouseEvent, tab: RouteLocationNormalizedLoaded) {
 }
 </script>
   
-  <template>
+<template>
   <div class="tabs-bar">
     <ASpace class="functional-btns">
       <ATooltip>
@@ -201,68 +202,68 @@ function showTabMenu(e: MouseEvent, tab: RouteLocationNormalizedLoaded) {
   </MenuPanel>
 </template>
   
-  <style scoped lang="scss">
-  .tabs-bar {
-    display: flex;
-    justify-content: space-between;
+<style scoped lang="scss">
+.tabs-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+
+  .tabs {
+    position: relative;
+    height: 100%;
+    display: inline-flex;
     align-items: center;
     flex-wrap: nowrap;
-  
-    .tabs {
-      position: relative;
-      height: 100%;
+    font-size: 0.7rem;
+    padding: 0 .5rem 0 0;
+
+    .tab {
+      height: 1.8rem;
+      padding: 0 0.5rem;
+      margin-right: 0.5rem;
+      white-space: nowrap;
       display: inline-flex;
+      justify-content: center;
       align-items: center;
       flex-wrap: nowrap;
-      font-size: 0.7rem;
-      padding: 0 .5rem 0 0;
-  
-      .tab {
-        height: 1.8rem;
-        padding: 0 0.5rem;
-        margin-right: 0.5rem;
-        white-space: nowrap;
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: nowrap;
-        flex-shrink: 0;
-        background-color: var(--white);
-        color: var(--sidebar-font-color);
-        border-radius: 0.3rem;
-        border: 1px solid #e1e1e1;
-        font-size: .75rem;
-  
-        &.active {
-          background-color: var(--light-blue);
-          color: var(--blue);
-        }
-  
-        &:hover:not(&.active) {
-          background-color: var(--light-blue);
-          color: var(--sidebar-font-color);
-        }
-  
-        .icon-tab-close {
-          &:hover {
-            background-color: #666;
-            color: #fff;
-            border-radius: 50%;
-          }
-        }
+      flex-shrink: 0;
+      background-color: var(--white);
+      color: var(--sidebar-font-color);
+      border-radius: 0.3rem;
+      border: 1px solid #e1e1e1;
+      font-size: .75rem;
+
+      &.active {
+        background-color: var(--light-blue);
+        color: var(--blue);
       }
-    }
-  
-    .functional-btns {
-      white-space: nowrap;
-      padding-right: .5rem;
-  
-      .btn-item {
-        border-color: transparent;
-        width: 1.8rem;
-        height: 1.8rem;
-        min-width: 1.8rem;
+
+      &:hover:not(&.active) {
+        background-color: var(--light-blue);
+        color: var(--sidebar-font-color);
+      }
+
+      .icon-tab-close {
+        &:hover {
+          background-color: #666;
+          color: #fff;
+          border-radius: 50%;
+        }
       }
     }
   }
-  </style>
+
+  .functional-btns {
+    white-space: nowrap;
+    padding-right: .5rem;
+
+    .btn-item {
+      border-color: transparent;
+      width: 1.8rem;
+      height: 1.8rem;
+      min-width: 1.8rem;
+    }
+  }
+}
+</style>
