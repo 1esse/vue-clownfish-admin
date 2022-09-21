@@ -242,7 +242,7 @@ function handleDrop(e: DragEvent) {
             <component v-else :is="tab.meta.icon"></component>
           </template>
           <span style="margin: 0 5px">{{ tab.meta.title || '无标题' }}</span>
-          <CloseOutlined class="icon-tab-close" @click.prevent="closeTab(tab)" />
+          <CloseOutlined class="icon-tab-close" @click.stop.prevent="closeTab(tab)" />
         </div>
       </div>
     </Scrollbar>
