@@ -1,6 +1,6 @@
 <script setup lang="tsx">
 import SvgIcon from '../components/SvgIcon.vue'
-import { ref, h, watch, inject } from 'vue'
+import { ref, h, watch, inject, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { resolve } from 'pathe' // path包es代码实现
 import Scrollbar from '../components/Scrollbar.vue'
@@ -15,20 +15,19 @@ const router = useRouter()
 const route = useRoute()
 const selectedKeys = ref<string[]>([route.path]) // 菜单默认选中项
 // 默认展开选中项所在菜单
-const openKeys = ref<string[]>(
-  router.getRoutes()
-    .filter(matchedRoute =>
-      route.path.includes(matchedRoute.path)
-    )
-    .map(matchedRoute => matchedRoute.path)
-) // 子菜单默认展开项
+const openKeys = ref<string[]>() // 子菜单默认展开项
 const keepAlivePages = inject<Layout.keepAlivePages>('keepAlivePages')
 
 const sidebar = sidebarStore()
 sidebar.refreshSidebar()
 
-watch(() => route.name, () => {
+watch(() => route.path, () => {
   selectedKeys.value = [route.meta.belongs || route.path]
+  openKeys.value = router.getRoutes()
+    .filter(matchedRoute =>
+      route.path.includes(matchedRoute.path)
+    )
+    .map(matchedRoute => matchedRoute.path)
   // 如果该路由设置页面缓存则推进缓存组
   if (route.meta.keepAlive && !keepAlivePages?.has(route.name as string)) {
     keepAlivePages?.add(route.name as string)
@@ -92,7 +91,7 @@ function getOnlyChildPath(parentRoute: RouteRecordRaw): RouteRecordRaw {
   return Object.assign({}, childRoute, { path: `${parentRoute.path}/${childRoute?.path}` } as RouteRecordRaw)
 }
 </script>
-
+  
 <template>
   <Scrollbar :speed="4">
     <AMenu v-model:selectedKeys="selectedKeys" v-model:openKeys="openKeys" mode="inline" :inlineIndent="16"
@@ -103,3 +102,4 @@ function getOnlyChildPath(parentRoute: RouteRecordRaw): RouteRecordRaw {
     </AMenu>
   </Scrollbar>
 </template>
+  

@@ -7,8 +7,11 @@ import isMobile from '@/composables/isMobile'
 import Logo from '@/assets/logo.png'
 import { transitions, fixedHeader } from '@/appConfig'
 import type { Layout } from 'types/layout'
+import { createSharedComposable } from '@/composables/sharedComposable'
 
-const _isMobile = isMobile(setSidebarCollapsed)
+const useSharedIsMobile = createSharedComposable(isMobile)
+const _isMobile = useSharedIsMobile(setSidebarCollapsed)
+
 const sidebarRelated = reactive<Layout.SidebarRelated>({
   collapsed: true,
   width: '15rem',

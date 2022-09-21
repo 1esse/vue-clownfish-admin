@@ -4,7 +4,6 @@ import { useRoute, useRouter } from 'vue-router'
 import { CloseOutlined, QuestionOutlined, ReloadOutlined } from '@ant-design/icons-vue'
 import Scrollbar from '@/components/Scrollbar.vue'
 import MenuPanel from '@/components/MenuPanel.vue'
-import type { ComponentPublicInstance } from 'vue'
 import type { RouteLocationNormalizedLoaded } from 'vue-router'
 import type { Layout } from 'types/layout'
 import { Modal } from 'ant-design-vue'
@@ -14,7 +13,7 @@ const route = useRoute()
 const tabs = ref<RouteLocationNormalizedLoaded[]>([])
 const scrollbarDom = ref<InstanceType<typeof Scrollbar>>()
 const menuPanelDom = ref<InstanceType<typeof MenuPanel>>()
-const tabDoms = ref<ComponentPublicInstance[]>([])
+const tabDoms = ref<HTMLElement[]>([])
 const keepAlivePages = inject<Layout.keepAlivePages>('keepAlivePages')
 const props = withDefaults(defineProps<{
   withIcons?: boolean
@@ -47,17 +46,17 @@ function moveToTab(tab: RouteLocationNormalizedLoaded) {
   const tabIndex = tabs.value.findIndex(item => item.path === tab.path)
   if (tabIndex === lastTabIndex) return
   const tabDom = tabDoms.value?.[tabIndex]
-  const { offsetWidth, offsetLeft } = tabDom.$el
+  const { offsetWidth, offsetLeft } = tabDom
   const scrollbarState = scrollbarDom.value?.scrollbar?.getState()
 
   scrollbarDom.value?.scrollbar?.scroll({
     x: lastTabIndex < tabIndex ?
       (offsetLeft + offsetWidth) < (scrollbarState?.viewportSize.width || 0) ?
-        null :
+        undefined :
         offsetLeft :
       offsetLeft < (scrollbarState?.overflowAmount.x || 0) ?
         offsetLeft :
-        null
+        undefined
   }, 150)
   lastTabIndex = tabIndex
 }
@@ -114,22 +113,37 @@ function checkCloseTab(tab: RouteLocationNormalizedLoaded) {
   })
 }
 
+function closeRightSideTabs(tab: RouteLocationNormalizedLoaded) {
+  const index = tabs.value.findIndex(item => item.path === tab.path)
+  for (let i = index; i < tabs.value.length; i++) {
+    const tab = tabs.value[i + 1]
+    tab && nextTick(() => {
+      closeTab(tab)
+    })
+  }
+}
+
 function closeAllTabs() {
-  keepAlivePages?.clear()
-  tabs.value = []
-  router.replace('/redirect/dashboard')
+  for (const tab of tabs.value) {
+    nextTick(() => {
+      closeTab(tab)
+    })
+  }
 }
 
 function closeOtherTabs(saveTab: RouteLocationNormalizedLoaded) {
   if (saveTab.path !== route.path) {
     router.replace({ path: '/redirect' + saveTab.path, query: saveTab.query })
   }
-  for (let i = tabs.value.length - 1; i >= 0; i--) {
-    const tab = tabs.value[i]
-    if (tab.path === saveTab.path) continue
-    deleteKeepAlivePage(tab)
-    tabs.value.splice(i, 1)
-  }
+  setTimeout(() => {
+    for (let i = tabs.value.length - 1; i >= 0; i--) {
+      const tab = tabs.value[i]
+      if (tab.path === saveTab.path) continue
+      nextTick(() => {
+        closeTab(tab)
+      })
+    }
+  }, 100)
 }
 
 function showTabMenu(e: MouseEvent, tab: RouteLocationNormalizedLoaded) {
@@ -140,6 +154,50 @@ function showTabMenu(e: MouseEvent, tab: RouteLocationNormalizedLoaded) {
   menuPanelDom.value.setContext(tab)
   menuPanelDom.value.setPosition(clientX, clientY)
   menuPanelDom.value.showPanel()
+}
+
+
+const dragIndex = ref()
+const dropIndex = ref()
+function handleDragStart(e: DragEvent) {
+  dragIndex.value = (e.target as HTMLElement).dataset.index
+}
+
+function handleDragEnter(e: DragEvent) {
+  e.preventDefault()
+  if (!e.relatedTarget) return
+  dropIndex.value = (e.relatedTarget as HTMLElement).dataset.index
+}
+
+function handleDragOver(e: DragEvent) {
+  e.preventDefault()
+}
+
+function handleDragEnd(e: DragEvent) {
+  dragIndex.value = undefined
+  dropIndex.value = undefined
+}
+
+function handleDrop(e: DragEvent) {
+  if (dragIndex.value === undefined || dropIndex.value === undefined || dragIndex.value === dropIndex.value) return
+  const options: RouteLocationNormalizedLoaded[] = []
+  for (const [index, tab] of Object.entries(tabs.value)) {
+    if (index == dragIndex.value) continue
+    else if (index == dropIndex.value) {
+      if (+dragIndex.value > +dropIndex.value) {
+        options.push(tabs.value[dragIndex.value], tab)
+      } else {
+        options.push(tab, tabs.value[dragIndex.value])
+      }
+    } else {
+      options.push(tab)
+    }
+  }
+  // 刷新tabDoms
+  tabs.value.length = 0
+  nextTick(() => {
+    tabs.value.push(...options)
+  })
 }
 </script>
   
@@ -155,26 +213,37 @@ function showTabMenu(e: MouseEvent, tab: RouteLocationNormalizedLoaded) {
         </AButton>
       </ATooltip>
       <ATooltip>
-        <template #title>关闭其他页</template>
+        <template #title>关闭其他</template>
         <AButton class="btn-item" shape="circle" @click="closeOtherTabs(route)">
           <template #icon>
             <CloseOutlined />
           </template>
         </AButton>
       </ATooltip>
+      <ATooltip>
+        <template #title>关闭右侧</template>
+        <AButton class="btn-item" shape="circle" @click="closeRightSideTabs(route)">
+          <template #icon>
+            <SvgIcon iconName="deleteRight" width="100%"></SvgIcon>
+          </template>
+        </AButton>
+      </ATooltip>
       <ADivider type="vertical" style="background-color: #e1e1e1; height: 1rem; margin: 0"></ADivider>
     </ASpace>
-    <Scrollbar ref="scrollbarDom" height="2rem" direction="horizontal" :speed="3">
+    <Scrollbar ref="scrollbarDom" height="2rem" direction="horizontal" :speed="5" style="width: 50rem; flex: 1;">
       <div class="tabs">
-        <RouterLink ref="tabDoms" v-for="tab in tabs" :key="tab.path" :to="tab.path" class="tab"
-          :class="{ active: tab.path === route.path }" @click.right.prevent="showTabMenu($event, tab)">
+        <div ref="tabDoms" v-for="(tab, index) in tabs" :key="tab.path" class="tab"
+          :class="{ active: tab.path === route.path, 'drop-target': dropIndex == index }" draggable="true"
+          :data-index="index" @dragstart="handleDragStart" @dragenter="handleDragEnter" @dragover="handleDragOver"
+          @drop="handleDrop" @dragend="handleDragEnd" @click="router.push(tab.path)"
+          @click.right.prevent="showTabMenu($event, tab)">
           <template v-if="props.withIcons && tab.meta.icon">
             <SvgIcon v-if="typeof tab.meta.icon === 'string'" :icon-name="(tab.meta.icon as string)"></SvgIcon>
             <component v-else :is="tab.meta.icon"></component>
           </template>
           <span style="margin: 0 5px">{{ tab.meta.title || '无标题' }}</span>
           <CloseOutlined class="icon-tab-close" @click.prevent="closeTab(tab)" />
-        </RouterLink>
+        </div>
       </div>
     </Scrollbar>
   </div>
@@ -194,6 +263,11 @@ function showTabMenu(e: MouseEvent, tab: RouteLocationNormalizedLoaded) {
         <CloseOutlined />
       </template> 关闭其他
     </AButton>
+    <AButton type="text" @click="closeRightSideTabs(menuPanelDom?.getContext())">
+      <template #icon>
+        <CloseOutlined />
+      </template> 关闭右侧
+    </AButton>
     <AButton type="text" @click="closeAllTabs()">
       <template #icon>
         <CloseOutlined />
@@ -210,18 +284,19 @@ function showTabMenu(e: MouseEvent, tab: RouteLocationNormalizedLoaded) {
   flex-wrap: nowrap;
 
   .tabs {
+    width: 100%;
     position: relative;
     height: 100%;
     display: inline-flex;
     align-items: center;
     flex-wrap: nowrap;
     font-size: 0.7rem;
-    padding: 0 .5rem 0 0;
+    padding: 0 0.5rem 0 0;
 
     .tab {
       height: 1.8rem;
-      padding: 0 0.5rem;
-      margin-right: 0.5rem;
+      padding: 0 0.2rem 0 0.8rem;
+      margin-right: 0.1rem;
       white-space: nowrap;
       display: inline-flex;
       justify-content: center;
@@ -229,22 +304,41 @@ function showTabMenu(e: MouseEvent, tab: RouteLocationNormalizedLoaded) {
       flex-wrap: nowrap;
       flex-shrink: 0;
       background-color: var(--white);
+      border: 1px solid var(--white);
       color: var(--sidebar-font-color);
-      border-radius: 0.3rem;
-      border: 1px solid #e1e1e1;
       font-size: .75rem;
+      box-sizing: border-box;
+      transition: all ease 0.2s;
+      cursor: pointer;
+      user-select: none;
 
       &.active {
-        background-color: var(--light-blue);
+        padding: 0 0.5rem;
+        background-color: var(--background-color);
         color: var(--blue);
+        border: 1px solid var(--background-color);
+
+        .icon-tab-close {
+          visibility: visible;
+        }
+      }
+
+      &.drop-target {
+        background-color: var(--light-blue);
+        border: 1px dashed var(--blue);
       }
 
       &:hover:not(&.active) {
-        background-color: var(--light-blue);
-        color: var(--sidebar-font-color);
+        color: var(--blue);
+
+        .icon-tab-close {
+          visibility: visible;
+        }
       }
 
       .icon-tab-close {
+        visibility: hidden;
+
         &:hover {
           background-color: #666;
           color: #fff;

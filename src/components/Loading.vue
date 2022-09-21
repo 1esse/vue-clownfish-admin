@@ -33,6 +33,7 @@ const props = withDefaults(defineProps<{
   top: 0;
   left: 0;
   background: v-bind('props.background');
+  z-index: 9999;
 }
 
 .loading-gif {
