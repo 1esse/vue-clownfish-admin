@@ -213,10 +213,18 @@ function handleDrop(e: DragEvent) {
         </AButton>
       </ATooltip>
       <ATooltip>
-        <template #title>关闭其他页</template>
+        <template #title>关闭其他</template>
         <AButton class="btn-item" shape="circle" @click="closeOtherTabs(route)">
           <template #icon>
             <CloseOutlined />
+          </template>
+        </AButton>
+      </ATooltip>
+      <ATooltip>
+        <template #title>关闭右侧</template>
+        <AButton class="btn-item" shape="circle" @click="closeRightSideTabs(route)">
+          <template #icon>
+            <SvgIcon iconName="deleteRight" width="100%"></SvgIcon>
           </template>
         </AButton>
       </ATooltip>

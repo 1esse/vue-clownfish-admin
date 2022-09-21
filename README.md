@@ -28,8 +28,13 @@
 
 #### 这里是antd版本，如果你更倾向于使用element-plus，请[点击这里](https://github.com/1esse/vue-clownfish-admin-elem)。
 
-## ✨ 最新版本 v1.1.6
-1. 修复频繁点击刷新页面按钮导致刷新失败问题
+## ✨ 最新版本 v1.1.7
+1. fix:修复标签页超出边界问题
+2. fix:修复设置弹窗询问关闭的标签页在关闭全部下无效
+3. feat:优化UI
+4. feat:支持标签页拖拽切换顺序
+5. feat:新增关闭右侧选项
+6. update: 更新依赖包
 
 ## 🐬 简介
 [vue-clownfish-admin](https://github.com/1esse/vue-clownfish-admin) 是一个由Vue最新技术栈开发的后台管理前端简易框架。基于vue3，集成vue3最新生态系统的核心库实现。主要的技术栈有
