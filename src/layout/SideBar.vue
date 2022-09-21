@@ -16,6 +16,7 @@ const route = useRoute()
 const selectedKeys = ref<string[]>([route.path]) // 菜单默认选中项
 // 默认展开选中项所在菜单
 const openKeys = ref<string[]>() // 子菜单默认展开项
+const sidebarRelated = inject<Layout.SidebarRelated>('sidebarRelated')
 const keepAlivePages = inject<Layout.keepAlivePages>('keepAlivePages')
 
 const sidebar = sidebarStore()
@@ -23,11 +24,13 @@ sidebar.refreshSidebar()
 
 watch(() => route.path, () => {
   selectedKeys.value = [route.meta.belongs || route.path]
-  openKeys.value = router.getRoutes()
-    .filter(matchedRoute =>
-      route.path.includes(matchedRoute.path)
-    )
-    .map(matchedRoute => matchedRoute.path)
+  if (!sidebarRelated?.collapsed) {
+    openKeys.value = router.getRoutes()
+      .filter(matchedRoute =>
+        route.path.includes(matchedRoute.path)
+      )
+      .map(matchedRoute => matchedRoute.path)
+  }
   // 如果该路由设置页面缓存则推进缓存组
   if (route.meta.keepAlive && !keepAlivePages?.has(route.name as string)) {
     keepAlivePages?.add(route.name as string)
