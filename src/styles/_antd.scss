@@ -16,6 +16,7 @@
     }
 
     .ant-layout-content {
+        padding: 1rem;
         overflow: auto;
     }
 }
@@ -46,10 +47,12 @@
             &::before {
                 content: '';
                 position: absolute;
+                left: 0;
                 width: 100%;
                 height: 100%;
                 animation: menuSelected 1s ease;
-                background: linear-gradient(90deg, #fff, var(--light-blue) 25%, var(--light-blue) 75%, var(--background-color));
+                // background: linear-gradient(90deg, #fff 0%, var(--light-blue) 30%, var(--light-blue) 90%, var(--background-color)) 100%;
+                background: var(--background-color);
             }
 
             a {
