@@ -65,7 +65,7 @@ function deviceTest() {
     <Dialog v-model:show="visibles.dialog1" :loading="loading.dialog1" :loadingText="loadingText.dialog1" width="20rem"
       height="12rem">
       <template #dialogHeader>请输入您的身高</template>
-      <AInput v-model:value="state.height">
+      <AInput v-model:value="state.height" type="number">
         <template #suffix>
           cm
         </template>
