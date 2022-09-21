@@ -24,18 +24,29 @@ sidebar.refreshSidebar()
 
 watch(() => route.path, () => {
   selectedKeys.value = [route.meta.belongs || route.path]
+  // 只在展开菜单的时候更新active菜单项
   if (!sidebarRelated?.collapsed) {
-    openKeys.value = router.getRoutes()
-      .filter(matchedRoute =>
-        route.path.includes(matchedRoute.path)
-      )
-      .map(matchedRoute => matchedRoute.path)
+    updateOpenKeys()
   }
   // 如果该路由设置页面缓存则推进缓存组
   if (route.meta.keepAlive && !keepAlivePages?.has(route.name as string)) {
     keepAlivePages?.add(route.name as string)
   }
 }, { immediate: true })
+
+// 展开菜单的时候需要更新active菜单项
+watch(() => sidebarRelated?.collapsed, (collapsed) => {
+  if (collapsed) return
+  updateOpenKeys()
+})
+
+function updateOpenKeys() {
+  openKeys.value = router.getRoutes()
+    .filter(matchedRoute =>
+      route.path.includes(matchedRoute.path)
+    )
+    .map(matchedRoute => matchedRoute.path)
+}
 
 const getNavIcon = (item: RouteMeta | undefined) => {
   if (!item || (item && !item.icon)) return null
