@@ -26,25 +26,15 @@
   </a>
 </p>
 
-#### 这里是antd版本，如果你更倾向于使用element-plus，请[点击这里](https://github.com/1esse/vue-clownfish-admin-elem)。
-
-## ✨ 最新版本 v1.1.7
-1. fix:修复标签页超出边界问题
-2. fix:修复设置弹窗询问关闭的标签页在关闭全部下无效
-3. feat:优化UI
-4. feat:支持标签页拖拽切换顺序
-5. feat:新增关闭右侧选项
-6. update: 更新依赖包
-
 ## 🐬 简介
 [vue-clownfish-admin](https://github.com/1esse/vue-clownfish-admin) 是一个由Vue最新技术栈开发的后台管理前端简易框架。基于vue3，集成vue3最新生态系统的核心库实现。主要的技术栈有
 [ES2015+](http://es6.ruanyifeng.com/)，[typescript](https://www.typescriptlang.org/zh/)，[vue3](https://staging-cn.vuejs.org)，[pinia](https://pinia.vuejs.org/)，[vue-router](https://router.vuejs.org/zh/)，[vite](https://cn.vitejs.dev/)，[antd](https://antdv.com/)，了解这些技术会让你更容易入手此项目。此项目基于`vite`构建，并使用`vue3`作为开发技术，所以[只针对现代浏览器做开发](https://cn.vitejs.dev/guide/build.html#browser-compatibility)，不支持低版本的浏览器（如ie）。
 
 
 ## 🦑 优势
-+ 几乎使用当前前端最新技术开发（vite, vue3, ts, pinia
++ 几乎使用当前前端最新技术开发（vite, vue3, ts, pinia）
 + 布局组件解耦，可轻易切换，替代组件
-+ 框架实现代码行数少，通俗易懂容易上手
++ 轻量模板，学习成本低
 
 ## 🐟了解这些可能会有帮助
 1. 定义在src/components下的组件，可在页面的template直接使用，不必导入（tsx除外）。
@@ -52,16 +42,14 @@
 3. 大部分场景推荐使用rem代替px以适配更多不同分辨率屏幕
 
 ## 🐳 主要功能
-+ 根据路由配置自动生成侧边栏菜单（支持多层嵌套和外链）
-+ 根据当前路由信息动态生成面包屑
-+ 导航标签页（右键弹出菜单，支持页面刷新，关闭）
++ 动态生成侧边栏菜单（支持多层嵌套和外链）
++ 动态生成面包屑
++ 导航标签页（拖拽排序，右键弹出菜单，页面刷新等）
 + 侧边栏菜单、面包屑、标签页都支持icon图标(antd图标和svg)
 + 根据路由配置动态缓存页面
 + 动态路由页面
 + 动态菜单
 + 路由权限配置
-+ 自动注册全局组件（antd组件及components/*.vue）
-+ 支持原生CSS变量和CSSWG草案规定进行开发，编写符合未来标准的css
 + 自动为css代码添加前缀，使样式适配不同浏览器
 + 支持使用JSX/TSX进行开发
 + 支持mock模拟接口
@@ -89,8 +77,9 @@
 + build:stage: 打包预发布环境代码
 + preview：预览打包后的项目
 
-## 🦐 预览项目
+## 🦐 其他
 [在线预览](https://1esse.github.io/vue-clownfish-admin)
+[ElementPlus版本](https://github.com/1esse/vue-clownfish-admin-elem)
 
 ## 🐙 License
 [MIT License](https://github.com/1esse/vue-clownfish-admin/blob/master/LICENSE)
