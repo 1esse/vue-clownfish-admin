@@ -7,6 +7,7 @@ import MenuPanel from '@/components/MenuPanel.vue'
 import type { RouteLocationNormalizedLoaded } from 'vue-router'
 import type { Layout } from 'types/layout'
 import { Modal } from 'ant-design-vue'
+import { dashboardRoute } from '@/router'
 
 const router = useRouter()
 const route = useRoute()
@@ -73,7 +74,7 @@ function refreshPage(page: RouteLocationNormalizedLoaded) {
   router.replace({ path: `/redirect${page.path}`, query: page.query })
 }
 
-async function closeTab(tab: RouteLocationNormalizedLoaded) {
+async function closeTab(tab: RouteLocationNormalizedLoaded, justClose?: boolean) {
   if (tab.meta.askBeforeClose) {
     const confirm = await checkCloseTab(tab)
     if (!confirm) return
@@ -81,6 +82,7 @@ async function closeTab(tab: RouteLocationNormalizedLoaded) {
   deleteKeepAlivePage(tab)
   const closePath = tab.path
   tabs.value.splice(tabs.value.findIndex(item => item.path === closePath), 1)
+  if (justClose) return
   if (tabs.value.length > 0) {
     if (closePath === route.path) {
       const nextTab = tabs.value[tabs.value.length - 1]
@@ -118,15 +120,22 @@ function closeRightSideTabs(tab: RouteLocationNormalizedLoaded) {
   for (let i = index; i < tabs.value.length; i++) {
     const tab = tabs.value[i + 1]
     tab && nextTick(() => {
-      closeTab(tab)
+      closeTab(tab, true)
     })
   }
+  nextTick(() => {
+    tabs.value.every(tab => tab.path !== route.path) && router.replace(tab)
+  })
 }
 
 function closeAllTabs() {
+  if (dashboardRoute.path !== route.path) {
+    router.replace(dashboardRoute)
+  }
   for (const tab of tabs.value) {
+    if (tab.path === dashboardRoute.path) continue
     nextTick(() => {
-      closeTab(tab)
+      closeTab(tab, true)
     })
   }
 }
@@ -140,7 +149,7 @@ function closeOtherTabs(saveTab: RouteLocationNormalizedLoaded) {
       const tab = tabs.value[i]
       if (tab.path === saveTab.path) continue
       nextTick(() => {
-        closeTab(tab)
+        closeTab(tab, true)
       })
     }
   }, 100)
