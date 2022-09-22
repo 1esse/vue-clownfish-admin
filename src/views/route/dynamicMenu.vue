@@ -9,9 +9,9 @@ const count = ref(0)
 const router = useRouter()
 const sidebar = sidebarStore()
 
-function addDynamicMenu(keepAlive: boolean = false) {
+async function addDynamicMenu(keepAlive: boolean = false) {
   count.value++
-  const path = '/newMenu' + count.value
+  const path = '/route/dynamicMenu/newMenu' + count.value
   const parentRoute = routes.find(route => route.name === 'Route')
   if (!parentRoute) return
   const dynamicRoute = parentRoute?.children?.find(item => item.path === path)
@@ -34,9 +34,9 @@ function addDynamicMenu(keepAlive: boolean = false) {
     props: { id: count.value }
   }
   parentRoute?.children?.push(newRoute)
-  router.addRoute(parentRoute)
-  router.push(`/redirect${path}`)
   sidebar.refreshSidebar()
+  router.addRoute(parentRoute)
+  await router.push(path)
 }
 </script>
 
