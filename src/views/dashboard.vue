@@ -46,35 +46,10 @@ function deviceTest() {
 </script>
 
 <template>
-  <div style="padding: 1rem;">
-    <ARow :gutter="16">
-      <ACol :xs="24" :sm="12" :md="8" :lg="8" :xl="8">
-        <ACard title="身高计算器" :bordered="false">
-          <ACardMeta description="AI通过一系列复杂公式，智能、准确地推算出您的身高" />
-          <AButton style="margin-top: 1rem" @click="state.height = ''; visibles.dialog1 = true" type="primary">开始计算
-          </AButton>
-        </ACard>
-      </ACol>
-      <ACol :xs="24" :sm="12" :md="8" :lg="8" :xl="8">
-        <ACard title="设备诊断器" :bordered="false">
-          <ACardMeta description="此程序可以诊断您的设备是否可以正常开机" />
-          <AButton style="margin-top: 1rem" @click="deviceTest" type="primary">开始诊断</AButton>
-        </ACard>
-      </ACol>
-    </ARow>
-    <Dialog v-model:show="visibles.dialog1" :loading="loading.dialog1" :loadingText="loadingText.dialog1" width="20rem"
-      height="12rem">
-      <template #dialogHeader>请输入您的身高</template>
-      <AInput v-model:value="state.height" type="number">
-        <template #suffix>
-          cm
-        </template>
-      </AInput>
-      <template #dialogFooter>
-        <span></span>
-        <AButton type="primary" @click="calcHeight">确定</AButton>
-      </template>
-    </Dialog>
+  <div
+    style="width: 100%; height: 100%; padding: 1rem; display: flex; justify-content: center; align-items: center; flex-direction: column;">
+    <p style="font-size: 1.2rem; color: #333">首页打算摆烂，其他有功能性的bug欢迎提issue</p>
+    <p style="font-size: 1.5rem; color: #999">祝你，生活愉快 :)</p>
   </div>
 </template>
 
