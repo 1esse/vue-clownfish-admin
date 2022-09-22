@@ -28,7 +28,6 @@ watch(() => route.path, addTab)
 
 function addTab() {
   const tab: RouteLocationNormalizedLoaded = route
-  // if (tab.meta?.hidden) return
   if (tab.meta.hiddenTab) return
   if (tabs.value.every(route => route.path !== tab.path)) {
     /**
@@ -116,6 +115,9 @@ function checkCloseTab(tab: RouteLocationNormalizedLoaded) {
 }
 
 function closeRightSideTabs(tab: RouteLocationNormalizedLoaded) {
+  if (tab.path !== route.path) {
+    router.replace('/redirect' + tab.path)
+  }
   const index = tabs.value.findIndex(item => item.path === tab.path)
   for (let i = index; i < tabs.value.length; i++) {
     const tab = tabs.value[i + 1]
@@ -123,14 +125,11 @@ function closeRightSideTabs(tab: RouteLocationNormalizedLoaded) {
       closeTab(tab, true)
     })
   }
-  nextTick(() => {
-    tabs.value.every(tab => tab.path !== route.path) && router.replace(tab)
-  })
 }
 
 function closeAllTabs() {
   if (dashboardRoute.path !== route.path) {
-    router.replace(dashboardRoute)
+    router.replace('/redirect' + dashboardRoute.path)
   }
   for (const tab of tabs.value) {
     if (tab.path === dashboardRoute.path) continue
