@@ -19,7 +19,7 @@ watch(() => route.path, refreshBreadCrumb)
 function refreshBreadCrumb() {
   routeMatched.value = []
   nextTick(() => {
-    routeMatched.value = route.matched.filter((item) => item.meta.breadcrumb !== false && !item.meta.hidden)
+    routeMatched.value = route.matched.filter((item) => item.meta.breadcrumb !== false)
     if (routeMatched.value.length === 0) {
       routeMatched.value.unshift({ ...dashboardRoute.children?.[0], path: resolve('/', dashboardRoute.children?.[0].path as string) } as RouteLocationMatched)
       return

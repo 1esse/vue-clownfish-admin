@@ -8,9 +8,9 @@ const count = ref(0)
 
 const router = useRouter()
 
-function addDynamicRoute(keepAlive: boolean = false, askBeforeClose: boolean = false) {
+async function addDynamicRoute(keepAlive: boolean = false, askBeforeClose: boolean = false) {
   count.value++
-  const path = '/newRoute' + count.value
+  const path = '/route/dynamicRoute/newRoute' + count.value
   const parentRoute = routes.find(route => route.name === 'Route')
   if (!parentRoute) return
   const dynamicRoute = parentRoute?.children?.find(item => item.path === path)
@@ -34,7 +34,7 @@ function addDynamicRoute(keepAlive: boolean = false, askBeforeClose: boolean = f
   }
   parentRoute?.children?.push(newRoute)
   router.addRoute(parentRoute)
-  router.push(`/redirect${path}`)
+  await router.push(path)
 }
 </script>
 

@@ -70,7 +70,7 @@ function deleteKeepAlivePage(page: RouteLocationNormalizedLoaded) {
 function refreshPage(page: RouteLocationNormalizedLoaded) {
   if (page.path.startsWith('/redirect')) return
   deleteKeepAlivePage(page)
-  router.replace({ path: `/redirect${page.path}`, query: page.query })
+  router.replace(`/redirect${page.fullPath}`)
 }
 
 async function closeTab(tab: RouteLocationNormalizedLoaded, justClose?: boolean) {
@@ -89,7 +89,7 @@ async function closeTab(tab: RouteLocationNormalizedLoaded, justClose?: boolean)
       router.replace({ path, query })
     }
   } else {
-    router.replace('/redirect/dashboard')
+    router.replace('/redirect' + dashboardRoute.path)
   }
 }
 
@@ -116,7 +116,7 @@ function checkCloseTab(tab: RouteLocationNormalizedLoaded) {
 
 function closeRightSideTabs(tab: RouteLocationNormalizedLoaded) {
   if (tab.path !== route.path) {
-    router.replace('/redirect' + tab.path)
+    router.replace('/redirect' + tab.fullPath)
   }
   const index = tabs.value.findIndex(item => item.path === tab.path)
   for (let i = index; i < tabs.value.length; i++) {
@@ -141,7 +141,7 @@ function closeAllTabs() {
 
 function closeOtherTabs(saveTab: RouteLocationNormalizedLoaded) {
   if (saveTab.path !== route.path) {
-    router.replace({ path: '/redirect' + saveTab.path, query: saveTab.query })
+    router.replace('/redirect' + saveTab.fullPath)
   }
   setTimeout(() => {
     for (let i = tabs.value.length - 1; i >= 0; i--) {
