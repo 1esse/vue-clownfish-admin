@@ -167,6 +167,7 @@ const dragIndex = ref()
 const dropIndex = ref()
 function handleDragStart(e: DragEvent) {
   dragIndex.value = (e.target as HTMLElement).dataset.index
+  tabs[dragIndex.value].path !== route.path && router.push(tabs[dragIndex.value].fullPath)
 }
 
 function handleDragEnter(e: DragEvent) {
@@ -241,7 +242,7 @@ function handleDrop(e: DragEvent) {
         <div ref="tabDoms" v-for="(tab, index) in tabs" :key="tab.path" class="tab"
           :class="{ active: tab.path === route.path, 'drop-target': dropIndex == index }" draggable="true"
           :data-index="index" @dragstart="handleDragStart" @dragenter="handleDragEnter" @dragover="handleDragOver"
-          @drop="handleDrop" @dragend="handleDragEnd" @click="router.push(tab.path)"
+          @drop="handleDrop" @dragend="handleDragEnd" @click="router.push(tab.fullPath)"
           @click.right.prevent="showTabMenu($event, tab)">
           <template v-if="props.withIcons && tab.meta.icon">
             <SvgIcon v-if="typeof tab.meta.icon === 'string'" :icon-name="(tab.meta.icon as string)"></SvgIcon>
