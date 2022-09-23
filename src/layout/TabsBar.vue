@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { createVNode, inject, nextTick, onBeforeMount, ref, watch } from 'vue'
+import { createVNode, inject, nextTick, onBeforeMount, ref, shallowReactive, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { CloseOutlined, QuestionOutlined, ReloadOutlined } from '@ant-design/icons-vue'
 import Scrollbar from '@/components/Scrollbar.vue'
@@ -11,9 +11,9 @@ import { dashboardRoute } from '@/router'
 
 const router = useRouter()
 const route = useRoute()
-const tabs = ref<RouteLocationNormalizedLoaded[]>([])
-const scrollbarDom = ref<InstanceType<typeof Scrollbar>>()
-const menuPanelDom = ref<InstanceType<typeof MenuPanel>>()
+const tabs = shallowReactive<RouteLocationNormalizedLoaded[]>([])
+const scrollbarDom = ref<InstanceType<typeof Scrollbar> | null>(null)
+const menuPanelDom = ref<InstanceType<typeof MenuPanel> | null>(null)
 const tabDoms = ref<HTMLElement[]>([])
 const keepAlivePages = inject<Layout.keepAlivePages>('keepAlivePages')
 const props = withDefaults(defineProps<{
@@ -29,12 +29,12 @@ watch(() => route.path, addTab)
 function addTab() {
   const tab: RouteLocationNormalizedLoaded = route
   if (tab.meta.hiddenTab) return
-  if (tabs.value.every(route => route.path !== tab.path)) {
+  if (tabs.every(route => route.path !== tab.path)) {
     /**
      * 参数传进来的meta是递归合并后的结果，此处需要找出属于该路由的meta
      * 详情见：https://router.vuejs.org/zh/guide/advanced/meta.html
      */
-    tabs.value.push({ ...tab, meta: tab.matched.find(item => item.path === tab.path)?.meta || tab.meta })
+    tabs.push({ ...tab, meta: tab.matched.find(item => item.path === tab.path)?.meta || tab.meta })
   }
   nextTick(() => {
     scrollbarDom.value && tabDoms.value && moveToTab(tab)
@@ -43,7 +43,7 @@ function addTab() {
 
 let lastTabIndex = 0 // 记录上一次标签索引，用于计算与新标签的位置信息
 function moveToTab(tab: RouteLocationNormalizedLoaded) {
-  const tabIndex = tabs.value.findIndex(item => item.path === tab.path)
+  const tabIndex = tabs.findIndex(item => item.path === tab.path)
   if (tabIndex === lastTabIndex) return
   const tabDom = tabDoms.value?.[tabIndex]
   const { offsetWidth, offsetLeft } = tabDom
@@ -79,13 +79,13 @@ async function closeTab(tab: RouteLocationNormalizedLoaded, justClose?: boolean)
     if (!confirm) return
   }
   const closePath = tab.path
-  const closeIndex = tabs.value.findIndex(item => item.path === closePath)
-  tabs.value.splice(closeIndex, 1)
+  const closeIndex = tabs.findIndex(item => item.path === closePath)
+  tabs.splice(closeIndex, 1)
   deleteKeepAlivePage(tab)
   if (justClose) return
-  if (tabs.value.length > 0) {
+  if (tabs.length > 0) {
     if (closePath === route.path) {
-      const nextTab = tabs.value[tabs.value.length - 1]
+      const nextTab = tabs[tabs.length - 1]
       const { path, query } = nextTab
       router.replace({ path, query })
     }
@@ -116,9 +116,9 @@ function closeRightSideTabs(target: RouteLocationNormalizedLoaded) {
   if (target.path !== route.path) {
     router.replace('/redirect' + target.fullPath)
   }
-  const index = tabs.value.findIndex(item => item.path === target.path)
-  for (let i = index + 1; i < tabs.value.length; i++) {
-    const tab = tabs.value[i]
+  const index = tabs.findIndex(item => item.path === target.path)
+  for (let i = index + 1; i < tabs.length; i++) {
+    const tab = tabs[i]
     nextTick(() => {
       closeTab(tab, true)
     })
@@ -129,7 +129,7 @@ function closeAllTabs() {
   if (dashboardRoute.path !== route.path) {
     router.replace('/redirect' + dashboardRoute.path)
   }
-  for (const tab of tabs.value) {
+  for (const tab of tabs) {
     if (tab.path === dashboardRoute.path) continue
     nextTick(() => {
       closeTab(tab, true)
@@ -142,8 +142,8 @@ function closeOtherTabs(saveTab: RouteLocationNormalizedLoaded) {
     router.replace('/redirect' + saveTab.fullPath)
   }
   setTimeout(() => {
-    for (let i = tabs.value.length - 1; i >= 0; i--) {
-      const tab = tabs.value[i]
+    for (let i = tabs.length - 1; i >= 0; i--) {
+      const tab = tabs[i]
       if (tab.path === saveTab.path) continue
       nextTick(() => {
         closeTab(tab, true)
@@ -187,22 +187,22 @@ function handleDragEnd(e: DragEvent) {
 function handleDrop(e: DragEvent) {
   if (dragIndex.value === undefined || dropIndex.value === undefined || dragIndex.value === dropIndex.value) return
   const options: RouteLocationNormalizedLoaded[] = []
-  for (const [index, tab] of Object.entries(tabs.value)) {
+  for (const [index, tab] of Object.entries(tabs)) {
     if (index == dragIndex.value) continue
     else if (index == dropIndex.value) {
       if (+dragIndex.value > +dropIndex.value) {
-        options.push(tabs.value[dragIndex.value], tab)
+        options.push(tabs[dragIndex.value], tab)
       } else {
-        options.push(tab, tabs.value[dragIndex.value])
+        options.push(tab, tabs[dragIndex.value])
       }
     } else {
       options.push(tab)
     }
   }
   // 刷新tabDoms
-  tabs.value.length = 0
+  tabs.length = 0
   nextTick(() => {
-    tabs.value.push(...options)
+    tabs.push(...options)
   })
 }
 </script>
