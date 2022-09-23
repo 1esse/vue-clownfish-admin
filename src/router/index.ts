@@ -133,12 +133,6 @@ export const routes: RouteRecordRaw[] = [
         component: () => import('@/views/charts/earth.vue'),
         meta: { title: '地球', icon: 'earth', keepAlive: true }
       },
-      {
-        path: 'mathRomantic',
-        name: 'mathRomantic',
-        component: () => import('@/views/charts/mathRomantic.vue'),
-        meta: { title: '数学的浪漫', icon: FieldBinaryOutlined }
-      },
     ]
   },
   {
