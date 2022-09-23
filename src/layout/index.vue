@@ -99,8 +99,4 @@ provide('loading', loading)
   display: flex;
   flex-direction: column;
 }
-
-.content-view {
-  padding: 1rem;
-}
 </style>
