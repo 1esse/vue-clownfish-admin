@@ -78,9 +78,10 @@ async function closeTab(tab: RouteLocationNormalizedLoaded, justClose?: boolean)
     const confirm = await checkCloseTab(tab)
     if (!confirm) return
   }
-  deleteKeepAlivePage(tab)
   const closePath = tab.path
-  tabs.value.splice(tabs.value.findIndex(item => item.path === closePath), 1)
+  const closeIndex = tabs.value.findIndex(item => item.path === closePath)
+  tabs.value.splice(closeIndex, 1)
+  deleteKeepAlivePage(tab)
   if (justClose) return
   if (tabs.value.length > 0) {
     if (closePath === route.path) {
@@ -93,7 +94,7 @@ async function closeTab(tab: RouteLocationNormalizedLoaded, justClose?: boolean)
   }
 }
 
-function checkCloseTab(tab: RouteLocationNormalizedLoaded) {
+async function checkCloseTab(tab: RouteLocationNormalizedLoaded) {
   return new Promise((resolve) => {
     Modal.confirm({
       title: '关闭提示',
@@ -101,9 +102,6 @@ function checkCloseTab(tab: RouteLocationNormalizedLoaded) {
       content: `确定关闭页面「${tab.meta.title || '无标题'}」吗?`,
       okText: '确认',
       cancelText: '取消',
-      getContainer: () => {
-        return document.body
-      },
       onOk() {
         resolve(true)
       },
@@ -114,14 +112,14 @@ function checkCloseTab(tab: RouteLocationNormalizedLoaded) {
   })
 }
 
-function closeRightSideTabs(tab: RouteLocationNormalizedLoaded) {
-  if (tab.path !== route.path) {
-    router.replace('/redirect' + tab.fullPath)
+function closeRightSideTabs(target: RouteLocationNormalizedLoaded) {
+  if (target.path !== route.path) {
+    router.replace('/redirect' + target.fullPath)
   }
-  const index = tabs.value.findIndex(item => item.path === tab.path)
-  for (let i = index; i < tabs.value.length; i++) {
-    const tab = tabs.value[i + 1]
-    tab && nextTick(() => {
+  const index = tabs.value.findIndex(item => item.path === target.path)
+  for (let i = index + 1; i < tabs.value.length; i++) {
+    const tab = tabs.value[i]
+    nextTick(() => {
       closeTab(tab, true)
     })
   }
