@@ -2,7 +2,8 @@ export namespace Layout {
   interface SidebarRelated {
     collapsed: boolean,
     width: string,
-    collapsedWidth: string
+    collapsedWidth: string,
+    collapsedText: string
   }
   interface Loading {
     logout: boolean

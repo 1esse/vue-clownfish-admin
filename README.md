@@ -4,19 +4,19 @@
 <h3 align="center">Vite + Vue3 + Antd + Typescript 管理后台前端简易框架</h3>
 <p align="center">
   <a href="https://github.com/vuejs/core">
-    <img src="https://img.shields.io/badge/vue-3.2.38-brightgreen.svg" alt="vue">
+    <img src="https://img.shields.io/badge/vue-3.2.40-brightgreen.svg" alt="vue">
   </a>
   <a href="https://github.com/vitejs/vite">
-    <img src="https://img.shields.io/badge/vite-3.0.9-brightgreen.svg" alt="vue">
+    <img src="https://img.shields.io/badge/vite-3.1.4-brightgreen.svg" alt="vite">
   </a>
   <a href="https://github.com/vuejs/pinia">
-    <img src="https://img.shields.io/badge/pinia-2.0.21-brightgreen.svg" alt="vue">
+    <img src="https://img.shields.io/badge/pinia-2.0.22-brightgreen.svg" alt="pinia">
   </a>
   <a href="https://github.com/vuejs/router">
-    <img src="https://img.shields.io/badge/vueRouter-4.1.5-brightgreen.svg" alt="vue">
+    <img src="https://img.shields.io/badge/vueRouter-4.1.5-brightgreen.svg" alt="vueRouter">
   </a>
   <a href="https://github.com/vueComponent/ant-design-vue">
-    <img src="https://img.shields.io/badge/antdv-3.2.11-brightgreen.svg" alt="element-ui">
+    <img src="https://img.shields.io/badge/antdv-3.2.12-brightgreen.svg" alt="ant-design-vue">
   </a>
   <a href="https://github.com/1esse/vue-clownfish-admin/blob/master/LICENSE">
     <img src="https://img.shields.io/github/license/mashape/apistatus.svg" alt="license">
@@ -79,6 +79,7 @@
 
 ## 🦐 其他
 [在线预览](https://1esse.github.io/vue-clownfish-admin)
+
 [ElementPlus版本](https://github.com/1esse/vue-clownfish-admin-elem)
 
 ## 🐙 License
