@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://1esse.github.io/vue-clownfish-admin/assets/logo.dadfed0b.png" alt="logo">
+  <img src="https://1esse.github.io/vue-clownfish-admin/assets/logo.c960c9f9.png" alt="logo">
 </p>
 <h3 align="center">Vite + Vue3 + Antd + Typescript 管理后台前端简易框架</h3>
 <p align="center">
