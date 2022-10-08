@@ -4,6 +4,7 @@
 
     .ant-layout-sider {
         background-color: var(--sidebar-background-color);
+        transition: none;
     }
 
     .ant-layout-header {
@@ -102,6 +103,11 @@
         line-height: 0 !important;
     }
 
+    .ant-menu-title-content {
+        transition: none !important;
+        opacity: 0;
+    }
+
     .ant-menu-submenu-selected {
         .ant-menu-submenu-title {
             color: var(--sidebar-font-active-color);
@@ -118,8 +124,8 @@
 
 }
 
-.ant-menu-inline .ant-menu-item::after {
-    border-right: unset;
+.ant-menu-item::after {
+    border-right: unset !important;
 }
 
 .ant-menu.ant-menu-inline-collapsed>.ant-menu-item.ant-menu-item-selected {
