@@ -5,7 +5,7 @@ import SideBar from './SideBar.vue'
 import TabsBar from './TabsBar.vue'
 import isMobile from '@/composables/isMobile'
 import Logo from '@/assets/logo.png'
-import { transitions } from '@/appConfig'
+import { transitions, fixedHeader } from '@/appConfig'
 import type { Layout } from 'types/layout'
 import { createSharedComposable } from '@/composables/sharedComposable'
 
@@ -58,12 +58,16 @@ provide('loading', loading)
       </div>
     </ALayoutSider>
     <ALayout>
-      <ALayoutHeader>
+      <ALayoutHeader v-if="fixedHeader">
         <HeadBar></HeadBar>
         <TabsBar :withIcons="true"></TabsBar>
       </ALayoutHeader>
       <ALayoutContent id="content-window">
-        <RouterView v-slot="{ Component, route }">
+        <div v-if="!fixedHeader" style="padding: 0 1rem;">
+          <HeadBar></HeadBar>
+          <TabsBar :withIcons="true"></TabsBar>
+        </div>
+        <RouterView v-slot="{ Component, route }" class="content-view">
           <Transition :name="transitions.fadeScale" mode="out-in" appear>
             <!-- 
               vite的hmr和keepalive组件冲突会导致路由失效，
@@ -102,6 +106,10 @@ provide('loading', loading)
   padding: 0;
   display: flex;
   flex-direction: column;
+}
+
+.content-view {
+  padding: 1rem;
 }
 
 .sidebar-shadow {
