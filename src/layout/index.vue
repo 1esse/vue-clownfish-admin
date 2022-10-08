@@ -14,6 +14,7 @@ const _isMobile = useSharedIsMobile(setSidebarCollapsed)
 
 const sidebarRelated = reactive<Layout.SidebarRelated>({
   collapsed: true,
+  shadowCollapsed: true,
   width: '13rem',
   collapsedWidth: '3rem',
   collapsedText: 'Clown Fish'
@@ -29,6 +30,7 @@ onBeforeMount(() => {
 
 function setSidebarCollapsed() {
   sidebarRelated.collapsed = _isMobile.value
+  sidebarRelated.shadowCollapsed = sidebarRelated.collapsed
 }
 
 // 为子组件提供布局的相关状态信息
@@ -36,19 +38,23 @@ provide('sidebarRelated', sidebarRelated)
 provide('keepAlivePages', keepAlivePages.value)
 provide('loading', loading)
 </script>
-  
+
 <template>
   <ALayout>
     <ALayoutSider v-if="!_isMobile" v-model:collapsed="sidebarRelated.collapsed" collapsible :trigger="null"
       :width="sidebarRelated.width" :collapsedWidth="sidebarRelated.collapsedWidth" breakpoint="md">
-      <div style="display: flex; flex-direction: column; width: 100%; height: 100%;">
+      <div style="position: relative; z-index: 999; display: flex; flex-direction: column; width: 100%; height: 100%;">
         <RouterLink to="/">
-          <div v-if="sidebarRelated.collapsed && sidebarRelated.collapsedText" class="flex-center logo-collapsed">
+          <div v-if="(sidebarRelated.shadowCollapsed || sidebarRelated.collapsed) && sidebarRelated.collapsedText"
+            class="flex-center logo-collapsed">
             {{sidebarRelated.collapsedText}}
           </div>
           <img v-else :src="Logo" alt="Logo" class="logo">
         </RouterLink>
         <SideBar></SideBar>
+      </div>
+      <div v-if="!_isMobile" class="sidebar-shadow"
+        :style="{transform: `translate3d(${sidebarRelated.shadowCollapsed ? '-10rem' : '0'}, 0, 0)`}">
       </div>
     </ALayoutSider>
     <ALayout>
@@ -60,10 +66,10 @@ provide('loading', loading)
         <RouterView v-slot="{ Component, route }">
           <Transition :name="transitions.fadeScale" mode="out-in" appear>
             <!-- 
-                vite的hmr和keepalive组件冲突会导致路由失效，
-                https://github.com/vuejs/core/pull/5165
-                开发过程注释掉keepalive
-              -->
+              vite的hmr和keepalive组件冲突会导致路由失效，
+              https://github.com/vuejs/core/pull/5165
+              开发过程注释掉keepalive
+            -->
             <KeepAlive :include="Array.from(keepAlivePages)" :max="10">
               <component :is="Component" :key="route.name" />
             </KeepAlive>
@@ -85,7 +91,7 @@ provide('loading', loading)
     </Transition>
   </Teleport>
 </template>
-  
+
 <style scoped>
 .sidebar-mobile {
   width: 15rem;
@@ -96,6 +102,17 @@ provide('loading', loading)
   padding: 0;
   display: flex;
   flex-direction: column;
+}
+
+.sidebar-shadow {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  width: 13rem;
+  height: 100%;
+  background-color: var(--sidebar-background-color);
+  transition: transform ease 0.2s;
 }
 
 .logo {
@@ -116,4 +133,3 @@ provide('loading', loading)
   animation: fadeIn 1s ease;
 }
 </style>
-  
