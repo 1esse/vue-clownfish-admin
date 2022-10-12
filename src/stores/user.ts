@@ -1,6 +1,3 @@
-import { removeCookie, setCookie } from "@/utils"
-import { defineStore } from "pinia"
-import request from "@/utils/request"
 import { message } from "ant-design-vue"
 import { Stores } from "types/stores"
 

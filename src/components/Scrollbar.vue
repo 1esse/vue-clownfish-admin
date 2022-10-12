@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, ref } from 'vue'
 import 'overlayscrollbars/css/OverlayScrollbars.css'
 import OverlayScrollbars from 'overlayscrollbars'
 import type { Options } from 'overlayscrollbars'

@@ -1,6 +1,5 @@
 <script lang="tsx">
 import Icon from "@ant-design/icons-vue"
-import { defineComponent, h } from "vue"
 
 export default defineComponent({
   props: {

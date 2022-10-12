@@ -1,9 +1,6 @@
 <script setup lang="tsx">
 import SvgIcon from '../components/SvgIcon.vue'
-import { ref, h, watch, inject, computed } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
 import { resolve } from 'pathe' // path包es代码实现
-import Scrollbar from '../components/Scrollbar.vue'
 import { RouterLink } from 'vue-router'
 import { SubMenu, MenuItem } from 'ant-design-vue/es'
 import type { Component, Slots } from 'vue'

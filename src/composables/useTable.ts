@@ -1,7 +1,6 @@
-import request from "@/utils/request"
 import { TableColumnsType, TablePaginationConfig } from "ant-design-vue"
 import { cloneDeep } from "lodash"
-import { ComponentPublicInstance, reactive, ref, Ref, shallowRef } from "vue"
+import { ComponentPublicInstance, Ref } from "vue"
 
 function tableColumns(columns: TableColumnsType) {
   for (const column of columns) {

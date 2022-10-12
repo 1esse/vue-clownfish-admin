@@ -1,5 +1,4 @@
 import { dashboardRoute, routes } from "@/router"
-import { defineStore } from "pinia"
 import { RouteRecordRaw } from "vue-router"
 
 export const sidebarStore = defineStore('sidebar', {

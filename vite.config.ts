@@ -7,6 +7,7 @@ import path from 'path'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import autoprefixer from 'autoprefixer'
 import flexbugsFixes from 'postcss-flexbugs-fixes'
+import AutoImport from 'unplugin-auto-import/vite'
 
 function resolvePath(src: string) {
   return path.resolve(__dirname, src)
@@ -19,13 +20,39 @@ export default defineConfig({
     vue(),
     vueJsx(),
     Components({
-      resolvers: [AntDesignVueResolver()]
+      resolvers: [
+        AntDesignVueResolver({
+          importStyle: true,
+          resolveIcons: true
+        }),
+      ]
     }),
     createSvgIconsPlugin({
       iconDirs: [resolvePath('src/svgs')],
       symbolId: 'svg-[dir]-[name]',
+    }),
+    AutoImport({
+      include: [
+        /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
+        /\.vue$/, /\.vue\?vue/, // .vue
+      ],
+      imports: [
+        'vue',
+        'vue-router',
+        'pinia'
+      ],
+      dirs: [
+        'src/composables',
+        'src/utils',
+      ],
+      resolvers: [
+        AntDesignVueResolver(),
+      ],
+      vueTemplate: true,
+      dts: 'auto-imports.d.ts',
     })
   ],
+
   css: {
     postcss: {
       plugins: [
@@ -54,6 +81,6 @@ export default defineConfig({
     port: 7777
   },
   build: {
-    chunkSizeWarningLimit: 1024
+    chunkSizeWarningLimit: 1000
   }
 })

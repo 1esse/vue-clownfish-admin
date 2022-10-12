@@ -2,8 +2,7 @@
 import { routes } from '@/router'
 import { sidebarStore } from '@/stores/sidebar'
 import { MenuOutlined } from '@ant-design/icons-vue'
-import { defineComponent, h, ref } from 'vue'
-import { RouteRecordRaw, useRouter } from 'vue-router'
+import { RouteRecordRaw } from 'vue-router'
 
 const count = ref(0)
 const router = useRouter()

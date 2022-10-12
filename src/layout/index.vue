@@ -1,13 +1,10 @@
 <script setup lang="ts">
-import { onBeforeMount, provide, reactive, ref } from 'vue'
 import HeadBar from './HeadBar.vue'
 import SideBar from './SideBar.vue'
 import TabsBar from './TabsBar.vue'
-import isMobile from '@/composables/isMobile'
 import Logo from '@/assets/logo.png'
 import { transitions, fixedHeader } from '@/appConfig'
 import type { Layout } from 'types/layout'
-import { createSharedComposable } from '@/composables/sharedComposable'
 
 const useSharedIsMobile = createSharedComposable(isMobile)
 const _isMobile = useSharedIsMobile(setSidebarCollapsed)

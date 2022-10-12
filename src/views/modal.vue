@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { reactive } from 'vue'
-import { FireTwoTone } from '@ant-design/icons-vue'
-
 const visibles = reactive({
   dialog1: false,
   dialog2: false,

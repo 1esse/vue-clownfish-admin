@@ -1,8 +1,7 @@
 <script lang="ts" setup>
 import { routes } from '@/router'
 import { FireOutlined } from '@ant-design/icons-vue'
-import { defineComponent, h, ref } from 'vue'
-import { RouteRecordRaw, useRouter } from 'vue-router'
+import { RouteRecordRaw } from 'vue-router'
 
 const count = ref(0)
 

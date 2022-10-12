@@ -1,9 +1,5 @@
 <script setup lang="ts">
-import { MenuFoldOutlined, UserOutlined, DownOutlined, LogoutOutlined } from '@ant-design/icons-vue'
-import type { EnvType } from 'types/app'
 import type { Layout } from 'types/layout'
-import { inject, nextTick } from 'vue'
-import { useRouter } from 'vue-router'
 import { userStore } from '../stores/user'
 import BreadCrumb from './BreadCrumb.vue'
 

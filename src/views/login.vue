@@ -1,10 +1,7 @@
 <script setup lang="ts">
-import { reactive } from 'vue'
-import { UserOutlined, LockOutlined } from '@ant-design/icons-vue'
 import { appTitle } from '@/appConfig'
 import { userStore } from '@/stores/user'
 import { message } from 'ant-design-vue/es'
-import { useRouter } from 'vue-router'
 
 interface LoginForm {
   username: string

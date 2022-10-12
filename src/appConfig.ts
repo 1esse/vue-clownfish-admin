@@ -1,5 +1,4 @@
 import { EnvType, SwitchType } from "types/app"
-import { ref } from "vue"
 
 /**
  * app标题
