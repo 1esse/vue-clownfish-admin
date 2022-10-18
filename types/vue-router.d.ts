@@ -37,6 +37,10 @@ declare module 'vue-router' {
     /**
      * 关闭标签页时确认询问
      */
-    askBeforeClose?: boolean
+    askBeforeClose?: boolean,
+    /**
+     * 关键字，可用于搜索协助
+     */
+    searchKeywords?: string[]
   }
 }

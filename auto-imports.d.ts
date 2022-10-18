@@ -12,6 +12,7 @@ declare global {
   const defineComponent: typeof import('vue')['defineComponent']
   const defineStore: typeof import('pinia')['defineStore']
   const effectScope: typeof import('vue')['effectScope']
+  const exitFullscreen: typeof import('./src/utils/index')['exitFullscreen']
   const exportSheetFile: typeof import('./src/utils/fileAction')['exportSheetFile']
   const formatFileSize: typeof import('./src/utils/fileAction')['formatFileSize']
   const getActivePinia: typeof import('pinia')['getActivePinia']
@@ -30,6 +31,7 @@ declare global {
   const isReactive: typeof import('vue')['isReactive']
   const isReadonly: typeof import('vue')['isReadonly']
   const isRef: typeof import('vue')['isRef']
+  const launchFullscreen: typeof import('./src/utils/index')['launchFullscreen']
   const mapActions: typeof import('pinia')['mapActions']
   const mapGetters: typeof import('pinia')['mapGetters']
   const mapState: typeof import('pinia')['mapState']
@@ -98,6 +100,7 @@ declare module '@vue/runtime-core' {
     readonly defineComponent: UnwrapRef<typeof import('vue')['defineComponent']>
     readonly defineStore: UnwrapRef<typeof import('pinia')['defineStore']>
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
+    readonly exitFullscreen: UnwrapRef<typeof import('./src/utils/index')['exitFullscreen']>
     readonly exportSheetFile: UnwrapRef<typeof import('./src/utils/fileAction')['exportSheetFile']>
     readonly formatFileSize: UnwrapRef<typeof import('./src/utils/fileAction')['formatFileSize']>
     readonly getActivePinia: UnwrapRef<typeof import('pinia')['getActivePinia']>
@@ -116,6 +119,7 @@ declare module '@vue/runtime-core' {
     readonly isReactive: UnwrapRef<typeof import('vue')['isReactive']>
     readonly isReadonly: UnwrapRef<typeof import('vue')['isReadonly']>
     readonly isRef: UnwrapRef<typeof import('vue')['isRef']>
+    readonly launchFullscreen: UnwrapRef<typeof import('./src/utils/index')['launchFullscreen']>
     readonly mapActions: UnwrapRef<typeof import('pinia')['mapActions']>
     readonly mapGetters: UnwrapRef<typeof import('pinia')['mapGetters']>
     readonly mapState: UnwrapRef<typeof import('pinia')['mapState']>
