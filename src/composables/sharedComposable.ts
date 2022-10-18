@@ -1,3 +1,5 @@
+import { EffectScope } from "vue"
+
 // 使组合式函数可用于多个Vue实例
 export function createSharedComposable(composable: Function) {
   let subscribers = 0
