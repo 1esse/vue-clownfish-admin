@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { DefaultOptionType, SelectValue } from 'ant-design-vue/es/select'
+import type { EnvType } from 'types/app'
 import type { Layout } from 'types/layout'
-import { RouteLocationNormalized } from 'vue-router'
 import { userStore } from '../stores/user'
 import BreadCrumb from './BreadCrumb.vue'
 
@@ -12,6 +12,7 @@ const searchValue = ref('')
 const searchOptions = shallowRef<DefaultOptionType[]>([])
 const isFullscreen = ref(false)
 const router = useRouter()
+const searchCache: Record<string, any> = {}
 let timeout: NodeJS.Timeout
 
 onBeforeMount(() => {
@@ -49,9 +50,14 @@ function searchChange(value: SelectValue) {
     searchOptions.value = []
     return
   }
+  if (Reflect.has(searchCache, value as string)) {
+    searchOptions.value = searchCache[value as string]
+    return
+  }
   const routes = router.getRoutes()
   const filteredRoutes = routes.filter(route => !route.meta.hidden && (route.meta.title?.includes(value as string) || route.meta.searchKeywords?.some(keyword => keyword.includes(value as string))))
   searchOptions.value = filteredRoutes.map(route => Object.assign(router.resolve(route), { value: route.path }))
+  searchCache[value as string] = searchOptions.value
 }
 
 function searchSelect(value: any) {
@@ -70,16 +76,18 @@ function searchSelect(value: any) {
     <ASpace size="middle" style="margin-right: 1rem; font-size: 1rem;">
       <AAutoComplete v-model:value="searchValue" style="width: 10rem" :dropdownMatchSelectWidth="250"
         :filterOption="false" :options="searchOptions" @change="searchChange" @select="searchSelect">
-        <AInputSearch placeholder="搜索" />
+        <AInputSearch placeholder="搜索" allowClear />
         <template #option="item">
           <ABreadcrumb v-if="item.matched.length > 0">
-            <ABreadcrumbItem v-for="(route, index) in item" :key="route.path">
-              <template v-if="route.meta.icon">
-                <SvgIcon v-if="typeof route.meta.icon === 'string'" :iconName="(route.meta.icon as string)"></SvgIcon>
-                <component v-else :is="route.meta.icon"></component>
-              </template>
-              <span>&nbsp;{{ route.meta.title }}</span>
-            </ABreadcrumbItem>
+            <template v-for="(route, index) in item.matched" :key="route.path">
+              <ABreadcrumbItem v-if="route.meta.breadcrumb !== false && route.meta.title">
+                <template v-if="route.meta.icon">
+                  <SvgIcon v-if="typeof route.meta.icon === 'string'" :iconName="(route.meta.icon as string)"></SvgIcon>
+                  <component v-else :is="route.meta.icon"></component>
+                </template>
+                <span>&nbsp;{{ route.meta.title }}</span>
+              </ABreadcrumbItem>
+            </template>
           </ABreadcrumb>
         </template>
       </AAutoComplete>
