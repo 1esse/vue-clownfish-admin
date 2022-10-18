@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { reactive, ref, watch } from 'vue'
-
 const show = ref(false)
 const position = reactive({ x: 0, y: 0 })
 const context = ref<unknown>(null)

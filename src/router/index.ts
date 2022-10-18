@@ -2,7 +2,7 @@ import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router"
 import Layout from '@/layout/index.vue'
 import {
   GithubOutlined, TableOutlined, HomeOutlined, BlockOutlined, ExportOutlined, FireOutlined,
-  DotChartOutlined, BarChartOutlined, FieldBinaryOutlined, LineChartOutlined
+  DotChartOutlined, BarChartOutlined, LineChartOutlined
 } from '@ant-design/icons-vue'
 
 export const dashboardRoute: RouteRecordRaw = {
@@ -15,7 +15,7 @@ export const dashboardRoute: RouteRecordRaw = {
       path: 'dashboard',
       name: 'Dashboard',
       component: () => import('@/views/dashboard.vue'),
-      meta: { title: '首页', icon: HomeOutlined }
+      meta: { title: '首页', icon: HomeOutlined, searchKeywords: ['dashboard'] }
     }
   ]
 }

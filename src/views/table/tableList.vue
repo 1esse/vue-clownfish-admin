@@ -1,7 +1,4 @@
 <script lang="ts" setup>
-import { onBeforeMount, ref } from 'vue'
-import useTable from '@/composables/useTable'
-
 const tableRef = ref()
 const {
   dataSource, columns, tableLoading, pagination, selectedRowKeys,

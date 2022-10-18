@@ -2,7 +2,7 @@
 <script setup lang="ts">
 import * as echarts from 'echarts'
 import type { Layout } from 'types/layout'
-import { onMounted, ref, onBeforeUnmount, shallowRef, ShallowRef, inject, watch, useAttrs } from 'vue'
+import { ShallowRef } from 'vue'
 
 const sidebarRelated = inject<Layout.SidebarRelated>('sidebarRelated')
 const attrs = useAttrs()
@@ -98,7 +98,7 @@ function resizeChart() {
     chart.value?.resize()
 }
 </script>
-    <template>
+<template>
     <div ref="chartRef" v-bind="attrs" />
 </template>
     

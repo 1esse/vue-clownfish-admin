@@ -7,16 +7,16 @@
     <img src="https://img.shields.io/badge/vue-3.2.40-brightgreen.svg" alt="vue">
   </a>
   <a href="https://github.com/vitejs/vite">
-    <img src="https://img.shields.io/badge/vite-3.1.4-brightgreen.svg" alt="vite">
+    <img src="https://img.shields.io/badge/vite-3.1.7-brightgreen.svg" alt="vite">
   </a>
   <a href="https://github.com/vuejs/pinia">
-    <img src="https://img.shields.io/badge/pinia-2.0.22-brightgreen.svg" alt="pinia">
+    <img src="https://img.shields.io/badge/pinia-2.0.23-brightgreen.svg" alt="pinia">
   </a>
   <a href="https://github.com/vuejs/router">
     <img src="https://img.shields.io/badge/vueRouter-4.1.5-brightgreen.svg" alt="vueRouter">
   </a>
   <a href="https://github.com/vueComponent/ant-design-vue">
-    <img src="https://img.shields.io/badge/antdv-3.2.12-brightgreen.svg" alt="ant-design-vue">
+    <img src="https://img.shields.io/badge/antdv-3.2.13-brightgreen.svg" alt="ant-design-vue">
   </a>
   <a href="https://github.com/1esse/vue-clownfish-admin/blob/master/LICENSE">
     <img src="https://img.shields.io/github/license/mashape/apistatus.svg" alt="license">
@@ -73,9 +73,10 @@
 + preview：预览打包后的项目
 
 ## 🐟了解这些可能会有帮助
-1. 定义在src/components下的组件，可在页面的template直接使用，不必导入（tsx除外）。
-2. 不需要对flex，grid等css样式进行多浏览器适配，框架已配置了自动适配。
-3. 大部分场景推荐使用rem代替px以适配更多不同分辨率屏幕
+1. src/components，antd组件，antd图标不需要显式导入（tsx除外）。
+2. vue，pinia，vue-router及src/utils，src/composables下的函数不需要显式导入（可在vite.config.ts配置）。
+3. 不需要对flex，grid等css样式进行多浏览器适配，框架已配置了自动适配。
+4. 大部分场景推荐使用rem代替px以适配更多不同分辨率屏幕。
 
 ## 🦐 其他
 [在线预览](https://1esse.github.io/vue-clownfish-admin)

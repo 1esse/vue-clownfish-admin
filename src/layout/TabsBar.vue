@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { createVNode, inject, nextTick, onBeforeMount, ref, shallowReactive, watch } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
-import { CloseOutlined, QuestionOutlined, ReloadOutlined } from '@ant-design/icons-vue'
+import { QuestionOutlined } from '@ant-design/icons-vue'
 import Scrollbar from '@/components/Scrollbar.vue'
 import MenuPanel from '@/components/MenuPanel.vue'
 import type { RouteLocationNormalizedLoaded } from 'vue-router'
@@ -98,7 +96,7 @@ async function checkCloseTab(tab: RouteLocationNormalizedLoaded) {
   return new Promise((resolve) => {
     Modal.confirm({
       title: '关闭提示',
-      icon: createVNode(QuestionOutlined),
+      icon: h(QuestionOutlined),
       content: `确定关闭页面「${tab.meta.title || '无标题'}」吗?`,
       okText: '确认',
       cancelText: '取消',

@@ -85,3 +85,26 @@ export const isEmail = (str: string) => {
   return reg.test(str)
 }
 
+export function launchFullscreen(element: any = document.documentElement) {
+  if (element.requestFullscreen) {
+    element.requestFullscreen()
+  } else if (element.mozRequestFullScreen) {
+    element.mozRequestFullScreen()
+  } else if (element.webkitRequestFullscreen) {
+    element.webkitRequestFullscreen()
+  } else if (element.msRequestFullscreen) {
+    element.msRequestFullscreen()
+  }
+}
+
+export function exitFullscreen(element: any = document) {
+  if (element.exitFullscreen) {
+    element.exitFullscreen()
+  } else if (element.mozCancelFullScreen) {
+    element.mozCancelFullScreen()
+  } else if (element.msExitFullscreen) {
+    element.msExiFullscreen()
+  } else if (element.webkitCancelFullScreen) {
+    element.webkitCancelFullScreen()
+  }
+}

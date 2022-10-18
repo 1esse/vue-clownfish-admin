@@ -7,6 +7,7 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    AAutoComplete: typeof import('ant-design-vue/es')['AutoComplete']
     ABreadcrumb: typeof import('ant-design-vue/es')['Breadcrumb']
     ABreadcrumbItem: typeof import('ant-design-vue/es')['BreadcrumbItem']
     AButton: typeof import('ant-design-vue/es')['Button']
@@ -18,6 +19,7 @@ declare module '@vue/runtime-core' {
     AFormItem: typeof import('ant-design-vue/es')['FormItem']
     AInput: typeof import('ant-design-vue/es')['Input']
     AInputPassword: typeof import('ant-design-vue/es')['InputPassword']
+    AInputSearch: typeof import('ant-design-vue/es')['InputSearch']
     ALayout: typeof import('ant-design-vue/es')['Layout']
     ALayoutContent: typeof import('ant-design-vue/es')['LayoutContent']
     ALayoutHeader: typeof import('ant-design-vue/es')['LayoutHeader']
@@ -27,16 +29,24 @@ declare module '@vue/runtime-core' {
     AResult: typeof import('ant-design-vue/es')['Result']
     ASpace: typeof import('ant-design-vue/es')['Space']
     ATable: typeof import('ant-design-vue/es')['Table']
-    ATimeline: typeof import('ant-design-vue/es')['Timeline']
-    ATimelineItem: typeof import('ant-design-vue/es')['TimelineItem']
     ATooltip: typeof import('ant-design-vue/es')['Tooltip']
+    CloseOutlined: typeof import('@ant-design/icons-vue')['CloseOutlined']
     Dialog: typeof import('./src/components/Dialog.vue')['default']
+    DownOutlined: typeof import('@ant-design/icons-vue')['DownOutlined']
+    FireTwoTone: typeof import('@ant-design/icons-vue')['FireTwoTone']
+    FullscreenExitOutlined: typeof import('@ant-design/icons-vue')['FullscreenExitOutlined']
+    FullscreenOutlined: typeof import('@ant-design/icons-vue')['FullscreenOutlined']
     Loading: typeof import('./src/components/Loading.vue')['default']
+    LockOutlined: typeof import('@ant-design/icons-vue')['LockOutlined']
+    LogoutOutlined: typeof import('@ant-design/icons-vue')['LogoutOutlined']
+    MenuFoldOutlined: typeof import('@ant-design/icons-vue')['MenuFoldOutlined']
     MenuPanel: typeof import('./src/components/MenuPanel.vue')['default']
+    ReloadOutlined: typeof import('@ant-design/icons-vue')['ReloadOutlined']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Scrollbar: typeof import('./src/components/Scrollbar.vue')['default']
     Shadow: typeof import('./src/components/Shadow.vue')['default']
     SvgIcon: typeof import('./src/components/SvgIcon.vue')['default']
+    UserOutlined: typeof import('@ant-design/icons-vue')['UserOutlined']
   }
 }

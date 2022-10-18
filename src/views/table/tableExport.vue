@@ -1,8 +1,4 @@
 <script lang="ts" setup>
-import { onBeforeMount, ref } from 'vue'
-import useTable from '@/composables/useTable'
-import { exportSheetFile } from '@/utils/fileAction'
-
 const tableRef = ref()
 const {
   dataSource, columns, originColumns, tableLoading, pagination, selectedRowKeys,

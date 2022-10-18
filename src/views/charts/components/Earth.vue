@@ -2,7 +2,7 @@
 <script setup lang="ts">
 import * as echarts from 'echarts'
 import type { Layout } from 'types/layout'
-import { onMounted, ref, onBeforeUnmount, shallowRef, ShallowRef, inject, watch, useAttrs } from 'vue'
+import { ShallowRef } from 'vue'
 import 'echarts-gl'
 import img_bathymetry from '../images/earth/bathymetry.jpg'
 import img_earth from '../images/earth/earth.jpg'

@@ -2,7 +2,6 @@ import router from './router'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 import { appTitle } from './appConfig'
-import { getCookie, removeCookie } from './utils'
 import { userStore } from './stores/user'
 import { message } from 'ant-design-vue'
 

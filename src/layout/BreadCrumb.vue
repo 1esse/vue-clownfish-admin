@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { nextTick, onBeforeMount, shallowRef, watch } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
 import type { RouteLocationMatched } from 'vue-router'
 import { dashboardRoute } from '@/router'
 import { resolve } from 'pathe'

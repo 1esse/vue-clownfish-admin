@@ -1,5 +1,3 @@
-import { onBeforeMount, onBeforeUnmount, onScopeDispose, ref } from "vue"
-
 export default function (cb?: Function) {
   const WIDTH = 992
   const isMobile = ref(false)
