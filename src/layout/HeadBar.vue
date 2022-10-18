@@ -58,10 +58,6 @@ function searchSelect(value: any) {
   searchValue.value = ''
   router.push(value)
 }
-
-function matchedRoutes(item: RouteLocationNormalized) {
-  return item.matched.filter(match => match.meta.breadcrumb !== false)
-}
 </script>
 
 <template>
@@ -77,7 +73,7 @@ function matchedRoutes(item: RouteLocationNormalized) {
         <AInputSearch placeholder="搜索" />
         <template #option="item">
           <ABreadcrumb v-if="item.matched.length > 0">
-            <ABreadcrumbItem v-for="(route, index) in matchedRoutes(item)" :key="route.path">
+            <ABreadcrumbItem v-for="(route, index) in item" :key="route.path">
               <template v-if="route.meta.icon">
                 <SvgIcon v-if="typeof route.meta.icon === 'string'" :iconName="(route.meta.icon as string)"></SvgIcon>
                 <component v-else :is="route.meta.icon"></component>
