@@ -10,9 +10,9 @@ import { dashboardRoute } from '@/router'
 const router = useRouter()
 const route = useRoute()
 const tabs = shallowReactive<RouteLocationNormalizedLoaded[]>([])
-const scrollbarDom = ref<InstanceType<typeof Scrollbar> | null>(null)
-const menuPanelDom = ref<InstanceType<typeof MenuPanel> | null>(null)
-const tabDoms = ref<HTMLElement[]>([])
+const scrollbarDom = shallowRef<InstanceType<typeof Scrollbar> | null>(null)
+const menuPanelDom = shallowRef<InstanceType<typeof MenuPanel> | null>(null)
+const tabDoms = shallowRef<HTMLElement[]>([])
 const keepAlivePages = inject<Layout.keepAlivePages>('keepAlivePages')
 const props = withDefaults(defineProps<{
   withIcons?: boolean
