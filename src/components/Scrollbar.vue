@@ -21,7 +21,7 @@ const props = withDefaults(defineProps<{
   minHeight: 'unset'
 })
 
-const scrollbar = shallowRef<OverlayScrollbars>()
+const scrollbar = shallowRef<OverlayScrollbars | null>(null)
 const scrollbarDom = shallowRef<HTMLElement>(document.createElement(props.tag))
 
 onMounted(() => {
