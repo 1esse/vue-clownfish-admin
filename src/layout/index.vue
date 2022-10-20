@@ -64,12 +64,17 @@ provide('loading', loading)
           <HeadBar></HeadBar>
           <TabsBar :withIcons="true"></TabsBar>
         </div>
-        <RouterView v-slot="{ Component, route }" class="content-view">
-          <KeepAlive :include="Array.from(keepAlivePages)" :max="10">
-            <Transition :name="transitions.fadeScale" mode="out-in" appear>
+        <RouterView v-slot="{ Component, route }">
+          <Transition :name="transitions.fadeScale" mode="out-in" appear>
+            <!-- 
+              vite的hmr和keepalive组件冲突会导致路由失效，
+              https://github.com/vuejs/core/pull/5165
+              不影响生产环境
+            -->
+            <KeepAlive :include="Array.from(keepAlivePages)" :max="10">
               <component :is="Component" :key="route.name" />
-            </Transition>
-          </KeepAlive>
+            </KeepAlive>
+          </Transition>
         </RouterView>
       </ALayoutContent>
     </ALayout>
