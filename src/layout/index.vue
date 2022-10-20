@@ -65,16 +65,11 @@ provide('loading', loading)
           <TabsBar :withIcons="true"></TabsBar>
         </div>
         <RouterView v-slot="{ Component, route }" class="content-view">
-          <Transition :name="transitions.fadeScale" mode="out-in" appear>
-            <!-- 
-              vite的hmr和keepalive组件冲突会导致路由失效，
-              https://github.com/vuejs/core/pull/5165
-              开发过程注释掉keepalive
-            -->
-            <KeepAlive :include="Array.from(keepAlivePages)" :max="10">
+          <KeepAlive :include="Array.from(keepAlivePages)" :max="10">
+            <Transition :name="transitions.fadeScale" mode="out-in" appear>
               <component :is="Component" :key="route.name" />
-            </KeepAlive>
-          </Transition>
+            </Transition>
+          </KeepAlive>
         </RouterView>
       </ALayoutContent>
     </ALayout>
