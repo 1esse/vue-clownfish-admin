@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { QuestionOutlined } from '@ant-design/icons-vue'
-import Scrollbar from '@/components/Scrollbar.vue'
-import MenuPanel from '@/components/MenuPanel.vue'
 import type { RouteLocationNormalizedLoaded } from 'vue-router'
 import type { Layout } from 'types/layout'
 import { Modal } from 'ant-design-vue'
@@ -10,8 +7,8 @@ import { dashboardRoute } from '@/router'
 const router = useRouter()
 const route = useRoute()
 const tabs = shallowReactive<RouteLocationNormalizedLoaded[]>([])
-const scrollbarDom = shallowRef<InstanceType<typeof Scrollbar> | null>(null)
-const menuPanelDom = shallowRef<InstanceType<typeof MenuPanel> | null>(null)
+const scrollbarDom = shallowRef<InstanceType<typeof import('@/components/Scrollbar.vue')['default']> | null>(null)
+const menuPanelDom = shallowRef<InstanceType<typeof import('@/components/MenuPanel.vue')['default']> | null>(null)
 const tabDoms = shallowRef<HTMLElement[]>([])
 const keepAlivePages = inject<Layout.keepAlivePages>('keepAlivePages')
 const props = withDefaults(defineProps<{
@@ -27,7 +24,7 @@ watch(() => route.path, addTab)
 function addTab() {
   const tab: RouteLocationNormalizedLoaded = route
   if (tab.meta.hiddenTab) return
-  if (tabs.every(route => route.path !== tab.path)) {
+  if (tabs.every(item => item.path !== tab.path)) {
     /**
      * 参数传进来的meta是递归合并后的结果，此处需要找出属于该路由的meta
      * 详情见：https://router.vuejs.org/zh/guide/advanced/meta.html
@@ -96,7 +93,7 @@ async function checkCloseTab(tab: RouteLocationNormalizedLoaded) {
   return new Promise((resolve) => {
     Modal.confirm({
       title: '关闭提示',
-      icon: h(QuestionOutlined),
+      icon: h(useIcon('QuestionOutlined')),
       content: `确定关闭页面「${tab.meta.title || '无标题'}」吗?`,
       okText: '确认',
       cancelText: '取消',
@@ -160,7 +157,6 @@ function showTabMenu(e: MouseEvent, tab: RouteLocationNormalizedLoaded) {
   menuPanelDom.value.showPanel()
 }
 
-
 const dragIndex = ref()
 const dropIndex = ref()
 function handleDragStart(e: DragEvent) {
@@ -205,7 +201,7 @@ function handleDrop(e: DragEvent) {
   })
 }
 </script>
-  
+
 <template>
   <div class="tabs-bar">
     <ASpace class="functional-btns">
@@ -221,7 +217,7 @@ function handleDrop(e: DragEvent) {
         <template #title>关闭其他</template>
         <AButton class="btn-item" shape="circle" @click="closeOtherTabs(route)">
           <template #icon>
-            <CloseOutlined />
+            <ColumnWidthOutlined />
           </template>
         </AButton>
       </ATooltip>
@@ -229,7 +225,7 @@ function handleDrop(e: DragEvent) {
         <template #title>关闭右侧</template>
         <AButton class="btn-item" shape="circle" @click="closeRightSideTabs(route)">
           <template #icon>
-            <SvgIcon iconName="deleteRight" width="100%"></SvgIcon>
+            <VerticalRightOutlined />
           </template>
         </AButton>
       </ATooltip>
@@ -265,22 +261,22 @@ function handleDrop(e: DragEvent) {
     </AButton>
     <AButton type="text" @click="closeOtherTabs(menuPanelDom?.getContext())">
       <template #icon>
-        <CloseOutlined />
+        <ColumnWidthOutlined />
       </template> 关闭其他
     </AButton>
     <AButton type="text" @click="closeRightSideTabs(menuPanelDom?.getContext())">
       <template #icon>
-        <CloseOutlined />
+        <VerticalRightOutlined />
       </template> 关闭右侧
     </AButton>
     <AButton type="text" @click="closeAllTabs()">
       <template #icon>
-        <CloseOutlined />
+        <StopOutlined />
       </template> 关闭所有
     </AButton>
   </MenuPanel>
 </template>
-  
+
 <style scoped lang="scss">
 .tabs-bar {
   display: flex;

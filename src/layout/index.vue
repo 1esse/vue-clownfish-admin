@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import HeadBar from './HeadBar.vue'
-import SideBar from './SideBar.vue'
 import TabsBar from './TabsBar.vue'
 import Logo from '@/assets/logo.png'
 import { transitions, fixedHeader } from '@/appConfig'
 import type { Layout } from 'types/layout'
 
+const SideBar = defineAsyncComponent(() => import('./SideBar.vue')) as ReturnType<typeof defineComponent>
 const useSharedIsMobile = createSharedComposable(isMobile)
 const _isMobile = useSharedIsMobile(setSidebarCollapsed)
 
@@ -44,14 +44,14 @@ provide('loading', loading)
         <RouterLink to="/">
           <div v-if="(sidebarRelated.shadowCollapsed || sidebarRelated.collapsed) && sidebarRelated.collapsedText"
             class="flex-center logo-collapsed">
-            {{sidebarRelated.collapsedText}}
+            {{ sidebarRelated.collapsedText }}
           </div>
           <img v-else :src="Logo" alt="Logo" class="logo">
         </RouterLink>
         <SideBar></SideBar>
       </div>
       <div v-if="!_isMobile" class="sidebar-shadow"
-        :style="{transform: `translate3d(${sidebarRelated.shadowCollapsed ? '-10rem' : '0'}, 0, 0)`}">
+        :style="{ transform: `translate3d(${sidebarRelated.shadowCollapsed ? '-10rem' : '0'}, 0, 0)` }">
       </div>
     </ALayoutSider>
     <ALayout>
@@ -69,7 +69,7 @@ provide('loading', loading)
             <!-- 
               vite的hmr和keepalive组件冲突会导致路由失效，
               https://github.com/vuejs/core/pull/5165
-              开发过程注释掉keepalive
+              不影响生产环境
             -->
             <KeepAlive :include="Array.from(keepAlivePages)" :max="10">
               <component :is="Component" :key="route.name" />
