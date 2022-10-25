@@ -1,9 +1,13 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router"
 import Layout from '@/layout/index.vue'
-import {
+
+const {
   GithubOutlined, TableOutlined, HomeOutlined, BlockOutlined, ExportOutlined, FireOutlined,
   DotChartOutlined, BarChartOutlined, LineChartOutlined
-} from '@ant-design/icons-vue'
+} = useIcon([
+  'GithubOutlined', 'TableOutlined', 'HomeOutlined', 'BlockOutlined', 'ExportOutlined', 'FireOutlined',
+  'DotChartOutlined', 'BarChartOutlined', 'LineChartOutlined',
+])
 
 export const dashboardRoute: RouteRecordRaw = {
   path: '/',
