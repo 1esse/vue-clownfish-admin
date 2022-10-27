@@ -1,12 +1,11 @@
 <script lang="ts" setup>
 import { routes } from '@/router'
-import { sidebarStore } from '@/stores/sidebar'
+import sidebar from '@/stores/sidebar'
 import { MenuOutlined } from '@ant-design/icons-vue'
 import { RouteRecordRaw } from 'vue-router'
 
 const count = ref(0)
 const router = useRouter()
-const sidebar = sidebarStore()
 
 async function addDynamicMenu(keepAlive: boolean = false) {
   count.value++
