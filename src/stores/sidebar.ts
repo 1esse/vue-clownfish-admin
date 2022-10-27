@@ -1,20 +1,22 @@
 import { dashboardRoute, routes } from "@/router"
-import { RouteRecordRaw } from "vue-router"
+import { ShallowRef } from "vue"
+import type { RouteRecordRaw } from "vue-router"
 
-export const sidebarStore = defineStore('sidebar', {
-  state: (): {
-    sidebarList: RouteRecordRaw[]
-  } => {
-    return {
-      sidebarList: []
-    }
-  },
-  actions: {
-    refreshSidebar() {
-      this.sidebarList = [dashboardRoute, ...routes]
-    }
-  },
-  getters: {
-    getSidebarList: (state) => state.sidebarList
+class Sidebar {
+  private sidebar: ShallowRef<RouteRecordRaw[]>
+
+  constructor(routes?: RouteRecordRaw[]) {
+    this.sidebar = shallowRef(routes || [])
   }
-})
+
+  refreshSidebar(newRoutes?: RouteRecordRaw[]) {
+    this.sidebar.value = newRoutes ? [...newRoutes] : [dashboardRoute, ...routes]
+  }
+
+  getSidebar() {
+    return this.sidebar.value
+  }
+}
+
+const sidebar = new Sidebar()
+export default sidebar
