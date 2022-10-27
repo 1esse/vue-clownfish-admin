@@ -1,4 +1,4 @@
-<script lang="tsx">
+<script lang="ts">
 import Icon from "@ant-design/icons-vue"
 
 export default defineComponent({
@@ -9,15 +9,19 @@ export default defineComponent({
     height: { type: String, default: '1em' },
     fill: { type: String, default: 'currentColor' },
   },
-  setup(props) {
+  render() {
     // 这里不能用jsx，Icon接收的component不会被再编译
     const svg = () => h('svg', {
-      ...props,
-      'class': props.className,
-    }, [
-      h('use', { 'xlink:href': `#svg-${props.iconName}` })
-    ])
-    return () => <Icon component={svg} />
+      class: this.className,
+      width: this.width,
+      height: this.height,
+      fill: this.fill,
+    }, {
+      default: () => [
+        h('use', { 'xlink:href': `#svg-${this.iconName}` })
+      ]
+    })
+    return h(Icon, { component: svg })
   }
 })
 </script>
