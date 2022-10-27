@@ -1,4 +1,4 @@
-<script setup lang="tsx">
+<script lang="ts" setup>
 import SvgIcon from '../components/SvgIcon.vue'
 import { resolve } from 'pathe' // path包es代码实现
 import { RouterLink } from 'vue-router'
@@ -48,16 +48,20 @@ function updateOpenKeys() {
 const getNavIcon = (item: RouteMeta | undefined) => {
   if (!item || (item && !item.icon)) return null
   if (typeof item.icon === 'string') {
-    return <SvgIcon iconName={item.icon as string} />
+    return h(SvgIcon, { iconName: item.icon })
   }
   return h(item?.icon as Component)
 }
 
 const MenuItemLink = (props: { route: RouteRecordRaw, url: string }, { slots }: { slots: Slots }) => {
   if (props.route.meta?.external) {
-    return <a href={props.route.redirect as string} target='_blank' ref='noopener noreferrer'>{slots.default?.()}</a>
+    return h('a', { href: props.route.redirect, target: '_blank' }, {
+      default: () => slots.default?.()
+    })
   }
-  return <RouterLink to={props.url}>{slots.default?.()}</RouterLink>
+  return h(RouterLink, { to: props.url }, {
+    default: () => slots.default?.()
+  })
 }
 
 const MenuItemNav = (props: { route: RouteRecordRaw, basePath: string }) => {
@@ -68,11 +72,10 @@ const MenuItemNav = (props: { route: RouteRecordRaw, basePath: string }) => {
       title: () => route.meta?.title
     }
     const basePath = resolve(props.basePath, route.path)
-    return (
-      <SubMenu v-slots={slots} key={basePath}>
-        {route.children?.map(item => <MenuItemNav route={item} basePath={basePath}></MenuItemNav>)}
-      </SubMenu>
-    )
+    return h(SubMenu, { key: basePath }, {
+      default: () => route.children?.map(item => h(MenuItemNav, { route: item, basePath: basePath })),
+      ...slots
+    })
   }
   // 菜单项模板
   const menuItemTemplate = (route: RouteRecordRaw) => {
@@ -80,16 +83,15 @@ const MenuItemNav = (props: { route: RouteRecordRaw, basePath: string }) => {
       icon: () => getNavIcon(route.meta)
     }
     const url = resolve(props.basePath, route.path)
-    return (
-      <MenuItem key={url} v-slots={slots}>
-        <MenuItemLink route={route} url={url}>
-          <span>{route.meta?.title}</span>
-        </MenuItemLink>
-      </MenuItem>
-    )
+    return h(MenuItem, { key: url }, {
+      default: () => {
+        return h(MenuItemLink, { route: route, url: url }, () => h('span', route.meta?.title))
+      },
+      ...slots
+    })
   }
 
-  return props.route.meta?.hidden ? <div style="display: none"></div> :
+  return props.route.meta?.hidden ? h('div', { style: 'display: none' }) :
     props.route.children && props.route.children.filter((route: RouteRecordRaw) => !route.meta?.hidden).length > 0 ?
       props.route.children.filter((route: RouteRecordRaw) => !route.meta?.hidden).length > 1 ?
         subMenuTemplate(props.route) :
@@ -102,7 +104,7 @@ function getOnlyChildPath(parentRoute: RouteRecordRaw): RouteRecordRaw {
   return Object.assign({}, childRoute, { path: `${parentRoute.path}/${childRoute?.path}` } as RouteRecordRaw)
 }
 </script>
-  
+
 <template>
   <Scrollbar :speed="4">
     <AMenu v-model:selectedKeys="selectedKeys" v-model:openKeys="openKeys" mode="inline" :inlineIndent="16"
@@ -113,4 +115,3 @@ function getOnlyChildPath(parentRoute: RouteRecordRaw): RouteRecordRaw {
     </AMenu>
   </Scrollbar>
 </template>
-  
