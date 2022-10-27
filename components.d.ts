@@ -50,8 +50,6 @@ declare module '@vue/runtime-core' {
     StopOutlined: typeof import('@ant-design/icons-vue')['StopOutlined']
     SvgIcon: typeof import('./src/components/SvgIcon.vue')['default']
     UserOutlined: typeof import('@ant-design/icons-vue')['UserOutlined']
-    VerticalAlignMiddleOutlined: typeof import('@ant-design/icons-vue')['VerticalAlignMiddleOutlined']
-    VerticalAlignTopOutlined: typeof import('@ant-design/icons-vue')['VerticalAlignTopOutlined']
     VerticalRightOutlined: typeof import('@ant-design/icons-vue')['VerticalRightOutlined']
   }
 }
