@@ -4,16 +4,16 @@
 <h3 align="center">Vite + Vue3 + Antd + Typescript 管理后台前端简易框架</h3>
 <p align="center">
   <a href="https://github.com/vuejs/core">
-    <img src="https://img.shields.io/badge/vue-3.2.40-brightgreen.svg" alt="vue">
+    <img src="https://img.shields.io/badge/vue-3.2.41-brightgreen.svg" alt="vue">
   </a>
   <a href="https://github.com/vitejs/vite">
-    <img src="https://img.shields.io/badge/vite-3.1.7-brightgreen.svg" alt="vite">
+    <img src="https://img.shields.io/badge/vite-3.2.2-brightgreen.svg" alt="vite">
   </a>
   <a href="https://github.com/vuejs/pinia">
     <img src="https://img.shields.io/badge/pinia-2.0.23-brightgreen.svg" alt="pinia">
   </a>
   <a href="https://github.com/vuejs/router">
-    <img src="https://img.shields.io/badge/vueRouter-4.1.5-brightgreen.svg" alt="vueRouter">
+    <img src="https://img.shields.io/badge/vueRouter-4.1.6-brightgreen.svg" alt="vueRouter">
   </a>
   <a href="https://github.com/vueComponent/ant-design-vue">
     <img src="https://img.shields.io/badge/antdv-3.2.13-brightgreen.svg" alt="ant-design-vue">
