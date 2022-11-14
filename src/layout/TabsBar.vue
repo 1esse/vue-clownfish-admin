@@ -65,7 +65,7 @@ function deleteKeepAlivePage(page: RouteLocationNormalizedLoaded) {
 function refreshPage(page: RouteLocationNormalizedLoaded) {
   if (page.path.startsWith('/redirect')) return
   deleteKeepAlivePage(page)
-  router.replace(`/redirect${page.fullPath}`)
+  router.replace(`/redirect${page.path}`)
 }
 
 async function closeTab(tab: RouteLocationNormalizedLoaded, justClose?: boolean) {
@@ -109,7 +109,7 @@ async function checkCloseTab(tab: RouteLocationNormalizedLoaded) {
 
 function closeRightSideTabs(target: RouteLocationNormalizedLoaded) {
   if (target.path !== route.path) {
-    router.replace('/redirect' + target.fullPath)
+    router.replace('/redirect' + target.path)
   }
   const index = tabs.findIndex(item => item.path === target.path)
   for (let i = index + 1; i < tabs.length; i++) {
@@ -134,7 +134,7 @@ function closeAllTabs() {
 
 function closeOtherTabs(saveTab: RouteLocationNormalizedLoaded) {
   if (saveTab.path !== route.path) {
-    router.replace('/redirect' + saveTab.fullPath)
+    router.replace('/redirect' + saveTab.path)
   }
   setTimeout(() => {
     for (let i = tabs.length - 1; i >= 0; i--) {
@@ -161,7 +161,7 @@ const dragIndex = ref()
 const dropIndex = ref()
 function handleDragStart(e: DragEvent) {
   dragIndex.value = (e.target as HTMLElement).dataset.index
-  tabs[dragIndex.value].path !== route.path && router.push(tabs[dragIndex.value].fullPath)
+  tabs[dragIndex.value].path !== route.path && router.push(tabs[dragIndex.value].path)
 }
 
 function handleDragEnter(e: DragEvent) {
@@ -236,7 +236,7 @@ function handleDrop(e: DragEvent) {
         <div ref="tabDoms" v-for="(tab, index) in tabs" :key="tab.path" class="tab"
           :class="{ active: tab.path === route.path, 'drop-target': dropIndex == index }" draggable="true"
           :data-index="index" @dragstart="handleDragStart" @dragenter="handleDragEnter" @dragover="handleDragOver"
-          @drop="handleDrop" @dragend="handleDragEnd" @click="router.push(tab.fullPath)"
+          @drop="handleDrop" @dragend="handleDragEnd" @click="router.push(tab.path)"
           @click.right.prevent="showTabMenu($event, tab)">
           <template v-if="props.withIcons && tab.meta.icon">
             <SvgIcon v-if="typeof tab.meta.icon === 'string'" :icon-name="(tab.meta.icon as string)"></SvgIcon>
