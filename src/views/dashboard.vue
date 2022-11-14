@@ -3,6 +3,13 @@
 
 <template>
   <ATimeline>
+    <ATimelineItem>v1.2.4
+      <ul>
+        <li>更新vue版本至3.2.45</li>
+        <li>更新vite版本至3.2.3</li>
+        <li>更新其他依赖包至最新版本</li>
+      </ul>
+    </ATimelineItem>
     <ATimelineItem>v1.2.3
       <ul>
         <li>使用h函数替换tsx渲染，方便不想用tsx开发的同学移除依赖包</li>
