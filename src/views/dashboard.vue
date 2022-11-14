@@ -2,11 +2,98 @@
 </script>
 
 <template>
-  <div
-    style="width: 100%; height: 100%; padding: 1rem; display: flex; justify-content: center; align-items: center; flex-direction: column;">
-    <p style="font-size: 1.2rem; color: #333">首页打算摆烂，其他有功能性的bug欢迎提issue</p>
-    <p style="font-size: 1.5rem; color: #999">祝你，生活愉快 :)</p>
-  </div>
+  <ATimeline>
+    <ATimelineItem>v1.2.4
+      <ul>
+        <li>更新vue版本至3.2.45</li>
+        <li>更新vite版本至3.2.3</li>
+        <li>更新其他依赖包至最新版本</li>
+      </ul>
+    </ATimelineItem>
+    <ATimelineItem>v1.2.3
+      <ul>
+        <li>使用h函数替换tsx渲染，方便不想用tsx开发的同学移除依赖包</li>
+        <li>更新依赖包至最新版本</li>
+      </ul>
+    </ATimelineItem>
+    <ATimelineItem>v1.2.1
+      <ul>
+        <li>新增菜单搜索，页面全屏功能</li>
+      </ul>
+    </ATimelineItem>
+    <ATimelineItem>v1.2.0
+      <ul>
+        <li>支持更多的自动导入（vue，pinia，vue-router等常用函数）</li>
+      </ul>
+    </ATimelineItem>
+    <ATimelineItem>v1.1.9
+      <ul>
+        <li>魔改antd布局样式，大幅优化菜单展开及收起时的性能</li>
+        <li>优化菜单，展开和收起的时候图标不抖动</li>
+      </ul>
+    </ATimelineItem>
+    <ATimelineItem>v1.1.7
+      <ul>
+        <li>修复标签页超出边界问题</li>
+        <li>修复设置弹窗询问关闭的标签页在关闭全部下无效</li>
+        <li>支持标签页拖拽切换顺序</li>
+        <li>新增关闭右侧选项</li>
+        <li>修复频繁点击刷新页面按钮导致刷新失败问题</li>
+      </ul>
+    </ATimelineItem>
+    <ATimelineItem>v1.1.3
+      <ul>
+        <li>弃用postcss-nesting，改用scss以获得编辑器更好的支持</li>
+      </ul>
+    </ATimelineItem>
+    <ATimelineItem>v1.1.0
+      <ul>
+        <li>增加菜单选中动画</li>
+        <li>优化缓存页面</li>
+        <li>新增功能示例</li>
+      </ul>
+    </ATimelineItem>
+    <ATimelineItem>v1.0.19
+      <ul>
+        <li>新增动态固定头部，appconfig可配置初始值</li>
+        <li>tabs不再局限于菜单页保持一致，可添加任意路径的路由，包括hidden页</li>
+        <li>关闭tab标签页可以弹窗确认</li>
+        <li>优化路由监听</li>
+        <li>mock支持获取get参数</li>
+      </ul>
+    </ATimelineItem>
+    <ATimelineItem>v1.0.16
+      <ul>
+        <li>cookie增加SameSite=None;Secure设置</li>
+        <li>优化侧边栏和标签栏滚动速度</li>
+        <li>将vite版本更新至3.0，更新所有其他依赖包至最新版本</li>
+        <li>运行项目成功后默认不自动打开浏览器窗口</li>
+      </ul>
+    </ATimelineItem>
+    <ATimelineItem>v1.0.8
+      <ul>
+        <li>修复路由只有一个子节点时生成的导航条在手机端路径不对的bug</li>
+      </ul>
+    </ATimelineItem>
+    <ATimelineItem>v1.0.6
+      <ul>
+        <li>优化动画效果，使其更加流畅自然</li>
+        <li>新增环境配置，支持staging预发布环境</li>
+        <li>支持mock模拟接口，appConfig.ts文件中开启</li>
+      </ul>
+    </ATimelineItem>
+    <ATimelineItem>v1.0.3
+      <ul>
+        <li>优化手机端侧边栏展示</li>
+        <li>可添加LOGO</li>
+      </ul>
+    </ATimelineItem>
+    <ATimelineItem>v1.0.0
+      <ul>
+        <li>vue-clownfish-admin初版发布 :)</li>
+      </ul>
+    </ATimelineItem>
+  </ATimeline>
 </template>
 
 <style>
