@@ -1,4 +1,4 @@
-import { EffectScope } from "vue"
+import type { EffectScope } from "vue"
 
 // 使组合式函数可用于多个Vue实例
 export function createSharedComposable(composable: Function) {
