@@ -3,6 +3,11 @@
 
 <template>
   <ATimeline>
+    <ATimelineItem>v1.2.5
+      <ul>
+        <li>修复缩放浏览器后，菜单栏logo图标显示成收起状态</li>
+      </ul>
+    </ATimelineItem>
     <ATimelineItem>v1.2.4
       <ul>
         <li>更新vue版本至3.2.45</li>
