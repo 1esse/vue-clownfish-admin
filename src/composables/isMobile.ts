@@ -1,12 +1,10 @@
 export default function (cb?: Function) {
   const WIDTH = 992
   const isMobile = ref(false)
+  let isChanged = false
   onBeforeMount(() => {
     checkIsMobile()
     window.addEventListener('resize', checkIsMobile)
-  })
-  onBeforeUnmount(() => {
-    window.removeEventListener('resize', checkIsMobile)
   })
   onScopeDispose(() => {
     window.removeEventListener('resize', checkIsMobile)
@@ -14,8 +12,9 @@ export default function (cb?: Function) {
   function checkIsMobile() {
     const rect = document.body.getBoundingClientRect()
     isMobile.value = rect.width < WIDTH
-    if (isMobile.value) {
+    if (isChanged !== isMobile.value) {
       cb && cb()
+      isChanged = isMobile.value
     }
   }
   return isMobile
