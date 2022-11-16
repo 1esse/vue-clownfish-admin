@@ -57,7 +57,7 @@ provide('loading', loading)
     <ALayout>
       <ALayoutHeader v-if="fixedHeader">
         <HeadBar></HeadBar>
-        <TabsBar :withIcons="true"></TabsBar>
+        <TabsBar :withIcons="false"></TabsBar>
       </ALayoutHeader>
       <ALayoutContent id="content-window">
         <div v-if="!fixedHeader" style="padding: 0 1rem;">

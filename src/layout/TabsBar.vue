@@ -67,9 +67,13 @@ function refreshPage(page: RouteLocationNormalizedLoaded) {
   deleteKeepAlivePage(page)
   router.replace(`/redirect${page.path}`)
 }
-
-async function closeTab(tab: RouteLocationNormalizedLoaded, justClose?: boolean) {
-  if (tab.meta.askBeforeClose) {
+/**
+ * @param tab 关闭的路由
+ * @param noRedirect 关闭结束后是否自动跳转去别的尚存的路由
+ * @param forceClose 是否强制关闭，开启后将无视关闭确认弹框
+ */
+async function closeTab(tab: RouteLocationNormalizedLoaded, noRedirect?: boolean, forceClose?: boolean) {
+  if (tab.meta.askBeforeClose && !forceClose) {
     const confirm = await checkCloseTab(tab)
     if (!confirm) return
   }
@@ -77,7 +81,7 @@ async function closeTab(tab: RouteLocationNormalizedLoaded, justClose?: boolean)
   const closeIndex = tabs.findIndex(item => item.path === closePath)
   tabs.splice(closeIndex, 1)
   deleteKeepAlivePage(tab)
-  if (justClose) return
+  if (noRedirect) return
   if (tabs.length > 0) {
     if (closePath === route.path) {
       const nextTab = tabs[tabs.length - 1]
@@ -136,15 +140,13 @@ function closeOtherTabs(saveTab: RouteLocationNormalizedLoaded) {
   if (saveTab.path !== route.path) {
     router.replace('/redirect' + saveTab.path)
   }
-  setTimeout(() => {
-    for (let i = tabs.length - 1; i >= 0; i--) {
-      const tab = tabs[i]
-      if (tab.path === saveTab.path) continue
-      nextTick(() => {
-        closeTab(tab, true)
-      })
-    }
-  }, 100)
+  for (let i = tabs.length - 1; i >= 0; i--) {
+    const tab = tabs[i]
+    if (tab.path === saveTab.path) continue
+    nextTick(() => {
+      closeTab(tab, true)
+    })
+  }
 }
 
 function showTabMenu(e: MouseEvent, tab: RouteLocationNormalizedLoaded) {
@@ -231,13 +233,16 @@ function handleDrop(e: DragEvent) {
       </ATooltip>
       <ADivider type="vertical" style="background-color: #e1e1e1; height: 1rem; margin: 0"></ADivider>
     </ASpace>
-    <Scrollbar ref="scrollbarDom" height="2rem" direction="horizontal" :speed="5" style="width: 50rem; flex: 1;">
+    <Scrollbar ref="scrollbarDom" height="2rem" direction="horizontal" :speed="5" style="width: 100px; flex: 1;">
       <div class="tabs">
         <div ref="tabDoms" v-for="(tab, index) in tabs" :key="tab.path" class="tab"
           :class="{ active: tab.path === route.path, 'drop-target': dropIndex == index }" draggable="true"
           :data-index="index" @dragstart="handleDragStart" @dragenter="handleDragEnter" @dragover="handleDragOver"
           @drop="handleDrop" @dragend="handleDragEnd" @click="router.push(tab.path)"
           @click.right.prevent="showTabMenu($event, tab)">
+          <div v-if="tab.meta.keepAlive"
+            :style="{ width: '0.5rem', height: '0.5rem', marginRight: '0.25rem', borderRadius: '50%', backgroundColor: tab.path === route.path ? '#85e1a1' : '#e1e1e1' }">
+          </div>
           <template v-if="props.withIcons && tab.meta.icon">
             <SvgIcon v-if="typeof tab.meta.icon === 'string'" :icon-name="(tab.meta.icon as string)"></SvgIcon>
             <component v-else :is="tab.meta.icon"></component>
