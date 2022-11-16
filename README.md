@@ -80,6 +80,7 @@
 
 ## 🦐 其他
 [在线预览](https://1esse.github.io/vue-clownfish-admin)
+[在线预览](https://jesse2hao.gitee.io/vue-clownfish-admin)（国内网络访问）
 
 [ElementPlus版本](https://github.com/1esse/vue-clownfish-admin-elem)
 
