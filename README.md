@@ -7,7 +7,7 @@
     <img src="https://img.shields.io/badge/vue-3.2.45-brightgreen.svg" alt="vue">
   </a>
   <a href="https://github.com/vitejs/vite">
-    <img src="https://img.shields.io/badge/vite-3.2.3-brightgreen.svg" alt="vite">
+    <img src="https://img.shields.io/badge/vite-3.2.4-brightgreen.svg" alt="vite">
   </a>
   <a href="https://github.com/vuejs/pinia">
     <img src="https://img.shields.io/badge/pinia-2.0.23-brightgreen.svg" alt="pinia">

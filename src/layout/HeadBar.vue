@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { DefaultOptionType, SelectValue } from 'ant-design-vue/es/select'
-import type { EnvType } from 'types/app'
 import type { Layout } from 'types/layout'
 import { userStore } from '../stores/user'
 import BreadCrumb from './BreadCrumb.vue'
@@ -55,7 +54,7 @@ function searchChange(value: SelectValue) {
     return
   }
   const routes = router.getRoutes()
-  const filteredRoutes = routes.filter(route => !route.meta.hidden && (route.meta.title?.includes(value as string) || route.meta.searchKeywords?.some(keyword => keyword.includes(value as string))))
+  const filteredRoutes = routes.filter(route => !route.meta.hidden && route.meta.breadcrumb !== false && !route.meta.external && (route.meta.title?.includes(value as string) || route.meta.searchKeywords?.some(keyword => keyword.includes(value as string))))
   searchOptions.value = filteredRoutes.map(route => Object.assign(router.resolve(route), { value: route.path }))
   searchCache[value as string] = searchOptions.value
 }
@@ -74,9 +73,9 @@ function searchSelect(value: any) {
       <BreadCrumb :withIcons="true"></BreadCrumb>
     </section>
     <ASpace size="middle" style="margin-right: 1rem; font-size: 1rem;">
-      <AAutoComplete v-model:value="searchValue" style="width: 10rem" :dropdownMatchSelectWidth="250"
+      <AAutoComplete v-model:value="searchValue" style="width: 15rem" :dropdownMatchSelectWidth="250"
         :filterOption="false" :options="searchOptions" @change="searchChange" @select="searchSelect">
-        <AInputSearch placeholder="搜索" allowClear />
+        <AInputSearch placeholder="菜单名称/拼音/首字母" allowClear />
         <template #option="item">
           <ABreadcrumb v-if="item.matched.length > 0">
             <template v-for="(route, index) in item.matched" :key="route.path">

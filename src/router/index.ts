@@ -19,7 +19,7 @@ export const dashboardRoute: RouteRecordRaw = {
       path: 'dashboard',
       name: 'Dashboard',
       component: () => import('@/views/dashboard.vue'),
-      meta: { title: '首页', icon: HomeOutlined, searchKeywords: ['dashboard'] }
+      meta: { title: '首页', icon: HomeOutlined, searchKeywords: ['dashboard', 'home', 'shouye', 'sy'] }
     }
   ]
 }
@@ -66,7 +66,7 @@ export const routes: RouteRecordRaw[] = [
         path: 'index',
         name: 'modal',
         component: () => import('@/views/modal.vue'),
-        meta: { title: '模态框', icon: BlockOutlined, keepAlive: true }
+        meta: { title: '模态框', icon: BlockOutlined, keepAlive: true, searchKeywords: ['mutaikuang', 'mtk'] }
       }
     ]
   },
@@ -81,13 +81,13 @@ export const routes: RouteRecordRaw[] = [
         path: 'index',
         name: 'tableList',
         component: () => import('@/views/table/tableList.vue'),
-        meta: { title: '表格列表', icon: TableOutlined, keepAlive: true }
+        meta: { title: '表格列表', icon: TableOutlined, keepAlive: true, searchKeywords: ['biaogeliebiao', 'bglb'] }
       },
       {
         path: 'export',
         name: 'tableExport',
         component: () => import('@/views/table/tableExport.vue'),
-        meta: { title: '表格导出', icon: ExportOutlined, keepAlive: true }
+        meta: { title: '表格导出', icon: ExportOutlined, keepAlive: true, searchKeywords: ['biaogedaochu', 'bgdc'] }
       }
     ]
   },
@@ -102,13 +102,13 @@ export const routes: RouteRecordRaw[] = [
         path: 'dynamicRoute',
         name: 'dynamicRoute',
         component: () => import('@/views/route/dynamicRoute.vue'),
-        meta: { title: '动态路由', icon: FireOutlined, keepAlive: true }
+        meta: { title: '动态路由', icon: FireOutlined, keepAlive: true, searchKeywords: ['dongtailuyou', 'dtlu'] }
       },
       {
         path: 'dynamicMenu',
         name: 'dynamicMenu',
         component: () => import('@/views/route/dynamicMenu.vue'),
-        meta: { title: '动态菜单', icon: FireOutlined, keepAlive: true }
+        meta: { title: '动态菜单', icon: FireOutlined, keepAlive: true, searchKeywords: ['dongtaicaidan', 'dtcd'] }
       }
     ]
   },
@@ -123,19 +123,19 @@ export const routes: RouteRecordRaw[] = [
         path: 'line',
         name: 'line',
         component: () => import('@/views/charts/line.vue'),
-        meta: { title: '折线图', icon: LineChartOutlined }
+        meta: { title: '折线图', icon: LineChartOutlined, searchKeywords: ['line', 'zhexiantu', 'zxt'] }
       },
       {
         path: 'keyboard',
         name: 'keyboard',
         component: () => import('@/views/charts/keyboard.vue'),
-        meta: { title: '键盘', icon: BarChartOutlined }
+        meta: { title: '键盘', icon: BarChartOutlined, searchKeywords: ['keyboard', 'jianpan', 'jp'] }
       },
       {
         path: 'earth',
         name: 'earth',
         component: () => import('@/views/charts/earth.vue'),
-        meta: { title: '地球', icon: 'earth', keepAlive: true }
+        meta: { title: '地球', icon: 'earth', keepAlive: true, searchKeywords: ['earth', 'diqiu', 'dq'] }
       },
     ]
   },
