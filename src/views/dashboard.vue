@@ -3,6 +3,13 @@
 
 <template>
   <ATimeline>
+    <ATimelineItem>v1.2.6
+      <ul>
+        <li>默认关闭标签页标题的图标显示（开启只需到layout/index页，将Tabsbar组件的withIcon值设为true）。如果页面被缓存，标题会显示小圆点。</li>
+        <li>优化搜索，可根据菜单名称，拼音，首字母搜索菜单</li>
+        <li>更新vite版本至3.2.4</li>
+      </ul>
+    </ATimelineItem>
     <ATimelineItem>v1.2.5
       <ul>
         <li>修复缩放浏览器后，菜单栏logo图标显示成收起状态</li>
