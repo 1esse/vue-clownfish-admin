@@ -68,12 +68,12 @@ provide<RefreshBreadCrumbInject>('refreshBreadCrumb', () => headBarRef.value?.re
     <ALayout>
       <ALayoutHeader v-if="fixedHeader">
         <HeadBar ref="headBarRef"></HeadBar>
-        <TabsBar ref="tabsBarRef" :withIcons="false" :withDot="false"></TabsBar>
+        <TabsBar ref="tabsBarRef" :withIcons="false" :withDot="true"></TabsBar>
       </ALayoutHeader>
       <ALayoutContent id="content-window">
         <div v-if="!fixedHeader" style="padding: 0 1rem;">
           <HeadBar ref="headBarRef"></HeadBar>
-          <TabsBar ref="tabsBarRef" :withIcons="false"></TabsBar>
+          <TabsBar ref="tabsBarRef" :withIcons="false" :withDot="true"></TabsBar>
         </div>
         <RouterView v-slot="{ Component, route }">
           <div class="content-view">
