@@ -2,8 +2,9 @@
 import { DefaultOptionType, SelectValue } from 'ant-design-vue/es/select'
 import type { Layout } from 'types/layout'
 import { userStore } from '../stores/user'
-import BreadCrumb from './BreadCrumb.vue'
 
+const BreadCrumb = defineAsyncComponent(() => import('./BreadCrumb.vue')) as ReturnType<typeof defineComponent>
+const breadCrumbRef = shallowRef<InstanceType<typeof BreadCrumb> | null>(null)
 const sidebarRelated = inject<Layout.SidebarRelated>('sidebarRelated')
 const loading = inject<Layout.Loading>('loading')
 const user = userStore()
@@ -18,6 +19,10 @@ onBeforeMount(() => {
   document.onfullscreenchange = () => {
     isFullscreen.value = !isFullscreen.value
   }
+})
+
+defineExpose({
+  refreshBreadCrumb: () => breadCrumbRef.value?.refreshBreadCrumb()
 })
 
 function logout() {
@@ -70,7 +75,7 @@ function searchSelect(value: any) {
     <section>
       <MenuFoldOutlined :class="['icon-sidebar-trigger', sidebarRelated?.collapsed && 'collapsed']"
         @click="toggleSidebar" />
-      <BreadCrumb :withIcons="true"></BreadCrumb>
+      <BreadCrumb ref="breadCrumbRef" :withIcons="true"></BreadCrumb>
     </section>
     <ASpace size="middle" style="margin-right: 1rem; font-size: 1rem;">
       <AAutoComplete v-model:value="searchValue" style="width: 15rem" :dropdownMatchSelectWidth="250"

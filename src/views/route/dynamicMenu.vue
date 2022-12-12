@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { routes } from '@/router'
 import sidebar from '@/stores/sidebar'
-import { MenuOutlined } from '@ant-design/icons-vue'
 import { RouteRecordRaw } from 'vue-router'
 
 const count = ref(0)
@@ -28,7 +27,7 @@ async function addDynamicMenu(keepAlive: boolean = false) {
     path: path,
     name: 'newMenu' + count.value,
     component: comp,
-    meta: { title: `${'新增菜单' + count.value}`, icon: MenuOutlined, keepAlive: keepAlive },
+    meta: { title: `${'新增菜单' + count.value}`, icon: useIcon('MenuOutlined'), keepAlive: keepAlive },
     props: { id: count.value }
   }
   parentRoute?.children?.push(newRoute)

@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { routes } from '@/router'
-import { FireOutlined } from '@ant-design/icons-vue'
 import { RouteRecordRaw } from 'vue-router'
 
 const count = ref(0)
@@ -28,7 +27,7 @@ async function addDynamicRoute(keepAlive: boolean = false, askBeforeClose: boole
     path: path,
     name: 'newRoute' + count.value,
     component: comp,
-    meta: { title: `${'新增路由' + count.value}`, icon: FireOutlined, hidden: true, belongs: '/route/dynamicRoute', keepAlive: keepAlive, askBeforeClose: askBeforeClose },
+    meta: { title: `${'新增路由' + count.value}`, icon: useIcon('FireOutlined'), hidden: true, belongs: '/route/dynamicRoute', keepAlive: keepAlive, askBeforeClose: askBeforeClose },
     props: { id: count.value }
   }
   parentRoute?.children?.push(newRoute)
