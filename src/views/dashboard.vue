@@ -3,6 +3,15 @@
 
 <template>
   <ATimeline>
+    <ATimelineItem>v1.3.0
+      <ul>
+        <li>标签页关于页面被缓存显示小圆点可自主控制（layout/index页，设置Tabsbar组件的withDot值）</li>
+        <li>新增页面布局相关函数示例页面（关闭当前标签页，获取当前所有标签页，重命名当前标签页名称，刷新当前面包屑）</li>
+        <li>优化dialog组件</li>
+        <li>更新vite版本至4.0.0</li>
+        <li>更新其他依赖包至最新版本</li>
+      </ul>
+    </ATimelineItem>
     <ATimelineItem>v1.2.6
       <ul>
         <li>默认关闭标签页标题的图标显示（开启只需到layout/index页，将Tabsbar组件的withIcon值设为true）。如果页面被缓存，标题会显示小圆点。</li>

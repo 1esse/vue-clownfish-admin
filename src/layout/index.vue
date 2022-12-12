@@ -4,8 +4,16 @@ import TabsBar from './TabsBar.vue'
 import Logo from '@/assets/logo.png'
 import { transitions, fixedHeader } from '@/appConfig'
 import type { Layout } from 'types/layout'
+import { RouteLocationNormalizedLoaded } from 'vue-router'
+
+export type CloseTabInject = (tab: RouteLocationNormalizedLoaded, noRedirect?: boolean, forceClose?: boolean) => Promise<void> | undefined
+export type GetTabsInject = () => Readonly<RouteLocationNormalizedLoaded>[] | undefined
+export type SetCurrentTabNameInject = (name: string) => void | undefined
+export type RefreshBreadCrumbInject = () => void
 
 const SideBar = defineAsyncComponent(() => import('./SideBar.vue')) as ReturnType<typeof defineComponent>
+const tabsBarRef = shallowRef<InstanceType<typeof TabsBar> | null>(null)
+const headBarRef = shallowRef<InstanceType<typeof HeadBar> | null>(null)
 const useSharedIsMobile = createSharedComposable(isMobile)
 const _isMobile = useSharedIsMobile(setSidebarCollapsed)
 
@@ -29,11 +37,14 @@ function setSidebarCollapsed() {
   sidebarRelated.collapsed = _isMobile.value
   sidebarRelated.shadowCollapsed = sidebarRelated.collapsed
 }
-
 // 为子组件提供布局的相关状态信息
 provide('sidebarRelated', sidebarRelated)
 provide('keepAlivePages', keepAlivePages.value)
 provide('loading', loading)
+provide<CloseTabInject>('closeTab', (tab: RouteLocationNormalizedLoaded, noRedirect?: boolean, forceClose?: boolean) => tabsBarRef.value?.closeTab(tab, noRedirect, forceClose))
+provide<GetTabsInject>('getTabs', () => tabsBarRef.value?.getReadOnlyTabs())
+provide<SetCurrentTabNameInject>('setCurrentTabName', (name: string) => tabsBarRef.value?.setCurrentTabName(name))
+provide<RefreshBreadCrumbInject>('refreshBreadCrumb', () => headBarRef.value?.refreshBreadCrumb())
 </script>
 
 <template>
@@ -56,25 +67,27 @@ provide('loading', loading)
     </ALayoutSider>
     <ALayout>
       <ALayoutHeader v-if="fixedHeader">
-        <HeadBar></HeadBar>
-        <TabsBar :withIcons="false"></TabsBar>
+        <HeadBar ref="headBarRef"></HeadBar>
+        <TabsBar ref="tabsBarRef" :withIcons="false" :withDot="false"></TabsBar>
       </ALayoutHeader>
       <ALayoutContent id="content-window">
         <div v-if="!fixedHeader" style="padding: 0 1rem;">
-          <HeadBar></HeadBar>
-          <TabsBar :withIcons="true"></TabsBar>
+          <HeadBar ref="headBarRef"></HeadBar>
+          <TabsBar ref="tabsBarRef" :withIcons="false"></TabsBar>
         </div>
-        <RouterView v-slot="{ Component, route }" class="content-view">
-          <Transition :name="transitions.fadeScale" mode="out-in" appear>
-            <!-- 
-              vite的hmr和keepalive组件冲突会导致路由失效，
-              https://github.com/vuejs/core/pull/5165
-              不影响生产环境
-            -->
-            <KeepAlive :include="Array.from(keepAlivePages)" :max="10">
-              <component :is="Component" :key="route.name" />
-            </KeepAlive>
-          </Transition>
+        <RouterView v-slot="{ Component, route }">
+          <div class="content-view">
+            <Transition :name="transitions.fadeScale" mode="out-in" appear>
+              <!-- 
+                vite的hmr和keepalive组件冲突会导致路由失效，
+                https://github.com/vuejs/core/pull/5165
+                不影响生产环境
+              -->
+              <KeepAlive :include="Array.from(keepAlivePages)" :max="10">
+                <component :is="Component" :key="route.name" />
+              </KeepAlive>
+            </Transition>
+          </div>
         </RouterView>
       </ALayoutContent>
     </ALayout>

@@ -141,6 +141,7 @@ function closeDialog() {
   height: 100%;
   font-size: 0.9rem;
   padding: 1rem;
+  overflow: auto;
 }
 
 .icon-close {

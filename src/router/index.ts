@@ -56,6 +56,21 @@ export const routes: RouteRecordRaw[] = [
     meta: { hidden: true, title: '登录' }
   },
   {
+    path: '/layout-funcs',
+    name: 'LayoutFuncs',
+    component: Layout,
+    redirect: { name: 'layoutFuncs' },
+    meta: { breadcrumb: false },
+    children: [
+      {
+        path: 'index',
+        name: 'layoutFuncs',
+        component: () => import('@/views/layoutFuncs.vue'),
+        meta: { title: '布局功能函数', icon: FireOutlined, keepAlive: true, searchKeywords: ['bujugongnenghanshu', 'bjgnhs'] }
+      }
+    ]
+  },
+  {
     path: '/modal',
     name: 'Modal',
     component: Layout,

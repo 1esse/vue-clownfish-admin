@@ -16,6 +16,10 @@ const props = withDefaults(defineProps<{
 onBeforeMount(() => refreshBreadCrumb())
 watch(() => route.path, refreshBreadCrumb)
 
+defineExpose({
+  refreshBreadCrumb
+})
+
 function refreshBreadCrumb() {
   routeMatched.value = []
   nextTick(() => {

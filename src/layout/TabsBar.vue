@@ -3,6 +3,7 @@ import type { RouteLocationNormalizedLoaded } from 'vue-router'
 import type { Layout } from 'types/layout'
 import { Modal } from 'ant-design-vue'
 import { dashboardRoute } from '@/router'
+import sidebar from '@/stores/sidebar'
 
 const router = useRouter()
 const route = useRoute()
@@ -11,15 +12,28 @@ const scrollbarDom = shallowRef<InstanceType<typeof import('@/components/Scrollb
 const menuPanelDom = shallowRef<InstanceType<typeof import('@/components/MenuPanel.vue')['default']> | null>(null)
 const tabDoms = shallowRef<HTMLElement[]>([])
 const keepAlivePages = inject<Layout.keepAlivePages>('keepAlivePages')
+let currentTabIndex: number = 0
 const props = withDefaults(defineProps<{
-  withIcons?: boolean
+  withIcons?: boolean,
+  withDot?: boolean
 }>(), {
-  withIcons: false
+  withIcons: false,
+  withDot: true
 })
 
 onBeforeMount(() => { addTab() })
 
 watch(() => route.path, addTab)
+
+defineExpose({
+  closeTab,
+  getReadOnlyTabs,
+  setCurrentTabName
+})
+
+function getReadOnlyTabs(): Readonly<RouteLocationNormalizedLoaded>[] {
+  return readonly(tabs) as Readonly<RouteLocationNormalizedLoaded>[]
+}
 
 function addTab() {
   const tab: RouteLocationNormalizedLoaded = route
@@ -36,9 +50,23 @@ function addTab() {
   })
 }
 
+/**
+ * 修改当前标签页的标题
+ * @param tabName 修改后的标题
+ */
+function setCurrentTabName(tabName: string) {
+  const currentTab = tabs[currentTabIndex]
+  currentTab.meta.title = tabName
+  route.meta.title = tabName
+  const tab = { ...currentTab }
+  tabs.splice(currentTabIndex, 1, tab)
+  sidebar.refreshSidebar()
+}
+
 let lastTabIndex = 0 // 记录上一次标签索引，用于计算与新标签的位置信息
 function moveToTab(tab: RouteLocationNormalizedLoaded) {
   const tabIndex = tabs.findIndex(item => item.path === tab.path)
+  currentTabIndex = tabIndex
   if (tabIndex === lastTabIndex) return
   const tabDom = tabDoms.value?.[tabIndex]
   const { offsetWidth, offsetLeft } = tabDom
@@ -233,14 +261,14 @@ function handleDrop(e: DragEvent) {
       </ATooltip>
       <ADivider type="vertical" style="background-color: #e1e1e1; height: 1rem; margin: 0"></ADivider>
     </ASpace>
-    <Scrollbar ref="scrollbarDom" height="2rem" direction="horizontal" :speed="5" style="width: 100px; flex: 1;">
+    <Scrollbar ref="scrollbarDom" height="2rem" direction="horizontal" :speed="5" style="width: 50rem; flex: 1;">
       <div class="tabs">
         <div ref="tabDoms" v-for="(tab, index) in tabs" :key="tab.path" class="tab"
           :class="{ active: tab.path === route.path, 'drop-target': dropIndex == index }" draggable="true"
           :data-index="index" @dragstart="handleDragStart" @dragenter="handleDragEnter" @dragover="handleDragOver"
           @drop="handleDrop" @dragend="handleDragEnd" @click="router.push(tab.path)"
           @click.right.prevent="showTabMenu($event, tab)">
-          <div v-if="tab.meta.keepAlive"
+          <div v-if="tab.meta.keepAlive && props.withDot"
             :style="{ width: '0.5rem', height: '0.5rem', marginRight: '0.25rem', borderRadius: '50%', backgroundColor: tab.path === route.path ? '#85e1a1' : '#e1e1e1' }">
           </div>
           <template v-if="props.withIcons && tab.meta.icon">

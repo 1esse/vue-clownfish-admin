@@ -72,6 +72,7 @@ function showModal3() {
         Rerum tempore sapiente, provident dolore necessitatibus fugiat et distinctio accusantium sint. Doloribus,
         architecto necessitatibus, consectetur velit asperiores quam aliquid beatae ullam similique dicta expedita
         ducimus laboriosam vel omnis dolor optio?
+        lorem*8
       </div>
       <template #dialogFooter>
         <div>
@@ -80,7 +81,7 @@ function showModal3() {
       </template>
     </Dialog>
     <Dialog v-model:show="visibles.dialog3" :loading="loading.dialog3" :loadingText="loadingText.dialog3" width="40rem"
-      height="70vh">
+      height="70vh" :destroy-on-close="true">
       <template #dialogHeader>
         <div>
           <FireTwoTone style="margin-right: .5rem" />固定宽高模态框
@@ -102,7 +103,47 @@ function showModal3() {
           voluptatibus, perferendis dolorum doloremque? Fugit corporis eos consequuntur sequi quae, quia officiis maxime
           inventore doloribus!
         </p>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima sed cum saepe accusamus quae porro
+          voluptatibus, perferendis dolorum doloremque? Fugit corporis eos consequuntur sequi quae, quia officiis maxime
+          inventore doloribus!
+        </p>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima sed cum saepe accusamus quae porro
+          voluptatibus, perferendis dolorum doloremque? Fugit corporis eos consequuntur sequi quae, quia officiis maxime
+          inventore doloribus!
+        </p>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima sed cum saepe accusamus quae porro
+          voluptatibus, perferendis dolorum doloremque? Fugit corporis eos consequuntur sequi quae, quia officiis maxime
+          inventore doloribus!
+        </p>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima sed cum saepe accusamus quae porro
+          voluptatibus, perferendis dolorum doloremque? Fugit corporis eos consequuntur sequi quae, quia officiis maxime
+          inventore doloribus!
+        </p>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima sed cum saepe accusamus quae porro
+          voluptatibus, perferendis dolorum doloremque? Fugit corporis eos consequuntur sequi quae, quia officiis maxime
+          inventore doloribus!
+        </p>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima sed cum saepe accusamus quae porro
+          voluptatibus, perferendis dolorum doloremque? Fugit corporis eos consequuntur sequi quae, quia officiis maxime
+          inventore doloribus!
+        </p>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima sed cum saepe accusamus quae porro
+          voluptatibus, perferendis dolorum doloremque? Fugit corporis eos consequuntur sequi quae, quia officiis maxime
+          inventore doloribus!
+        </p>
       </div>
+      <template #dialogFooter>
+        <div>
+          <FireTwoTone style="margin-right: .5rem" />自定义页脚
+        </div>
+      </template>
     </Dialog>
   </ASpace>
 </template>
