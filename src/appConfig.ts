@@ -16,7 +16,7 @@ export const mock: SwitchType = 'on'
 /**
  * mock是否开启namespace，开启后文件名将作为前缀拼接在url
  */
-export const mockNamespace: boolean = true
+export const mockNamespace: boolean = false
 
 /**
  * mock代理指定环境

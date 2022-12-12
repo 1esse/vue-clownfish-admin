@@ -21,7 +21,7 @@ const users: ({ username: string, password: string } & Stores.user)[] = [
 
 export default <MockApi.obj[]>[
   {
-    url: '/login',
+    url: '/user/login',
     type: 'post',
     response: (options) => {
       const failRes: MockApi.response = {
@@ -41,7 +41,7 @@ export default <MockApi.obj[]>[
     }
   },
   {
-    url: '/logout',
+    url: '/user/logout',
     type: 'get',
     response: {
       code: 200,
@@ -50,7 +50,7 @@ export default <MockApi.obj[]>[
     }
   },
   {
-    url: '/info\\?token=.*',
+    url: '/user/info\\?token=.*',
     type: 'get',
     response: (options) => {
       const failRes: MockApi.response = {
