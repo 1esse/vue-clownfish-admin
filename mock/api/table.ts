@@ -21,7 +21,7 @@ const data = generateData(1000)
 
 export default <MockApi.obj[]>[
     {
-        url: '/list',
+        url: '/table/list',
         type: 'get',
         response: (options) => {
             const { page, perPage } = options.params as { page: string, perPage: string }

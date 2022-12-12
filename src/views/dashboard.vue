@@ -8,6 +8,7 @@
         <li>标签页关于页面被缓存显示小圆点可自主控制（layout/index页，设置Tabsbar组件的withDot值）</li>
         <li>新增页面布局相关函数示例页面（关闭当前标签页，获取当前所有标签页，重命名当前标签页名称，刷新当前面包屑）</li>
         <li>优化dialog组件</li>
+        <li>为了减少困惑，mock接口现在默认关闭文件名称拼接url，可在appConfig.ts设置mockNamespace为true重新开启（开启后各个文件的url路径需要重新修改正确）</li>
         <li>更新vite版本至4.0.0</li>
         <li>更新其他依赖包至最新版本</li>
       </ul>
