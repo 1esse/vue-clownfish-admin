@@ -120,6 +120,8 @@ provide<RefreshBreadCrumbInject>('refreshBreadCrumb', () => headBarRef.value?.re
 
 .content-view {
   padding: 1rem;
+  width: 100%;
+  height: 100%;
 }
 
 .sidebar-shadow {
