@@ -81,6 +81,9 @@ export default defineConfig({
     port: 7777
   },
   build: {
-    chunkSizeWarningLimit: 1500
+    chunkSizeWarningLimit: 1500,
+    rollupOptions: {
+      external: ['@ant-design/icons-vue']
+    }
   }
 })
