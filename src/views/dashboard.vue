@@ -3,6 +3,12 @@
 
 <template>
   <ATimeline>
+    <ATimelineItem>v1.3.1
+      <ul>
+        <li>更新vite版本至4.0.4</li>
+        <li>更新其他依赖包至最新版本</li>
+      </ul>
+    </ATimelineItem>
     <ATimelineItem>v1.3.0
       <ul>
         <li>标签页关于页面被缓存显示小圆点可自主控制（layout/index页，设置Tabsbar组件的withDot值）</li>

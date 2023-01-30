@@ -7,10 +7,10 @@
     <img src="https://img.shields.io/badge/vue-3.2.45-brightgreen.svg" alt="vue">
   </a>
   <a href="https://github.com/vitejs/vite">
-    <img src="https://img.shields.io/badge/vite-4.0.1-brightgreen.svg" alt="vite">
+    <img src="https://img.shields.io/badge/vite-4.0.4-brightgreen.svg" alt="vite">
   </a>
   <a href="https://github.com/vuejs/pinia">
-    <img src="https://img.shields.io/badge/pinia-2.0.28-brightgreen.svg" alt="pinia">
+    <img src="https://img.shields.io/badge/pinia-2.0.29-brightgreen.svg" alt="pinia">
   </a>
   <a href="https://github.com/vuejs/router">
     <img src="https://img.shields.io/badge/vueRouter-4.1.6-brightgreen.svg" alt="vueRouter">
@@ -80,7 +80,10 @@
 
 ## 🦐 其他
 [在线预览](https://1esse.github.io/vue-clownfish-admin)
+
 [在线预览](https://jesse2hao.gitee.io/vue-clownfish-admin)（国内网络访问）
+
+[Gitee地址](https://gitee.com/jesse2hao/vue-clownfish-admin)
 
 [ElementPlus版本](https://github.com/1esse/vue-clownfish-admin-elem)
 
