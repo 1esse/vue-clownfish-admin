@@ -261,7 +261,7 @@ function handleDrop(e: DragEvent) {
       </ATooltip>
       <ADivider type="vertical" style="background-color: #e1e1e1; height: 1rem; margin: 0"></ADivider>
     </ASpace>
-    <Scrollbar ref="scrollbarDom" height="2rem" direction="horizontal" :speed="5" style="width: 50rem; flex: 1;">
+    <Scrollbar ref="scrollbarDom" height="2rem" direction="horizontal" :speed="5" style="width: 100px; flex: 1;">
       <div class="tabs">
         <div ref="tabDoms" v-for="(tab, index) in tabs" :key="tab.path" class="tab"
           :class="{ active: tab.path === route.path, 'drop-target': dropIndex == index }" draggable="true"

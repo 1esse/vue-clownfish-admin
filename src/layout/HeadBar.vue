@@ -27,7 +27,7 @@ defineExpose({
 
 function logout() {
   if (loading) loading.logout = true
-  user.logout().then(_ => {
+  user.logout().then((_: any) => {
     router.replace('/login')
   })
 }
