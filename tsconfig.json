@@ -32,7 +32,7 @@
     "src/**/*.vue",
     "components.d.ts",
     "auto-imports.d.ts",
-    "types/*.d.ts"
+    "typings/*.d.ts"
   ],
   "references": [
     {

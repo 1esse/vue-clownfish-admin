@@ -1,4 +1,4 @@
-import { EnvType, SwitchType } from "types/app"
+import { EnvType, SwitchType } from "typings/app"
 
 /**
  * app标题
