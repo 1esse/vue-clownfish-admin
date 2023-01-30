@@ -85,6 +85,8 @@
 
 [Gitee地址](https://gitee.com/jesse2hao/vue-clownfish-admin)
 
+[electron版本](https://github.com/1esse/electron-clownfish)
+
 [ElementPlus版本](https://github.com/1esse/vue-clownfish-admin-elem)
 
 ## 🐙 License
