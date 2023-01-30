@@ -1,5 +1,5 @@
 import { message } from "ant-design-vue"
-import { Stores } from "types/stores"
+import { Stores } from "typings/stores"
 
 export const userStore = defineStore('user', {
   state: (): Stores.user => ({

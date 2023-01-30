@@ -3,6 +3,11 @@
 
 <template>
   <ATimeline>
+    <ATimelineItem>v1.3.2
+      <ul>
+        <li>修改types文件夹名称，使用typings代替</li>
+      </ul>
+    </ATimelineItem>
     <ATimelineItem>v1.3.1
       <ul>
         <li>更新vite版本至4.0.4</li>

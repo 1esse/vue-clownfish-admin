@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { RouteLocationNormalizedLoaded } from 'vue-router'
-import type { Layout } from 'types/layout'
+import type { Layout } from 'typings/layout'
 import { Modal } from 'ant-design-vue'
 import { dashboardRoute } from '@/router'
 import sidebar from '@/stores/sidebar'

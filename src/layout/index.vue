@@ -3,7 +3,7 @@ import HeadBar from './HeadBar.vue'
 import TabsBar from './TabsBar.vue'
 import Logo from '@/assets/logo.png'
 import { transitions, fixedHeader } from '@/appConfig'
-import type { Layout } from 'types/layout'
+import type { Layout } from 'typings/layout'
 import { RouteLocationNormalizedLoaded } from 'vue-router'
 
 export type CloseTabInject = (tab: RouteLocationNormalizedLoaded, noRedirect?: boolean, forceClose?: boolean) => Promise<void> | undefined

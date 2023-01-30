@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { DefaultOptionType, SelectValue } from 'ant-design-vue/es/select'
-import type { Layout } from 'types/layout'
+import type { Layout } from 'typings/layout'
 import { userStore } from '../stores/user'
 
 const BreadCrumb = defineAsyncComponent(() => import('./BreadCrumb.vue')) as ReturnType<typeof defineComponent>

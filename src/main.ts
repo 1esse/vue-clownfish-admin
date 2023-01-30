@@ -7,7 +7,7 @@ import 'ant-design-vue/es/modal/style/index.css' // antdv modal样式
 import '@/styles/index.scss' // 全局样式
 import 'virtual:svg-icons-register'
 import './permission'
-import { EnvType } from 'types/app'
+import { EnvType } from 'typings/app'
 
 mockEnv.includes(import.meta.env.MODE as EnvType) && mock === 'on' && enableMock()
 

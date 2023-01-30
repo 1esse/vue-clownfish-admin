@@ -5,7 +5,7 @@ import { RouterLink } from 'vue-router'
 import { SubMenu, MenuItem } from 'ant-design-vue/es'
 import type { Component, Slots } from 'vue'
 import type { RouteMeta, RouteRecordRaw } from 'vue-router'
-import type { Layout } from 'types/layout'
+import type { Layout } from 'typings/layout'
 import sidebar from '@/stores/sidebar'
 
 const router = useRouter()
