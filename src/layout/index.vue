@@ -77,12 +77,7 @@ provide<RefreshBreadCrumbInject>('refreshBreadCrumb', () => headBarRef.value?.re
         </div>
         <RouterView v-slot="{ Component, route }">
           <div class="content-view">
-            <Transition :name="transitions.fadeScale" mode="out-in" appear>
-              <!-- 
-                vite的hmr和keepalive组件冲突会导致路由失效，
-                https://github.com/vuejs/core/pull/5165
-                不影响生产环境
-              -->
+              <Transition :name="transitions.fadeScale" mode="out-in" appear>
               <KeepAlive :include="Array.from(keepAlivePages)" :max="10">
                 <component :is="Component" :key="route.name" />
               </KeepAlive>
